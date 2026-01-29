@@ -1,0 +1,16 @@
+INFO  13:03:32,373 - Compiling source file: /Users/leairt/eclipse-workspace/MicrojavaCompiler/test/program.mj
+INFO  13:03:32,379 - #1 program
+INFO  13:03:32,379 - #20 MJProgram
+INFO  13:03:32,379 - #20 int
+INFO  13:03:32,379 - #20 x
+INFO  13:03:32,379 - #42 ,
+INFO  13:03:32,379 - #20 y
+INFO  13:03:32,379 - #40 ;
+INFO  13:03:32,379 - #48 {
+INFO  13:03:32,379 - #13 void
+INFO  13:03:32,379 - #20 main
+INFO  13:03:32,379 - #44 (
+INFO  13:03:32,379 - #45 )
+INFO  13:03:32,380 - #48 {
+INFO  13:03:32,380 - #49 }
+INFO  13:03:32,380 - #49 }
