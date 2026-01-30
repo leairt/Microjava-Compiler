@@ -1,0 +1,161 @@
+
+
+package rs.ac.bg.etf.pp1;
+
+import java_cup.runtime.*;
+import org.apache.log4j.*;
+import rs.ac.bg.etf.pp1.ast.*;
+
+parser code {:
+
+	Logger log = Logger.getLogger(getClass());
+   
+   
+    // slede redefinisani metodi za prijavu gresaka radi izmene teksta poruke
+     
+    public void report_fatal_error(String message, Object info) throws java.lang.Exception {
+      done_parsing();
+      report_error(message, info);
+    }
+  
+    public void syntax_error(Symbol cur_token) {
+        report_error("\nSintaksna greska", cur_token);
+    }
+  
+    public void unrecovered_syntax_error(Symbol cur_token) throws java.lang.Exception {
+        report_fatal_error("Fatalna greska, parsiranje se ne moze nastaviti", cur_token);
+    }
+
+    public void report_error(String message, Object info) {
+    	StringBuilder msg = new StringBuilder(message); 
+    	if (info instanceof Symbol)
+            msg.append (" na liniji ").append(((Symbol)info).left);
+        log.error(msg.toString());
+    }
+
+
+:}
+
+
+scan with {:
+	Symbol s = this.getScanner().next_token();
+	if (s != null && s.value != null) 
+		log.info(s.toString() + " " + s.value.toString());
+	return s;
+:}
+
+terminal PROGRAM;
+terminal BREAK;
+terminal ENUM;
+terminal CLASS;
+terminal ABSTRACT;
+terminal ELSE;
+terminal CONST;
+terminal IF;
+terminal NEW;
+terminal PRINT;
+terminal READ;
+terminal RETURN;
+terminal VOID;
+terminal EXTENDS;
+terminal CONTINUE;
+terminal FOR;
+terminal LENGTH;
+terminal SWITCH;
+terminal CASE;
+
+terminal String IDENT;
+terminal CHAR;
+terminal NUMBER;
+terminal BOOL;
+
+terminal Integer NUM_CONST;
+terminal Character CHAR_CONST;
+terminal Boolean BOOL_CONST;
+
+terminal ADD;
+terminal SUB;
+terminal MUL;
+terminal DIV;
+terminal MOD;
+terminal EQ;
+terminal NEQ;
+terminal GT;
+terminal GE;
+terminal LT;
+terminal LE;
+terminal AND;
+terminal OR;
+terminal IS;
+terminal INC;
+terminal DEC;
+terminal SEMI;
+terminal COLON;
+terminal COMMA;
+terminal DOT;
+terminal LPAREN;
+terminal RPAREN;
+terminal LBOX;
+terminal RBOX;
+terminal LBRACE;
+terminal RBRACE;
+
+terminal QMARK;
+
+
+nonterminal Program;
+nonterminal GlobalDeclList;
+nonterminal MethodDeclList;
+nonterminal GlobalDecl;
+nonterminal MethodDecl;
+
+nonterminal ConstDecl;
+nonterminal VarDecl;
+nonterminal ClassDecl;
+nonterminal EnumDecl;
+nonterminal AbstractDecl;
+
+nonterminal Type;
+
+nonterminal VarItemList;
+nonterminal VarItem;
+nonterminal OptArray;
+
+
+
+Program ::= (Program) PROGRAM IDENT GlobalDeclList LBRACE MethodDeclList RBRACE;
+
+GlobalDeclList ::= (GlobalDeclList1) GlobalDeclList GlobalDecl
+                 | (GlobalDeclList0) /* epsilon */; 
+
+MethodDeclList ::= (MethodDeclList1) MethodDeclList MethodDecl
+                 | (MethodDeclList0) /* epsilon */; 
+
+GlobalDecl ::= (GlobalDeclConst) ConstDecl
+             | (GlobalDeclVar) VarDecl
+             | (GlobalDeclClass) ClassDecl
+             | (GlobalDeclEnum) EnumDecl
+             | (GlobalDeclAbstract) AbstractDecl;
+             
+Type ::= (Type) IDENT;
+
+MethodDecl ::= /* TODO */ SEMI;
+
+ConstDecl ::= /* TODO */ CONST;
+                
+VarDecl ::= (VarDecl) Type VarItemList SEMI;
+
+VarItemList ::= (VarItemList2) VarItemList COMMA VarItem
+              | (VarItemList1) VarItem;
+              
+VarItem ::= (VarItem) IDENT OptArray;
+
+OptArray ::= (OptArray1) LBOX RBOX
+           | (OptArray0) /* epsilon */;
+
+ClassDecl ::= /* TODO */ CLASS;
+
+EnumDecl ::= /* TODO */ ENUM;
+
+AbstractDecl ::= /* TODO */ ABSTRACT;
+

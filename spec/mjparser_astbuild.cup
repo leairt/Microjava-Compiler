@@ -1,0 +1,161 @@
+
+
+package rs.ac.bg.etf.pp1;
+
+import java_cup.runtime.*;
+import org.apache.log4j.*;
+import rs.ac.bg.etf.pp1.ast.*;
+
+parser code {:
+
+	Logger log = Logger.getLogger(getClass());
+   
+   
+    // slede redefinisani metodi za prijavu gresaka radi izmene teksta poruke
+     
+    public void report_fatal_error(String message, Object info) throws java.lang.Exception {
+      done_parsing();
+      report_error(message, info);
+    }
+  
+    public void syntax_error(Symbol cur_token) {
+        report_error("\nSintaksna greska", cur_token);
+    }
+  
+    public void unrecovered_syntax_error(Symbol cur_token) throws java.lang.Exception {
+        report_fatal_error("Fatalna greska, parsiranje se ne moze nastaviti", cur_token);
+    }
+
+    public void report_error(String message, Object info) {
+    	StringBuilder msg = new StringBuilder(message); 
+    	if (info instanceof Symbol)
+            msg.append (" na liniji ").append(((Symbol)info).left);
+        log.error(msg.toString());
+    }
+
+
+:}
+
+
+scan with {:
+	Symbol s = this.getScanner().next_token();
+	if (s != null && s.value != null) 
+		log.info(s.toString() + " " + s.value.toString());
+	return s;
+:}
+
+terminal PROGRAM;
+terminal BREAK;
+terminal ENUM;
+terminal CLASS;
+terminal ABSTRACT;
+terminal ELSE;
+terminal CONST;
+terminal IF;
+terminal NEW;
+terminal PRINT;
+terminal READ;
+terminal RETURN;
+terminal VOID;
+terminal EXTENDS;
+terminal CONTINUE;
+terminal FOR;
+terminal LENGTH;
+terminal SWITCH;
+terminal CASE;
+
+terminal String IDENT;
+terminal CHAR;
+terminal NUMBER;
+terminal BOOL;
+
+terminal Integer NUM_CONST;
+terminal Character CHAR_CONST;
+terminal Boolean BOOL_CONST;
+
+terminal ADD;
+terminal SUB;
+terminal MUL;
+terminal DIV;
+terminal MOD;
+terminal EQ;
+terminal NEQ;
+terminal GT;
+terminal GE;
+terminal LT;
+terminal LE;
+terminal AND;
+terminal OR;
+terminal IS;
+terminal INC;
+terminal DEC;
+terminal SEMI;
+terminal COLON;
+terminal COMMA;
+terminal DOT;
+terminal LPAREN;
+terminal RPAREN;
+terminal LBOX;
+terminal RBOX;
+terminal LBRACE;
+terminal RBRACE;
+
+terminal QMARK;
+
+
+nonterminal Program Program;
+nonterminal GlobalDeclList GlobalDeclList;
+nonterminal MethodDeclList MethodDeclList;
+nonterminal GlobalDecl GlobalDecl;
+nonterminal MethodDecl MethodDecl;
+
+nonterminal ConstDecl ConstDecl;
+nonterminal VarDecl VarDecl;
+nonterminal ClassDecl ClassDecl;
+nonterminal EnumDecl EnumDecl;
+nonterminal AbstractDecl AbstractDecl;
+
+nonterminal Type Type;
+
+nonterminal VarItemList VarItemList;
+nonterminal VarItem VarItem;
+nonterminal OptArray OptArray;
+
+
+
+Program ::= (Program) PROGRAM IDENT:I1 GlobalDeclList:G2 LBRACE MethodDeclList:M3 RBRACE {: RESULT=new Program(I1, G2, M3); RESULT.setLine(I1left); :};
+
+GlobalDeclList ::= (GlobalDeclList1) GlobalDeclList:G1 GlobalDecl:G2 {: RESULT=new GlobalDeclList1(G1, G2); RESULT.setLine(G1left); :}
+                 | (GlobalDeclList0) {: RESULT=new GlobalDeclList0(); :} /* epsilon */; 
+
+MethodDeclList ::= (MethodDeclList1) MethodDeclList:M1 MethodDecl:M2 {: RESULT=new MethodDeclList1(M1, M2); RESULT.setLine(M1left); :}
+                 | (MethodDeclList0) {: RESULT=new MethodDeclList0(); :} /* epsilon */; 
+
+GlobalDecl ::= (GlobalDeclConst) ConstDecl:C1 {: RESULT=new GlobalDeclConst(C1); RESULT.setLine(C1left); :}
+             | (GlobalDeclVar) VarDecl:V1 {: RESULT=new GlobalDeclVar(V1); RESULT.setLine(V1left); :}
+             | (GlobalDeclClass) ClassDecl:C1 {: RESULT=new GlobalDeclClass(C1); RESULT.setLine(C1left); :}
+             | (GlobalDeclEnum) EnumDecl:E1 {: RESULT=new GlobalDeclEnum(E1); RESULT.setLine(E1left); :}
+             | (GlobalDeclAbstract) AbstractDecl:A1 {: RESULT=new GlobalDeclAbstract(A1); RESULT.setLine(A1left); :};
+             
+Type ::= (Type) IDENT:I1 {: RESULT=new Type(I1); RESULT.setLine(I1left); :};
+
+MethodDecl ::= /* TODO */ SEMI {: RESULT=new MethodDeclDerived1(); :};
+
+ConstDecl ::= /* TODO */ CONST {: RESULT=new ConstDeclDerived1(); :};
+                
+VarDecl ::= (VarDecl) Type:T1 VarItemList:V2 SEMI {: RESULT=new VarDecl(T1, V2); RESULT.setLine(T1left); :};
+
+VarItemList ::= (VarItemList2) VarItemList:V1 COMMA VarItem:V2 {: RESULT=new VarItemList2(V1, V2); RESULT.setLine(V1left); :}
+              | (VarItemList1) VarItem:V1 {: RESULT=new VarItemList1(V1); RESULT.setLine(V1left); :};
+              
+VarItem ::= (VarItem) IDENT:I1 OptArray:O2 {: RESULT=new VarItem(I1, O2); RESULT.setLine(I1left); :};
+
+OptArray ::= (OptArray1) LBOX RBOX {: RESULT=new OptArray1(); :}
+           | (OptArray0) {: RESULT=new OptArray0(); :} /* epsilon */;
+
+ClassDecl ::= /* TODO */ CLASS {: RESULT=new ClassDeclDerived1(); :};
+
+EnumDecl ::= /* TODO */ ENUM {: RESULT=new EnumDeclDerived1(); :};
+
+AbstractDecl ::= /* TODO */ ABSTRACT {: RESULT=new AbstractDeclDerived1(); :};
+

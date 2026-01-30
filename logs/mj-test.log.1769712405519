@@ -1,0 +1,11 @@
+INFO  19:46:24,700 - Compiling source file: /Users/leairt/eclipse-workspace/Microjava Compiler/Microjava-Compiler/test/program.mj
+INFO  19:46:24,707 - #2 program
+INFO  19:46:24,707 - #21 prog13
+INFO  19:46:24,707 - Program(
+ prog13
+  GlobalDecl0(
+  ) [GlobalDecl0]
+) [Program]
+INFO  19:46:24,707 - ===================================
+INFO  19:46:24,707 -  Print count calls = 0
+INFO  19:46:24,708 -  Deklarisanih promenljivih ima = 0

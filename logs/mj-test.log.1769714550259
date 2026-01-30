@@ -1,0 +1,37 @@
+INFO  20:03:55,729 - Compiling source file: /Users/leairt/eclipse-workspace/Microjava Compiler/Microjava-Compiler/test/program.mj
+INFO  20:03:55,738 - #2 program
+INFO  20:03:55,738 - #21 prog13
+INFO  20:03:55,738 - #8 const
+INFO  20:03:55,738 - #21 int
+INFO  20:03:55,738 - #21 a
+INFO  20:03:55,738 - #41 =
+INFO  20:03:55,738 - #23 10
+INFO  20:03:55,738 - #44 ;
+INFO  20:03:55,738 - #52 {
+INFO  20:03:55,738 - #21 b
+INFO  20:03:55,739 - #53 }
+INFO  20:03:55,739 - Program(
+ prog13
+  GlobalDeclList1(
+    GlobalDeclList0(
+    ) [GlobalDeclList0]
+    GlobalDeclConst(
+      ConstDecl(
+        Type(
+         int
+        ) [Type]
+       a
+      ) [ConstDecl]
+    ) [GlobalDeclConst]
+  ) [GlobalDeclList1]
+  MethodDeclList1(
+    MethodDeclList0(
+    ) [MethodDeclList0]
+    MethodDeclDerived1(
+     b
+    ) [MethodDeclDerived1]
+  ) [MethodDeclList1]
+) [Program]
+INFO  20:03:55,739 - ===================================
+INFO  20:03:55,739 -  Print count calls = 0
+INFO  20:03:55,739 -  Deklarisanih promenljivih ima = 0

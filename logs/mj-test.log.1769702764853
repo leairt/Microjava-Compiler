@@ -1,0 +1,7 @@
+INFO  17:05:36,659 - Compiling source file: /Users/leairt/eclipse-workspace/Microjava Compiler/Microjava-Compiler/test/program.mj
+INFO  17:05:36,664 - #2 program
+INFO  17:05:36,665 - #21 MJProgram
+INFO  17:05:36,665 - #21 int
+ERROR 17:05:36,665 - 
+Sintaksna greska na liniji 2
+ERROR 17:05:36,665 - Fatalna greska, parsiranje se ne moze nastaviti na liniji 2

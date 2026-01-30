@@ -1,0 +1,6 @@
+INFO  18:48:37,977 - Compiling source file: /Users/leairt/eclipse-workspace/Microjava Compiler/Microjava-Compiler/test/program.mj
+INFO  18:48:37,982 - #2 program
+INFO  18:48:37,983 - #23 123
+ERROR 18:48:37,983 - 
+Sintaksna greska na liniji 1
+ERROR 18:48:37,983 - Fatalna greska, parsiranje se ne moze nastaviti na liniji 1

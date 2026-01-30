@@ -1,0 +1,10 @@
+INFO  20:22:30,262 - Compiling source file: /Users/leairt/eclipse-workspace/Microjava Compiler/Microjava-Compiler/test/program.mj
+INFO  20:22:30,270 - #2 program
+INFO  20:22:30,270 - #21 prog13
+INFO  20:22:30,270 - #21 int
+INFO  20:22:30,270 - #21 a
+INFO  20:22:30,271 - #44 ;
+INFO  20:22:30,271 - #52 {
+ERROR 20:22:30,271 - 
+Sintaksna greska na liniji 5
+ERROR 20:22:30,271 - Fatalna greska, parsiranje se ne moze nastaviti na liniji 5

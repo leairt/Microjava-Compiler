@@ -31,13 +31,20 @@ import java_cup.runtime.Symbol;
 
 %%
 
-" " 	{ }
-"\b" 	{ }
-"\t" 	{ }
-"\r" 	{ }
-"\n" 	{ }
-"\f" 	{ }
+" " { }
+\t  { }
+\b  { }
+\r  { }
+\n  { }
+\f  { }
 
+
+"//" {yybegin(COMMENT);}
+<COMMENT> . {yybegin(COMMENT);}
+<COMMENT> "\r" { yybegin(YYINITIAL); }
+<COMMENT> "\n" { yybegin(YYINITIAL); }
+ 
+ 
 "program"   { return new_symbol(sym.PROGRAM, yytext()); }
 "break"     { return new_symbol(sym.BREAK, yytext()); }
 "enum"      { return new_symbol(sym.ENUM, yytext()); }
@@ -57,6 +64,7 @@ import java_cup.runtime.Symbol;
 "length"    { return new_symbol(sym.LENGTH, yytext()); }
 "switch"    { return new_symbol(sym.SWITCH, yytext()); }
 "case"      { return new_symbol(sym.CASE, yytext()); }
+
 
 "++" 		{ return new_symbol(sym.INC, yytext()); }
 "+" 		{ return new_symbol(sym.ADD, yytext()); }
@@ -93,19 +101,15 @@ import java_cup.runtime.Symbol;
 "{" 		{ return new_symbol(sym.LBRACE, yytext()); }
 "}"			{ return new_symbol(sym.RBRACE, yytext()); }
 
-"?" 		{ return new_symbol(sym.QMARK, yytext()); }
+"\?" 		{ return new_symbol(sym.QMARK, yytext()); }
 
-"//" {yybegin(COMMENT);}
-<COMMENT> . {yybegin(COMMENT);}
-<COMMENT> "\r" { yybegin(YYINITIAL); }
-<COMMENT> "\n" { yybegin(YYINITIAL); }
+true    { return new_symbol(sym.BOOL, Boolean.TRUE); }
+false   { return new_symbol(sym.BOOL, Boolean.FALSE); }
 
+[0-9]+   				{ return new_symbol(sym.NUMBER, Integer.valueOf(yytext())); }
+'.'   					{ return new_symbol(sym.CHAR, Character.valueOf(yytext().charAt(1))); }
 
-([a-z]|[A-Z])[a-z|A-Z|0-9|_]* 	{return new_symbol (sym.IDENT, yytext()); }
-[0-9]+  { return new_symbol(sym.NUMBER, Integer.valueOf(yytext())); }
-'.'  { return new_symbol(sym.CHAR, Character.valueOf(yytext().charAt(1))); }
-true { return new_symbol(sym.BOOL, Boolean.TRUE); }
-false { return new_symbol(sym.BOOL, Boolean.FALSE); }
+[a-zA-Z][a-zA-Z0-9_]*   { return new_symbol(sym.IDENT, yytext()); }
 
 . { System.err.println("Leksicka greska ("+yytext()+") u liniji "+(yyline+1)); }
 

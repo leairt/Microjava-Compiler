@@ -1,0 +1,9 @@
+INFO  20:01:58,290 - Compiling source file: /Users/leairt/eclipse-workspace/Microjava Compiler/Microjava-Compiler/test/program.mj
+INFO  20:01:58,298 - #2 program
+INFO  20:01:58,298 - #21 prog13
+INFO  20:01:58,298 - #21 int
+INFO  20:01:58,298 - #21 a
+INFO  20:01:58,299 - #44 ;
+ERROR 20:01:58,299 - 
+Sintaksna greska na liniji 3
+ERROR 20:01:58,299 - Fatalna greska, parsiranje se ne moze nastaviti na liniji 3

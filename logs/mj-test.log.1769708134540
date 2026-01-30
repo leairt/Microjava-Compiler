@@ -1,0 +1,9 @@
+INFO  17:06:04,856 - Compiling source file: /Users/leairt/eclipse-workspace/Microjava Compiler/Microjava-Compiler/test/program.mj
+INFO  17:06:04,862 - #2 program
+INFO  17:06:04,862 - #21 MJProgram
+INFO  17:06:04,863 - Program(
+ MJProgram
+) [Program]
+INFO  17:06:04,863 - ===================================
+INFO  17:06:04,863 -  Print count calls = 0
+INFO  17:06:04,863 -  Deklarisanih promenljivih ima = 0

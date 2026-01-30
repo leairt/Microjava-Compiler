@@ -1,0 +1,24 @@
+INFO  19:47:23,684 - Compiling source file: /Users/leairt/eclipse-workspace/Microjava Compiler/Microjava-Compiler/test/program.mj
+INFO  19:47:23,690 - #2 program
+INFO  19:47:23,691 - #21 prog13
+INFO  19:47:23,691 - #21 int
+INFO  19:47:23,691 - #21 a
+INFO  19:47:23,691 - #44 ;
+INFO  19:47:23,692 - Program(
+ prog13
+  GlobalDeclVar(
+    VarDecl(
+      Type(
+       int
+      ) [Type]
+      VarItem(
+       a
+        OptArray0(
+        ) [OptArray0]
+      ) [VarItem]
+    ) [VarDecl]
+  ) [GlobalDeclVar]
+) [Program]
+INFO  19:47:23,692 - ===================================
+INFO  19:47:23,692 -  Print count calls = 0
+INFO  19:47:23,692 -  Deklarisanih promenljivih ima = 1

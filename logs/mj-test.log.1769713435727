@@ -1,0 +1,12 @@
+INFO  20:03:47,279 - Compiling source file: /Users/leairt/eclipse-workspace/Microjava Compiler/Microjava-Compiler/test/program.mj
+INFO  20:03:47,284 - #2 program
+INFO  20:03:47,284 - #21 prog13
+INFO  20:03:47,284 - #8 const
+INFO  20:03:47,284 - #21 int
+INFO  20:03:47,284 - #21 a
+INFO  20:03:47,284 - #41 =
+INFO  20:03:47,284 - #23 10
+INFO  20:03:47,284 - #44 ;
+INFO  20:03:47,284 - #52 {
+INFO  20:03:47,284 - #21 b
+INFO  20:03:47,284 - #53 }
