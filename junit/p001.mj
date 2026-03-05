@@ -1,0 +1,9 @@
+// const int
+program p001
+const int pet = 5, osam = 8, devet = 9;
+const char a = 'a', b = 'b';
+const bool yes = true, no = false;
+{
+	void main() {
+	}
+}

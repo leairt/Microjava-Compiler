@@ -1,0 +1,10 @@
+// unarni + treba da javi grešku
+program p101
+int x;
+{
+	void main() {
+		x = -1; // ovo je ok
+		x = +1; // ovde je greška
+		print(x);
+	}
+}

@@ -1,0 +1,9 @@
+// ista variabla je deklarisana više puta
+program p203
+int x;
+int x;
+{
+	void main() {
+		x = 2;
+	}
+}

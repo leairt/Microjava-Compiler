@@ -1,0 +1,9 @@
+// ista variabla je deklarisana kao konstanta i kao variabla
+program p204
+const int x = 1;
+int x;
+{
+	void main() {
+		x = 2;
+	}
+}

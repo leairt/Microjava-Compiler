@@ -1,0 +1,8 @@
+// print const int
+program p005
+const int x = 1;
+{
+	void main() {
+		print(x);
+	}
+}

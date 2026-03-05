@@ -1,0 +1,14 @@
+// ispis char
+program p009
+{
+	void main()	
+	{
+		print('L');
+		print('e');
+		print('a');
+		print(eol);
+		print('I');
+		print('r');
+		print('t');
+	}
+}

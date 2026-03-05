@@ -1,0 +1,7 @@
+// nedeklarisan designator
+program p202
+{
+	void main() {
+		x = 1;
+	}
+}

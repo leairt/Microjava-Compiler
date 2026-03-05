@@ -1,0 +1,7 @@
+// const bool
+program p003
+const bool x = true;
+{
+	void main() {
+	}
+}

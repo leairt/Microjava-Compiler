@@ -1,0 +1,9 @@
+// print no vars
+program p007
+const int pi = 3; 
+int x, y[];
+{
+	void main() {
+		print(666);
+	}
+}

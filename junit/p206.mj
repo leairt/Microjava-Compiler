@@ -1,0 +1,7 @@
+// neadekavatan tip podatka (postoji u tabeli simbola)
+program p206
+const p206 x = 1;
+{
+	void main() {
+	}
+}

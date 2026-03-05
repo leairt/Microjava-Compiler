@@ -1,0 +1,28 @@
+# Compiled class files
+*.class
+
+# Log files
+logs/
+
+# Object files (build output)
+obj/
+
+# Eclipse project files
+.classpath
+.project
+.settings/
+
+# Backup files
+*~
+*.bak
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Binary outputs in test
+test/program.obj
+
+# Binary outputs in bin
+bin/program.obj
+bin/rs/

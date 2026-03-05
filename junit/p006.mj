@@ -1,0 +1,16 @@
+// print var int, main može da ima variable sa istim imenom koje su kao globalne
+program p006
+int x, y[];
+char z;
+bool b;
+enum Color {RED, GREEN, BLUE}
+{
+	void main() int a, z; {
+		x = 1;
+		print(x);
+		x = 2;
+		print(x);
+		x = 3;
+		print(x);		
+	}
+}

@@ -1,0 +1,7 @@
+// using undeclared variable
+program p200
+{
+	void main() {
+		print(x);
+	}
+}

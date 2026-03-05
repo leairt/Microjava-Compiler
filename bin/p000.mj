@@ -1,0 +1,6 @@
+// minimal
+program p000
+{
+	void main() {
+	}
+}

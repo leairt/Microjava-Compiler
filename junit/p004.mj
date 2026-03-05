@@ -1,0 +1,7 @@
+// const int
+program p004
+const int x = 1;
+{
+	void main() {
+	}
+}

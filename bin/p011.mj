@@ -1,0 +1,20 @@
+// testiranje aritmetičkih operacija
+program p011
+{
+	void main()
+	{
+		print(1 + 3);
+		print(eol);
+		print(15 - 2);
+		print(eol);
+		print(7 * 4);
+		print(eol);
+		print(17 / 3);
+		print(eol);
+		print(17 % 3);
+		print(eol);
+		print(2 * 3 + 5);
+		print(eol);
+		print(2 + 3 * 5);
+	}
+}

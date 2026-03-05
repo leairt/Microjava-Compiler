@@ -1,0 +1,7 @@
+// const int (2 parametra)
+program p002
+const int x = 1, y = 2;
+{
+	void main() {
+	}
+}

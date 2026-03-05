@@ -1,0 +1,9 @@
+// nepostojeci tip
+program p007
+long x;
+{
+	void main() {
+		x = 1;
+		print(x);
+	}
+}

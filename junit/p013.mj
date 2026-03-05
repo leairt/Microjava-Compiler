@@ -1,0 +1,12 @@
+// upisivanje u lokalnu variablu i branje iz nje + unary minus
+program p012
+{
+	void main()
+		int a, b;
+		char carr[];
+	{
+		a = -5;
+		print(a);	
+		print(a);	
+	}
+}
