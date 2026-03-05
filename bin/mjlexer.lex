@@ -16,6 +16,11 @@ import java_cup.runtime.Symbol;
 	private Symbol new_symbol(int type, Object value) {
 		return new Symbol(type, yyline+1, yycolumn, value);
 	}
+	
+	// za grupisanje uzastopnih neprepoznatih karaktera
+	private StringBuilder errorBuffer = new StringBuilder();
+	private int errorLine = -1;
+	private int errorColumn = -1;
 
 %}
 
@@ -24,8 +29,16 @@ import java_cup.runtime.Symbol;
 %column
 
 %xstate COMMENT
+%xstate ERROR_STATE
 
 %eofval{
+	if (errorBuffer.length() > 0) {
+		String errorText = errorBuffer.toString();
+		int line = errorLine;
+		int col = errorColumn;
+		errorBuffer.setLength(0);
+		System.err.println("Leksicka greska (\"" + errorText + "\") u liniji " + line + ", kolona " + col);
+	}
 	return new_symbol(sym.EOF);
 %eofval}
 
@@ -103,15 +116,37 @@ import java_cup.runtime.Symbol;
 
 "\?" 		{ return new_symbol(sym.QMARK, yytext()); }
 
-true    { return new_symbol(sym.BOOL, Boolean.TRUE); }
-false   { return new_symbol(sym.BOOL, Boolean.FALSE); }
+"true"					{ return new_symbol(sym.BOOL_CONST, 1); }
+"false"					{ return new_symbol(sym.BOOL_CONST, 0); }
 
-[0-9]+   				{ return new_symbol(sym.NUMBER, Integer.valueOf(yytext())); }
-'.'   					{ return new_symbol(sym.CHAR, Character.valueOf(yytext().charAt(1))); }
+[0-9]+   				{ return new_symbol(sym.NUM_CONST, Integer.valueOf(yytext())); }
+'.'   					{ return new_symbol(sym.CHAR_CONST, Character.valueOf(yytext().charAt(1))); }
 
 [a-zA-Z][a-zA-Z0-9_]*   { return new_symbol(sym.IDENT, yytext()); }
 
-. { System.err.println("Leksicka greska ("+yytext()+") u liniji "+(yyline+1)); }
+. { 
+	errorBuffer.setLength(0);
+	errorLine = yyline + 1;
+	errorColumn = yycolumn + 1;
+	errorBuffer.append(yytext());
+	yybegin(ERROR_STATE);
+}
+
+<ERROR_STATE> [a-zA-Z0-9_\t\r\n \(\)\[\]\{\}\;\:\,\.\+\-\*\/\%\=\!\<\>\&\|\?\'\"] {
+	// Prepoznat validan karakter - ispisi gresku i nastavi obradu
+	String errorText = errorBuffer.toString();
+	int line = errorLine;
+	int col = errorColumn;
+	errorBuffer.setLength(0);
+	System.err.println("Leksicka greska (\"" + errorText + "\") u liniji " + line + ", kolona " + col);
+	yypushback(1);
+	yybegin(YYINITIAL);
+}
+
+<ERROR_STATE> . {
+	// Jos jedan neprepoznati karakter - dodaj u buffer
+	errorBuffer.append(yytext());
+}
 
 
 

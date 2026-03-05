@@ -1,0 +1,356 @@
+
+
+package rs.ac.bg.etf.pp1;
+
+import java_cup.runtime.*;
+import org.apache.log4j.*;
+import rs.ac.bg.etf.pp1.ast.*;
+import rs.ac.bg.etf.pp1.exc.CompilerException;
+import rs.ac.bg.etf.pp1.exc.ErrorCode;
+
+parser code {:
+
+	Logger log = Logger.getLogger(getClass());
+   
+   
+ 	// slede redefinisani metodi za prijavu gresaka radi izmene teksta poruke
+     
+    public void report_fatal_error(String message, Object info) throws java.lang.Exception {
+      done_parsing();
+      report_error(message, info);      
+    }
+  
+    public void syntax_error(Symbol cur_token) {
+        report_error("\nSintaksna greska", cur_token);
+        
+    	errors.add(new CompilerException(ErrorCode.SYNTAX_ERROR, cur_token.left));
+    }
+  
+    public void unrecovered_syntax_error(Symbol cur_token) throws java.lang.Exception {
+        report_fatal_error("Fatalna greska, parsiranje se ne moze nastaviti", cur_token);
+
+        errors.add(new CompilerException(ErrorCode.UNRECOVERED_SYNTAX_ERROR, cur_token.left));
+    }
+
+    public void report_error(String message, Object info) {
+    	StringBuilder msg = new StringBuilder(message); 
+    	if (info instanceof Symbol) {
+    		int lineNumber = ((Symbol)info).left;
+            msg.append(" na liniji ").append(lineNumber);
+    	}
+        log.error(msg.toString());
+    }
+
+	java.util.List<CompilerException> errors = new java.util.ArrayList<>();
+
+    public java.util.List<CompilerException> getErrors() {
+    	return errors;
+    }
+
+:}
+
+
+scan with {:
+	Symbol s = this.getScanner().next_token();
+	if (s != null && s.value != null) 
+		log.info(s.toString() + " " + s.value.toString());
+	return s;
+:}
+
+terminal PROGRAM;
+terminal BREAK;
+terminal ENUM;
+terminal CLASS;
+terminal ABSTRACT;
+terminal ELSE;
+terminal CONST;
+terminal IF;
+terminal NEW;
+terminal PRINT;
+terminal READ;
+terminal RETURN;
+terminal VOID;
+terminal EXTENDS;
+terminal CONTINUE;
+terminal FOR;
+terminal LENGTH;
+terminal SWITCH;
+terminal CASE;
+
+terminal String IDENT;
+
+terminal Integer NUM_CONST;
+terminal Character CHAR_CONST;
+terminal Integer BOOL_CONST;
+
+terminal ADD;
+terminal SUB;
+terminal MUL;
+terminal DIV;
+terminal MOD;
+terminal EQ;
+terminal NEQ;
+terminal GT;
+terminal GE;
+terminal LT;
+terminal LE;
+terminal AND;
+terminal OR;
+terminal IS;
+terminal INC;
+terminal DEC;
+terminal SEMI;
+terminal COLON;
+terminal COMMA;
+terminal DOT;
+terminal LPAREN;
+terminal RPAREN;
+terminal LBOX;
+terminal RBOX;
+terminal LBRACE;
+terminal RBRACE;
+terminal QMARK;
+terminal ERROR;
+
+nonterminal Program;
+nonterminal ProgramName;
+nonterminal GlobalDeclList;
+nonterminal MethodDeclList;
+nonterminal GlobalDecl;
+nonterminal Type;
+nonterminal MethodDecl;
+nonterminal MethodRetType;
+nonterminal rs.etf.pp1.symboltable.concepts.Obj MethodName;
+nonterminal OptFormPars;
+nonterminal FormParsList;
+nonterminal FormPar;
+nonterminal VarDeclList;
+nonterminal StatementList;
+nonterminal Statement;
+nonterminal OptNumConst;
+nonterminal CaseList;
+nonterminal Case;
+nonterminal OptDesignatorStatement;
+nonterminal OptCondition;
+nonterminal OptElse;
+nonterminal DesignatorStatement;
+nonterminal Designator;
+nonterminal DesignatorSuffixList;
+nonterminal DesignatorSuffix;
+nonterminal DesignatorStmtTail;
+nonterminal Assignop;
+nonterminal Relop;
+nonterminal Addop;
+nonterminal Mulop;
+nonterminal OptActPars;
+nonterminal ActPars;
+nonterminal ExprList;
+nonterminal Condition;
+nonterminal CondTerm;
+nonterminal CondFact;
+nonterminal OptRel;
+nonterminal OptExpr;
+nonterminal Expr;
+nonterminal SimpleExpr;
+nonterminal Term;
+nonterminal Factor;
+nonterminal OptCall;
+nonterminal ConstDecl;
+nonterminal ConstInitList;
+nonterminal ConstInit;
+nonterminal ConstValue;
+nonterminal VarDecl;
+nonterminal VarItemList;
+nonterminal VarItem;
+nonterminal OptArray;
+nonterminal ClassDecl;
+nonterminal EnumDecl;
+nonterminal EnumName;
+nonterminal EnumItemList;
+nonterminal EnumItem;
+nonterminal AbstractDecl;
+
+precedence left ELSE;
+
+
+Program ::= (Program) PROGRAM ProgramName GlobalDeclList LBRACE MethodDeclList RBRACE;
+
+ProgramName ::= (ProgramName) IDENT:name;
+
+GlobalDeclList ::= (GlobalDeclList1) GlobalDeclList GlobalDecl
+                 | (GlobalDeclList0) /* epsilon */; 
+
+MethodDeclList ::= (MethodDeclList1) MethodDeclList MethodDecl
+                 | (MethodDeclList0) /* epsilon */; 
+
+GlobalDecl ::= (GlobalDeclConst) ConstDecl
+             | (GlobalDeclVar) VarDecl
+             | (GlobalDeclClass) ClassDecl
+             | (GlobalDeclEnum) EnumDecl
+             | (GlobalDeclAbstract) AbstractDecl;
+             
+Type ::= (Type) IDENT:type;
+
+MethodDecl ::= (MethodDecl) MethodRetType MethodName LPAREN OptFormPars RPAREN VarDeclList LBRACE StatementList RBRACE;
+
+MethodName ::= (MethodName) IDENT:name;
+
+MethodRetType ::= (MethodRetTypeVoid) VOID
+                | (MethodRetTypeObject) Type;
+                
+OptFormPars ::= (OptFormPars1) FormParsList
+              | (OptFormPars0) /* epsilon */;
+
+FormParsList ::= (FormParsList2) FormParsList COMMA FormPar
+               | (FormParsListError) error COMMA:safe FormPar
+	           | (FormParsList1) FormPar;
+
+FormPar ::= (FormPar) Type IDENT OptArray;
+
+VarDeclList ::= (VarDeclList1) VarDeclList VarDecl
+              | (VarDeclList0) /* epsilon */;
+              
+StatementList ::= (StatementList1) StatementList Statement
+                | (StatementList0) /* epsilon */;
+
+Statement ::= (StatementDesignator) DesignatorStatement SEMI
+            | (StatementError) error SEMI:safe
+            | (StatementIf) IF LPAREN Condition RPAREN Statement OptElse
+            | (StatementIfError) IF LPAREN error RPAREN:safe Statement OptElse
+            | (StatementBreak) BREAK SEMI
+            | (StatementContinue) CONTINUE SEMI
+            | (StatementReturn) RETURN OptExpr SEMI
+            | (StatementRead) READ LPAREN Designator RPAREN SEMI
+            | (StatementPrint) PRINT LPAREN Expr OptNumConst RPAREN SEMI
+            | (StatementSwitch) SWITCH LPAREN Expr RPAREN LBRACE CaseList RBRACE
+            | (StatementFor) FOR LPAREN OptDesignatorStatement SEMI OptCondition SEMI OptDesignatorStatement RPAREN Statement
+            | (StatementStmtList) LBRACE StatementList RBRACE;
+            
+OptNumConst ::= (OptNumConst1) COMMA NUM_CONST
+              | (OptNumConst0) /* epsilon */;
+      
+CaseList ::= (CaseList1) CaseList Case
+           | (CaseList0) /* epsilon */;
+
+Case ::= (Case) CASE NUM_CONST COLON StatementList;
+
+OptDesignatorStatement ::= (OptDesignatorStatement1) DesignatorStatement
+                         | (OptDesignatorStatement0) /* epsilon */;
+
+OptCondition ::= (OptCondition1) Condition
+               | (OptCondition0) /* epsilon */;          
+              
+OptElse ::= (OptElse1) ELSE Statement
+          | (OptElse0) /* epsilon */;
+
+DesignatorStatement ::= (DesignatorStatement) Designator DesignatorStmtTail;
+
+Designator ::= (Designator) IDENT DesignatorSuffixList;
+
+DesignatorSuffixList ::= (DesignatorSuffixList1) DesignatorSuffixList DesignatorSuffix
+                       | (DesignatorSuffixList0) /* epsilon */;
+
+DesignatorSuffix ::= (DesignatorSuffix1) DOT IDENT
+                   | (DesignatorSuffix2) DOT LENGTH
+                   | (DesignatorSuffix3) LBOX Expr RBOX;
+
+DesignatorStmtTail ::= (DesignatorStmtTail1) Assignop Expr
+                     | (DesignatorStmtTailError) Assignop error
+					 | (DesignatorStmtTail2) LPAREN OptActPars RPAREN
+                     | (DesignatorStmtTail3) INC
+                     | (DesignatorStmtTail4) DEC;
+
+Assignop ::= (Assignop) IS;
+
+Relop ::= (RelopEQ) EQ
+        | (RelopNEQ) NEQ
+        | (RelopGT) GT
+        | (RelopGE) GE
+        | (RelopLT) LT
+        | (RelopLE) LE;
+
+Addop ::= (AddopADD) ADD
+        | (AddopSUB) SUB;
+        
+Mulop ::= (MulopMUL) MUL
+        | (MulopDIV) DIV
+        | (MulopMOD) MOD;
+
+OptActPars ::= (OptActPars1) ActPars
+             | (OptActPars0) /* epsilon */;
+
+ActPars ::= (ActPars) ExprList;
+
+ExprList ::= (ExprList2) ExprList COMMA Expr
+           | (ExprList1) Expr;
+
+Condition ::= (Condition1) CondTerm
+            | (Condition2) Condition OR CondTerm;
+
+CondTerm ::= (CondTerm1) CondFact
+           | (CondTerm2) CondTerm AND CondFact;
+           
+CondFact ::= (CondFact) SimpleExpr OptRel;
+
+OptRel ::= (OptRel1) Relop SimpleExpr
+         | (OptRel0) /* epsilon */;
+                                   
+OptExpr ::= (OptExpr1) Expr
+          | (OptExpr0) /* epsilon */;
+
+Expr ::= (Expr1) SimpleExpr
+       | (Expr2) CondFact QMARK Expr COLON Expr;
+
+SimpleExpr ::= (SimpleExpr1) Term
+             | (SimpleExpr2) SUB Term
+             | (SimpleExpr3) SimpleExpr Addop Term;
+
+Term::= (Term1) Factor
+      | (Term2) Term Mulop Factor;
+      
+Factor ::= (FactorDesignator) Designator OptCall
+         | (FactorNumConst) NUM_CONST
+         | (FactorCharConst) CHAR_CONST
+         | (FactorBoolConst) BOOL_CONST
+         | (FactorNewArr) NEW Type LBOX Expr RBOX
+         | (FactorExpr) LPAREN Expr RPAREN;
+
+OptCall ::= (OptCall1) LPAREN OptActPars RPAREN
+          | (OptCall0) /* epsilon */;
+                     
+ConstDecl ::= (ConstDecl) CONST Type ConstInitList SEMI;
+
+ConstInitList ::= (ConstInitList2) ConstInitList COMMA ConstInit
+                | (ConstInitList1) ConstInit;
+                
+ConstInit ::= (ConstInit) IDENT:name IS ConstValue;
+
+ConstValue ::= (ConstValueNum) NUM_CONST:value
+             | (ConstValueChar) CHAR_CONST:value
+             | (ConstValueBool) BOOL_CONST:value;
+                
+VarDecl ::= (VarDeclValid) Type VarItemList SEMI
+          | (VarDeclError) error SEMI:safe;
+
+VarItemList ::= (VarItemList2) VarItemList COMMA VarItem
+              | (VarItemList1) VarItem;
+              
+VarItem ::= (VarItem) IDENT:name OptArray;
+
+OptArray ::= (OptArray1) LBOX RBOX
+           | (OptArray0) /* epsilon */;
+
+ClassDecl ::= (ClassDecl) /* TODO */ CLASS;
+
+EnumDecl ::= (EnumDecl) ENUM EnumName LBRACE EnumItemList RBRACE;
+
+EnumName ::= (EnumName) IDENT:name;
+
+EnumItemList ::= (EnumItemList2) EnumItemList COMMA EnumItem
+               | (EnumItemList1) EnumItem;
+
+EnumItem ::= (EnumItemWithAssign) IDENT:name IS NUM_CONST:value
+           | (EnumItemNoAssign) IDENT:name;
+
+AbstractDecl ::= /* TODO */ ABSTRACT;
+

@@ -1,6 +1,6 @@
 // generated with ast extension for cup
 // version 0.8
-// 30/0/2026 11:30:20
+// 5/2/2026 18:6:45
 
 
 package rs.ac.bg.etf.pp1.ast;
@@ -9,21 +9,21 @@ public class VarItem implements SyntaxNode {
 
     private SyntaxNode parent;
     private int line;
-    private String I1;
+    private String name;
     private OptArray OptArray;
 
-    public VarItem (String I1, OptArray OptArray) {
-        this.I1=I1;
+    public VarItem (String name, OptArray OptArray) {
+        this.name=name;
         this.OptArray=OptArray;
         if(OptArray!=null) OptArray.setParent(this);
     }
 
-    public String getI1() {
-        return I1;
+    public String getName() {
+        return name;
     }
 
-    public void setI1(String I1) {
-        this.I1=I1;
+    public void setName(String name) {
+        this.name=name;
     }
 
     public OptArray getOptArray() {
@@ -73,7 +73,7 @@ public class VarItem implements SyntaxNode {
         buffer.append(tab);
         buffer.append("VarItem(\n");
 
-        buffer.append(" "+tab+I1);
+        buffer.append(" "+tab+name);
         buffer.append("\n");
 
         if(OptArray!=null)
