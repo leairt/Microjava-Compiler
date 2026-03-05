@@ -7,17 +7,17 @@ import java_cup.runtime.Symbol;
 
 %{
 
-	// ukljucivanje informacije o poziciji tokena
+	// Uključivanje informacije o poziciji tokena
 	private Symbol new_symbol(int type) {
 		return new Symbol(type, yyline+1, yycolumn);
 	}
 	
-	// ukljucivanje informacije o poziciji tokena
+	// Uključivanje informacije o poziciji tokena
 	private Symbol new_symbol(int type, Object value) {
 		return new Symbol(type, yyline+1, yycolumn, value);
 	}
 	
-	// za grupisanje uzastopnih neprepoznatih karaktera
+	// Za grupisanje uzastopnih neprepoznatih karaktera
 	private StringBuilder errorBuffer = new StringBuilder();
 	private int errorLine = -1;
 	private int errorColumn = -1;

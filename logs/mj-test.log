@@ -1,49 +1,2481 @@
-INFO  11:30:33,389 - Compiling source file: /Users/leairt/eclipse-workspace/Microjava Compiler/Microjava-Compiler/test/program.mj
-INFO  11:30:33,398 - #2 program
-INFO  11:30:33,399 - #21 prog13
-INFO  11:30:33,399 - #21 int
-INFO  11:30:33,399 - #21 a
-INFO  11:30:33,399 - #44 ;
-INFO  11:30:33,399 - #52 {
-INFO  11:30:33,399 - #44 ;
-INFO  11:30:33,399 - #44 ;
-INFO  11:30:33,400 - #44 ;
-INFO  11:30:33,400 - #53 }
-INFO  11:30:33,400 - Program(
- prog13
+INFO  18:20:54,823 - Compiling source file: /Users/leairt/eclipse-workspace/Microjava Compiler/Microjava-Compiler/junit/p000.mj
+INFO  18:20:54,843 - #2 program
+INFO  18:20:54,843 - #21 p000
+INFO  18:20:54,843 - #49 {
+INFO  18:20:54,843 - #14 void
+INFO  18:20:54,844 - #21 main
+INFO  18:20:54,844 - #45 (
+INFO  18:20:54,844 - #46 )
+INFO  18:20:54,844 - #49 {
+INFO  18:20:54,844 - #50 }
+INFO  18:20:54,844 - #50 }
+INFO  18:20:54,845 - Program(
+  ProgramName(
+   p000
+  ) [ProgramName]
+  GlobalDeclList0(
+  ) [GlobalDeclList0]
+  MethodDeclList1(
+    MethodDeclList0(
+    ) [MethodDeclList0]
+    MethodDecl(
+      MethodRetTypeVoid(
+      ) [MethodRetTypeVoid]
+      MethodName(
+       main
+      ) [MethodName]
+      OptFormPars0(
+      ) [OptFormPars0]
+      VarDeclList0(
+      ) [VarDeclList0]
+      StatementList0(
+      ) [StatementList0]
+    ) [MethodDecl]
+  ) [MethodDeclList1]
+) [Program]
+INFO  18:20:54,847 - Generisanje koda završeno (obj/todo.obj)
+INFO  18:20:54,856 - Compiling source file: /Users/leairt/eclipse-workspace/Microjava Compiler/Microjava-Compiler/junit/p001.mj
+INFO  18:20:54,857 - #2 program
+INFO  18:20:54,857 - #21 p001
+INFO  18:20:54,857 - #8 const
+INFO  18:20:54,857 - #21 int
+INFO  18:20:54,857 - #21 pet
+INFO  18:20:54,858 - #38 =
+INFO  18:20:54,858 - #22 5
+INFO  18:20:54,858 - #43 ,
+INFO  18:20:54,859 - #21 osam
+INFO  18:20:54,859 - #38 =
+INFO  18:20:54,860 - #22 8
+INFO  18:20:54,860 - #43 ,
+INFO  18:20:54,860 - #21 devet
+INFO  18:20:54,860 - #38 =
+INFO  18:20:54,860 - #22 9
+INFO  18:20:54,860 - #41 ;
+INFO  18:20:54,860 - #8 const
+INFO  18:20:54,861 - #21 char
+INFO  18:20:54,861 - #21 a
+INFO  18:20:54,861 - #38 =
+INFO  18:20:54,861 - #23 a
+INFO  18:20:54,861 - #43 ,
+INFO  18:20:54,862 - #21 b
+INFO  18:20:54,862 - #38 =
+INFO  18:20:54,862 - #23 b
+INFO  18:20:54,862 - #41 ;
+INFO  18:20:54,862 - #8 const
+INFO  18:20:54,862 - #21 bool
+INFO  18:20:54,862 - #21 yes
+INFO  18:20:54,862 - #38 =
+INFO  18:20:54,862 - #24 1
+INFO  18:20:54,862 - #43 ,
+INFO  18:20:54,862 - #21 no
+INFO  18:20:54,862 - #38 =
+INFO  18:20:54,864 - #24 0
+INFO  18:20:54,864 - #41 ;
+INFO  18:20:54,864 - #49 {
+INFO  18:20:54,864 - #14 void
+INFO  18:20:54,864 - #21 main
+INFO  18:20:54,864 - #45 (
+INFO  18:20:54,864 - #46 )
+INFO  18:20:54,864 - #49 {
+INFO  18:20:54,864 - #50 }
+INFO  18:20:54,865 - #50 }
+INFO  18:20:54,865 - Program(
+  ProgramName(
+   p001
+  ) [ProgramName]
+  GlobalDeclList1(
+    GlobalDeclList1(
+      GlobalDeclList1(
+        GlobalDeclList0(
+        ) [GlobalDeclList0]
+        GlobalDeclConst(
+          ConstDecl(
+            Type(
+             int
+            ) [Type]
+            ConstInitList2(
+              ConstInitList2(
+                ConstInitList1(
+                  ConstInit(
+                   pet
+                    ConstValueNum(
+                     5
+                    ) [ConstValueNum]
+                  ) [ConstInit]
+                ) [ConstInitList1]
+                ConstInit(
+                 osam
+                  ConstValueNum(
+                   8
+                  ) [ConstValueNum]
+                ) [ConstInit]
+              ) [ConstInitList2]
+              ConstInit(
+               devet
+                ConstValueNum(
+                 9
+                ) [ConstValueNum]
+              ) [ConstInit]
+            ) [ConstInitList2]
+          ) [ConstDecl]
+        ) [GlobalDeclConst]
+      ) [GlobalDeclList1]
+      GlobalDeclConst(
+        ConstDecl(
+          Type(
+           char
+          ) [Type]
+          ConstInitList2(
+            ConstInitList1(
+              ConstInit(
+               a
+                ConstValueChar(
+                 a
+                ) [ConstValueChar]
+              ) [ConstInit]
+            ) [ConstInitList1]
+            ConstInit(
+             b
+              ConstValueChar(
+               b
+              ) [ConstValueChar]
+            ) [ConstInit]
+          ) [ConstInitList2]
+        ) [ConstDecl]
+      ) [GlobalDeclConst]
+    ) [GlobalDeclList1]
+    GlobalDeclConst(
+      ConstDecl(
+        Type(
+         bool
+        ) [Type]
+        ConstInitList2(
+          ConstInitList1(
+            ConstInit(
+             yes
+              ConstValueBool(
+               1
+              ) [ConstValueBool]
+            ) [ConstInit]
+          ) [ConstInitList1]
+          ConstInit(
+           no
+            ConstValueBool(
+             0
+            ) [ConstValueBool]
+          ) [ConstInit]
+        ) [ConstInitList2]
+      ) [ConstDecl]
+    ) [GlobalDeclConst]
+  ) [GlobalDeclList1]
+  MethodDeclList1(
+    MethodDeclList0(
+    ) [MethodDeclList0]
+    MethodDecl(
+      MethodRetTypeVoid(
+      ) [MethodRetTypeVoid]
+      MethodName(
+       main
+      ) [MethodName]
+      OptFormPars0(
+      ) [OptFormPars0]
+      VarDeclList0(
+      ) [VarDeclList0]
+      StatementList0(
+      ) [StatementList0]
+    ) [MethodDecl]
+  ) [MethodDeclList1]
+) [Program]
+INFO  18:20:54,866 - Generisanje koda završeno (obj/todo.obj)
+INFO  18:20:54,868 - Compiling source file: /Users/leairt/eclipse-workspace/Microjava Compiler/Microjava-Compiler/junit/p002.mj
+INFO  18:20:54,869 - #2 program
+INFO  18:20:54,869 - #21 p002
+INFO  18:20:54,869 - #8 const
+INFO  18:20:54,869 - #21 int
+INFO  18:20:54,869 - #21 x
+INFO  18:20:54,869 - #38 =
+INFO  18:20:54,869 - #22 1
+INFO  18:20:54,869 - #43 ,
+INFO  18:20:54,870 - #21 y
+INFO  18:20:54,870 - #38 =
+INFO  18:20:54,870 - #22 2
+INFO  18:20:54,870 - #41 ;
+INFO  18:20:54,870 - #49 {
+INFO  18:20:54,870 - #14 void
+INFO  18:20:54,870 - #21 main
+INFO  18:20:54,870 - #45 (
+INFO  18:20:54,870 - #46 )
+INFO  18:20:54,870 - #49 {
+INFO  18:20:54,870 - #50 }
+INFO  18:20:54,870 - #50 }
+INFO  18:20:54,870 - Program(
+  ProgramName(
+   p002
+  ) [ProgramName]
+  GlobalDeclList1(
+    GlobalDeclList0(
+    ) [GlobalDeclList0]
+    GlobalDeclConst(
+      ConstDecl(
+        Type(
+         int
+        ) [Type]
+        ConstInitList2(
+          ConstInitList1(
+            ConstInit(
+             x
+              ConstValueNum(
+               1
+              ) [ConstValueNum]
+            ) [ConstInit]
+          ) [ConstInitList1]
+          ConstInit(
+           y
+            ConstValueNum(
+             2
+            ) [ConstValueNum]
+          ) [ConstInit]
+        ) [ConstInitList2]
+      ) [ConstDecl]
+    ) [GlobalDeclConst]
+  ) [GlobalDeclList1]
+  MethodDeclList1(
+    MethodDeclList0(
+    ) [MethodDeclList0]
+    MethodDecl(
+      MethodRetTypeVoid(
+      ) [MethodRetTypeVoid]
+      MethodName(
+       main
+      ) [MethodName]
+      OptFormPars0(
+      ) [OptFormPars0]
+      VarDeclList0(
+      ) [VarDeclList0]
+      StatementList0(
+      ) [StatementList0]
+    ) [MethodDecl]
+  ) [MethodDeclList1]
+) [Program]
+INFO  18:20:54,871 - Generisanje koda završeno (obj/todo.obj)
+INFO  18:20:54,872 - Compiling source file: /Users/leairt/eclipse-workspace/Microjava Compiler/Microjava-Compiler/junit/p003.mj
+INFO  18:20:54,873 - #2 program
+INFO  18:20:54,873 - #21 p003
+INFO  18:20:54,873 - #8 const
+INFO  18:20:54,873 - #21 bool
+INFO  18:20:54,873 - #21 x
+INFO  18:20:54,874 - #38 =
+INFO  18:20:54,874 - #24 1
+INFO  18:20:54,874 - #41 ;
+INFO  18:20:54,874 - #49 {
+INFO  18:20:54,874 - #14 void
+INFO  18:20:54,874 - #21 main
+INFO  18:20:54,874 - #45 (
+INFO  18:20:54,874 - #46 )
+INFO  18:20:54,874 - #49 {
+INFO  18:20:54,874 - #50 }
+INFO  18:20:54,874 - #50 }
+INFO  18:20:54,874 - Program(
+  ProgramName(
+   p003
+  ) [ProgramName]
+  GlobalDeclList1(
+    GlobalDeclList0(
+    ) [GlobalDeclList0]
+    GlobalDeclConst(
+      ConstDecl(
+        Type(
+         bool
+        ) [Type]
+        ConstInitList1(
+          ConstInit(
+           x
+            ConstValueBool(
+             1
+            ) [ConstValueBool]
+          ) [ConstInit]
+        ) [ConstInitList1]
+      ) [ConstDecl]
+    ) [GlobalDeclConst]
+  ) [GlobalDeclList1]
+  MethodDeclList1(
+    MethodDeclList0(
+    ) [MethodDeclList0]
+    MethodDecl(
+      MethodRetTypeVoid(
+      ) [MethodRetTypeVoid]
+      MethodName(
+       main
+      ) [MethodName]
+      OptFormPars0(
+      ) [OptFormPars0]
+      VarDeclList0(
+      ) [VarDeclList0]
+      StatementList0(
+      ) [StatementList0]
+    ) [MethodDecl]
+  ) [MethodDeclList1]
+) [Program]
+INFO  18:20:54,875 - Generisanje koda završeno (obj/todo.obj)
+INFO  18:20:54,876 - Compiling source file: /Users/leairt/eclipse-workspace/Microjava Compiler/Microjava-Compiler/junit/p004.mj
+INFO  18:20:54,878 - #2 program
+INFO  18:20:54,878 - #21 p004
+INFO  18:20:54,878 - #8 const
+INFO  18:20:54,878 - #21 int
+INFO  18:20:54,878 - #21 x
+INFO  18:20:54,878 - #38 =
+INFO  18:20:54,878 - #22 1
+INFO  18:20:54,878 - #41 ;
+INFO  18:20:54,879 - #49 {
+INFO  18:20:54,879 - #14 void
+INFO  18:20:54,879 - #21 main
+INFO  18:20:54,879 - #45 (
+INFO  18:20:54,880 - #46 )
+INFO  18:20:54,880 - #49 {
+INFO  18:20:54,880 - #50 }
+INFO  18:20:54,880 - #50 }
+INFO  18:20:54,880 - Program(
+  ProgramName(
+   p004
+  ) [ProgramName]
+  GlobalDeclList1(
+    GlobalDeclList0(
+    ) [GlobalDeclList0]
+    GlobalDeclConst(
+      ConstDecl(
+        Type(
+         int
+        ) [Type]
+        ConstInitList1(
+          ConstInit(
+           x
+            ConstValueNum(
+             1
+            ) [ConstValueNum]
+          ) [ConstInit]
+        ) [ConstInitList1]
+      ) [ConstDecl]
+    ) [GlobalDeclConst]
+  ) [GlobalDeclList1]
+  MethodDeclList1(
+    MethodDeclList0(
+    ) [MethodDeclList0]
+    MethodDecl(
+      MethodRetTypeVoid(
+      ) [MethodRetTypeVoid]
+      MethodName(
+       main
+      ) [MethodName]
+      OptFormPars0(
+      ) [OptFormPars0]
+      VarDeclList0(
+      ) [VarDeclList0]
+      StatementList0(
+      ) [StatementList0]
+    ) [MethodDecl]
+  ) [MethodDeclList1]
+) [Program]
+INFO  18:20:54,881 - Generisanje koda završeno (obj/todo.obj)
+INFO  18:20:54,881 - Compiling source file: /Users/leairt/eclipse-workspace/Microjava Compiler/Microjava-Compiler/junit/p005.mj
+INFO  18:20:54,882 - #2 program
+INFO  18:20:54,882 - #21 p005
+INFO  18:20:54,882 - #8 const
+INFO  18:20:54,882 - #21 int
+INFO  18:20:54,882 - #21 x
+INFO  18:20:54,882 - #38 =
+INFO  18:20:54,882 - #22 1
+INFO  18:20:54,882 - #41 ;
+INFO  18:20:54,882 - #49 {
+INFO  18:20:54,882 - #14 void
+INFO  18:20:54,882 - #21 main
+INFO  18:20:54,882 - #45 (
+INFO  18:20:54,883 - #46 )
+INFO  18:20:54,883 - #49 {
+INFO  18:20:54,883 - #11 print
+INFO  18:20:54,885 - #45 (
+INFO  18:20:54,885 - #21 x
+INFO  18:20:54,885 - #46 )
+INFO  18:20:54,885 - #41 ;
+INFO  18:20:54,886 - #50 }
+INFO  18:20:54,886 - #50 }
+INFO  18:20:54,887 - Program(
+  ProgramName(
+   p005
+  ) [ProgramName]
+  GlobalDeclList1(
+    GlobalDeclList0(
+    ) [GlobalDeclList0]
+    GlobalDeclConst(
+      ConstDecl(
+        Type(
+         int
+        ) [Type]
+        ConstInitList1(
+          ConstInit(
+           x
+            ConstValueNum(
+             1
+            ) [ConstValueNum]
+          ) [ConstInit]
+        ) [ConstInitList1]
+      ) [ConstDecl]
+    ) [GlobalDeclConst]
+  ) [GlobalDeclList1]
+  MethodDeclList1(
+    MethodDeclList0(
+    ) [MethodDeclList0]
+    MethodDecl(
+      MethodRetTypeVoid(
+      ) [MethodRetTypeVoid]
+      MethodName(
+       main
+      ) [MethodName]
+      OptFormPars0(
+      ) [OptFormPars0]
+      VarDeclList0(
+      ) [VarDeclList0]
+      StatementList1(
+        StatementList0(
+        ) [StatementList0]
+        StatementPrint(
+          Expr1(
+            SimpleExpr1(
+              Term1(
+                FactorDesignator(
+                  Designator(
+                   x
+                    DesignatorSuffixList0(
+                    ) [DesignatorSuffixList0]
+                  ) [Designator]
+                  OptCall0(
+                  ) [OptCall0]
+                ) [FactorDesignator]
+              ) [Term1]
+            ) [SimpleExpr1]
+          ) [Expr1]
+          OptNumConst0(
+          ) [OptNumConst0]
+        ) [StatementPrint]
+      ) [StatementList1]
+    ) [MethodDecl]
+  ) [MethodDeclList1]
+) [Program]
+INFO  18:20:54,887 - Generisanje koda završeno (obj/todo.obj)
+INFO  18:20:54,900 - Compiling source file: /Users/leairt/eclipse-workspace/Microjava Compiler/Microjava-Compiler/junit/p006.mj
+INFO  18:20:54,901 - #2 program
+INFO  18:20:54,901 - #21 p006
+INFO  18:20:54,901 - #21 int
+INFO  18:20:54,901 - #21 x
+INFO  18:20:54,901 - #43 ,
+INFO  18:20:54,902 - #21 y
+INFO  18:20:54,902 - #47 [
+INFO  18:20:54,902 - #48 ]
+INFO  18:20:54,902 - #41 ;
+INFO  18:20:54,902 - #21 char
+INFO  18:20:54,902 - #21 z
+INFO  18:20:54,902 - #41 ;
+INFO  18:20:54,902 - #21 bool
+INFO  18:20:54,902 - #21 b
+INFO  18:20:54,902 - #41 ;
+INFO  18:20:54,902 - #4 enum
+INFO  18:20:54,902 - #21 Color
+INFO  18:20:54,902 - #49 {
+INFO  18:20:54,903 - #21 RED
+INFO  18:20:54,903 - #43 ,
+INFO  18:20:54,905 - #21 GREEN
+INFO  18:20:54,905 - #43 ,
+INFO  18:20:54,905 - #21 BLUE
+INFO  18:20:54,905 - #50 }
+INFO  18:20:54,905 - #49 {
+INFO  18:20:54,906 - #14 void
+INFO  18:20:54,906 - #21 main
+INFO  18:20:54,906 - #45 (
+INFO  18:20:54,906 - #46 )
+INFO  18:20:54,906 - #21 int
+INFO  18:20:54,907 - #21 a
+INFO  18:20:54,907 - #43 ,
+INFO  18:20:54,908 - #21 z
+INFO  18:20:54,908 - #41 ;
+INFO  18:20:54,908 - #49 {
+INFO  18:20:54,908 - #21 x
+INFO  18:20:54,908 - #38 =
+INFO  18:20:54,908 - #22 1
+INFO  18:20:54,909 - #41 ;
+INFO  18:20:54,910 - #11 print
+INFO  18:20:54,910 - #45 (
+INFO  18:20:54,910 - #21 x
+INFO  18:20:54,910 - #46 )
+INFO  18:20:54,910 - #41 ;
+INFO  18:20:54,910 - #21 x
+INFO  18:20:54,910 - #38 =
+INFO  18:20:54,910 - #22 2
+INFO  18:20:54,910 - #41 ;
+INFO  18:20:54,910 - #11 print
+INFO  18:20:54,910 - #45 (
+INFO  18:20:54,910 - #21 x
+INFO  18:20:54,910 - #46 )
+INFO  18:20:54,910 - #41 ;
+INFO  18:20:54,910 - #21 x
+INFO  18:20:54,910 - #38 =
+INFO  18:20:54,910 - #22 3
+INFO  18:20:54,910 - #41 ;
+INFO  18:20:54,910 - #11 print
+INFO  18:20:54,910 - #45 (
+INFO  18:20:54,910 - #21 x
+INFO  18:20:54,910 - #46 )
+INFO  18:20:54,910 - #41 ;
+INFO  18:20:54,910 - #50 }
+INFO  18:20:54,910 - #50 }
+INFO  18:20:54,911 - Program(
+  ProgramName(
+   p006
+  ) [ProgramName]
+  GlobalDeclList1(
+    GlobalDeclList1(
+      GlobalDeclList1(
+        GlobalDeclList1(
+          GlobalDeclList0(
+          ) [GlobalDeclList0]
+          GlobalDeclVar(
+            VarDeclValid(
+              Type(
+               int
+              ) [Type]
+              VarItemList2(
+                VarItemList1(
+                  VarItem(
+                   x
+                    OptArray0(
+                    ) [OptArray0]
+                  ) [VarItem]
+                ) [VarItemList1]
+                VarItem(
+                 y
+                  OptArray1(
+                  ) [OptArray1]
+                ) [VarItem]
+              ) [VarItemList2]
+            ) [VarDeclValid]
+          ) [GlobalDeclVar]
+        ) [GlobalDeclList1]
+        GlobalDeclVar(
+          VarDeclValid(
+            Type(
+             char
+            ) [Type]
+            VarItemList1(
+              VarItem(
+               z
+                OptArray0(
+                ) [OptArray0]
+              ) [VarItem]
+            ) [VarItemList1]
+          ) [VarDeclValid]
+        ) [GlobalDeclVar]
+      ) [GlobalDeclList1]
+      GlobalDeclVar(
+        VarDeclValid(
+          Type(
+           bool
+          ) [Type]
+          VarItemList1(
+            VarItem(
+             b
+              OptArray0(
+              ) [OptArray0]
+            ) [VarItem]
+          ) [VarItemList1]
+        ) [VarDeclValid]
+      ) [GlobalDeclVar]
+    ) [GlobalDeclList1]
+    GlobalDeclEnum(
+      EnumDecl(
+        EnumName(
+         Color
+        ) [EnumName]
+        EnumItemList2(
+          EnumItemList2(
+            EnumItemList1(
+              EnumItemNoAssign(
+               RED
+              ) [EnumItemNoAssign]
+            ) [EnumItemList1]
+            EnumItemNoAssign(
+             GREEN
+            ) [EnumItemNoAssign]
+          ) [EnumItemList2]
+          EnumItemNoAssign(
+           BLUE
+          ) [EnumItemNoAssign]
+        ) [EnumItemList2]
+      ) [EnumDecl]
+    ) [GlobalDeclEnum]
+  ) [GlobalDeclList1]
+  MethodDeclList1(
+    MethodDeclList0(
+    ) [MethodDeclList0]
+    MethodDecl(
+      MethodRetTypeVoid(
+      ) [MethodRetTypeVoid]
+      MethodName(
+       main
+      ) [MethodName]
+      OptFormPars0(
+      ) [OptFormPars0]
+      VarDeclList1(
+        VarDeclList0(
+        ) [VarDeclList0]
+        VarDeclValid(
+          Type(
+           int
+          ) [Type]
+          VarItemList2(
+            VarItemList1(
+              VarItem(
+               a
+                OptArray0(
+                ) [OptArray0]
+              ) [VarItem]
+            ) [VarItemList1]
+            VarItem(
+             z
+              OptArray0(
+              ) [OptArray0]
+            ) [VarItem]
+          ) [VarItemList2]
+        ) [VarDeclValid]
+      ) [VarDeclList1]
+      StatementList1(
+        StatementList1(
+          StatementList1(
+            StatementList1(
+              StatementList1(
+                StatementList1(
+                  StatementList0(
+                  ) [StatementList0]
+                  StatementDesignator(
+                    DesignatorStatement(
+                      Designator(
+                       x
+                        DesignatorSuffixList0(
+                        ) [DesignatorSuffixList0]
+                      ) [Designator]
+                      DesignatorStmtTail1(
+                        Assignop(
+                        ) [Assignop]
+                        Expr1(
+                          SimpleExpr1(
+                            Term1(
+                              FactorNumConst(
+                               1
+                              ) [FactorNumConst]
+                            ) [Term1]
+                          ) [SimpleExpr1]
+                        ) [Expr1]
+                      ) [DesignatorStmtTail1]
+                    ) [DesignatorStatement]
+                  ) [StatementDesignator]
+                ) [StatementList1]
+                StatementPrint(
+                  Expr1(
+                    SimpleExpr1(
+                      Term1(
+                        FactorDesignator(
+                          Designator(
+                           x
+                            DesignatorSuffixList0(
+                            ) [DesignatorSuffixList0]
+                          ) [Designator]
+                          OptCall0(
+                          ) [OptCall0]
+                        ) [FactorDesignator]
+                      ) [Term1]
+                    ) [SimpleExpr1]
+                  ) [Expr1]
+                  OptNumConst0(
+                  ) [OptNumConst0]
+                ) [StatementPrint]
+              ) [StatementList1]
+              StatementDesignator(
+                DesignatorStatement(
+                  Designator(
+                   x
+                    DesignatorSuffixList0(
+                    ) [DesignatorSuffixList0]
+                  ) [Designator]
+                  DesignatorStmtTail1(
+                    Assignop(
+                    ) [Assignop]
+                    Expr1(
+                      SimpleExpr1(
+                        Term1(
+                          FactorNumConst(
+                           2
+                          ) [FactorNumConst]
+                        ) [Term1]
+                      ) [SimpleExpr1]
+                    ) [Expr1]
+                  ) [DesignatorStmtTail1]
+                ) [DesignatorStatement]
+              ) [StatementDesignator]
+            ) [StatementList1]
+            StatementPrint(
+              Expr1(
+                SimpleExpr1(
+                  Term1(
+                    FactorDesignator(
+                      Designator(
+                       x
+                        DesignatorSuffixList0(
+                        ) [DesignatorSuffixList0]
+                      ) [Designator]
+                      OptCall0(
+                      ) [OptCall0]
+                    ) [FactorDesignator]
+                  ) [Term1]
+                ) [SimpleExpr1]
+              ) [Expr1]
+              OptNumConst0(
+              ) [OptNumConst0]
+            ) [StatementPrint]
+          ) [StatementList1]
+          StatementDesignator(
+            DesignatorStatement(
+              Designator(
+               x
+                DesignatorSuffixList0(
+                ) [DesignatorSuffixList0]
+              ) [Designator]
+              DesignatorStmtTail1(
+                Assignop(
+                ) [Assignop]
+                Expr1(
+                  SimpleExpr1(
+                    Term1(
+                      FactorNumConst(
+                       3
+                      ) [FactorNumConst]
+                    ) [Term1]
+                  ) [SimpleExpr1]
+                ) [Expr1]
+              ) [DesignatorStmtTail1]
+            ) [DesignatorStatement]
+          ) [StatementDesignator]
+        ) [StatementList1]
+        StatementPrint(
+          Expr1(
+            SimpleExpr1(
+              Term1(
+                FactorDesignator(
+                  Designator(
+                   x
+                    DesignatorSuffixList0(
+                    ) [DesignatorSuffixList0]
+                  ) [Designator]
+                  OptCall0(
+                  ) [OptCall0]
+                ) [FactorDesignator]
+              ) [Term1]
+            ) [SimpleExpr1]
+          ) [Expr1]
+          OptNumConst0(
+          ) [OptNumConst0]
+        ) [StatementPrint]
+      ) [StatementList1]
+    ) [MethodDecl]
+  ) [MethodDeclList1]
+) [Program]
+INFO  18:20:54,913 - Generisanje koda završeno (obj/todo.obj)
+INFO  18:20:54,916 - Compiling source file: /Users/leairt/eclipse-workspace/Microjava Compiler/Microjava-Compiler/junit/p007.mj
+INFO  18:20:54,916 - #2 program
+INFO  18:20:54,916 - #21 p007
+INFO  18:20:54,916 - #8 const
+INFO  18:20:54,916 - #21 int
+INFO  18:20:54,916 - #21 pi
+INFO  18:20:54,916 - #38 =
+INFO  18:20:54,916 - #22 3
+INFO  18:20:54,916 - #41 ;
+INFO  18:20:54,916 - #21 int
+INFO  18:20:54,916 - #21 x
+INFO  18:20:54,917 - #43 ,
+INFO  18:20:54,917 - #21 y
+INFO  18:20:54,917 - #47 [
+INFO  18:20:54,917 - #48 ]
+INFO  18:20:54,917 - #41 ;
+INFO  18:20:54,917 - #49 {
+INFO  18:20:54,917 - #14 void
+INFO  18:20:54,917 - #21 main
+INFO  18:20:54,917 - #45 (
+INFO  18:20:54,917 - #46 )
+INFO  18:20:54,917 - #49 {
+INFO  18:20:54,917 - #11 print
+INFO  18:20:54,917 - #45 (
+INFO  18:20:54,917 - #22 666
+INFO  18:20:54,917 - #46 )
+INFO  18:20:54,917 - #41 ;
+INFO  18:20:54,917 - #50 }
+INFO  18:20:54,917 - #50 }
+INFO  18:20:54,917 - Program(
+  ProgramName(
+   p007
+  ) [ProgramName]
+  GlobalDeclList1(
+    GlobalDeclList1(
+      GlobalDeclList0(
+      ) [GlobalDeclList0]
+      GlobalDeclConst(
+        ConstDecl(
+          Type(
+           int
+          ) [Type]
+          ConstInitList1(
+            ConstInit(
+             pi
+              ConstValueNum(
+               3
+              ) [ConstValueNum]
+            ) [ConstInit]
+          ) [ConstInitList1]
+        ) [ConstDecl]
+      ) [GlobalDeclConst]
+    ) [GlobalDeclList1]
+    GlobalDeclVar(
+      VarDeclValid(
+        Type(
+         int
+        ) [Type]
+        VarItemList2(
+          VarItemList1(
+            VarItem(
+             x
+              OptArray0(
+              ) [OptArray0]
+            ) [VarItem]
+          ) [VarItemList1]
+          VarItem(
+           y
+            OptArray1(
+            ) [OptArray1]
+          ) [VarItem]
+        ) [VarItemList2]
+      ) [VarDeclValid]
+    ) [GlobalDeclVar]
+  ) [GlobalDeclList1]
+  MethodDeclList1(
+    MethodDeclList0(
+    ) [MethodDeclList0]
+    MethodDecl(
+      MethodRetTypeVoid(
+      ) [MethodRetTypeVoid]
+      MethodName(
+       main
+      ) [MethodName]
+      OptFormPars0(
+      ) [OptFormPars0]
+      VarDeclList0(
+      ) [VarDeclList0]
+      StatementList1(
+        StatementList0(
+        ) [StatementList0]
+        StatementPrint(
+          Expr1(
+            SimpleExpr1(
+              Term1(
+                FactorNumConst(
+                 666
+                ) [FactorNumConst]
+              ) [Term1]
+            ) [SimpleExpr1]
+          ) [Expr1]
+          OptNumConst0(
+          ) [OptNumConst0]
+        ) [StatementPrint]
+      ) [StatementList1]
+    ) [MethodDecl]
+  ) [MethodDeclList1]
+) [Program]
+INFO  18:20:54,918 - Generisanje koda završeno (obj/todo.obj)
+INFO  18:20:54,919 - Compiling source file: /Users/leairt/eclipse-workspace/Microjava Compiler/Microjava-Compiler/junit/p009.mj
+INFO  18:20:54,919 - #2 program
+INFO  18:20:54,919 - #21 p009
+INFO  18:20:54,919 - #49 {
+INFO  18:20:54,919 - #14 void
+INFO  18:20:54,919 - #21 main
+INFO  18:20:54,919 - #45 (
+INFO  18:20:54,919 - #46 )
+INFO  18:20:54,919 - #49 {
+INFO  18:20:54,919 - #11 print
+INFO  18:20:54,919 - #45 (
+INFO  18:20:54,920 - #23 L
+INFO  18:20:54,920 - #46 )
+INFO  18:20:54,920 - #41 ;
+INFO  18:20:54,920 - #11 print
+INFO  18:20:54,920 - #45 (
+INFO  18:20:54,920 - #23 e
+INFO  18:20:54,920 - #46 )
+INFO  18:20:54,920 - #41 ;
+INFO  18:20:54,920 - #11 print
+INFO  18:20:54,920 - #45 (
+INFO  18:20:54,920 - #23 a
+INFO  18:20:54,920 - #46 )
+INFO  18:20:54,920 - #41 ;
+INFO  18:20:54,920 - #11 print
+INFO  18:20:54,920 - #45 (
+INFO  18:20:54,920 - #21 eol
+INFO  18:20:54,920 - #46 )
+INFO  18:20:54,920 - #41 ;
+INFO  18:20:54,920 - #11 print
+INFO  18:20:54,921 - #45 (
+INFO  18:20:54,921 - #23 I
+INFO  18:20:54,921 - #46 )
+INFO  18:20:54,921 - #41 ;
+INFO  18:20:54,921 - #11 print
+INFO  18:20:54,921 - #45 (
+INFO  18:20:54,921 - #23 r
+INFO  18:20:54,921 - #46 )
+INFO  18:20:54,921 - #41 ;
+INFO  18:20:54,921 - #11 print
+INFO  18:20:54,921 - #45 (
+INFO  18:20:54,921 - #23 t
+INFO  18:20:54,921 - #46 )
+INFO  18:20:54,921 - #41 ;
+INFO  18:20:54,921 - #50 }
+INFO  18:20:54,921 - #50 }
+INFO  18:20:54,921 - Program(
+  ProgramName(
+   p009
+  ) [ProgramName]
+  GlobalDeclList0(
+  ) [GlobalDeclList0]
+  MethodDeclList1(
+    MethodDeclList0(
+    ) [MethodDeclList0]
+    MethodDecl(
+      MethodRetTypeVoid(
+      ) [MethodRetTypeVoid]
+      MethodName(
+       main
+      ) [MethodName]
+      OptFormPars0(
+      ) [OptFormPars0]
+      VarDeclList0(
+      ) [VarDeclList0]
+      StatementList1(
+        StatementList1(
+          StatementList1(
+            StatementList1(
+              StatementList1(
+                StatementList1(
+                  StatementList1(
+                    StatementList0(
+                    ) [StatementList0]
+                    StatementPrint(
+                      Expr1(
+                        SimpleExpr1(
+                          Term1(
+                            FactorCharConst(
+                             L
+                            ) [FactorCharConst]
+                          ) [Term1]
+                        ) [SimpleExpr1]
+                      ) [Expr1]
+                      OptNumConst0(
+                      ) [OptNumConst0]
+                    ) [StatementPrint]
+                  ) [StatementList1]
+                  StatementPrint(
+                    Expr1(
+                      SimpleExpr1(
+                        Term1(
+                          FactorCharConst(
+                           e
+                          ) [FactorCharConst]
+                        ) [Term1]
+                      ) [SimpleExpr1]
+                    ) [Expr1]
+                    OptNumConst0(
+                    ) [OptNumConst0]
+                  ) [StatementPrint]
+                ) [StatementList1]
+                StatementPrint(
+                  Expr1(
+                    SimpleExpr1(
+                      Term1(
+                        FactorCharConst(
+                         a
+                        ) [FactorCharConst]
+                      ) [Term1]
+                    ) [SimpleExpr1]
+                  ) [Expr1]
+                  OptNumConst0(
+                  ) [OptNumConst0]
+                ) [StatementPrint]
+              ) [StatementList1]
+              StatementPrint(
+                Expr1(
+                  SimpleExpr1(
+                    Term1(
+                      FactorDesignator(
+                        Designator(
+                         eol
+                          DesignatorSuffixList0(
+                          ) [DesignatorSuffixList0]
+                        ) [Designator]
+                        OptCall0(
+                        ) [OptCall0]
+                      ) [FactorDesignator]
+                    ) [Term1]
+                  ) [SimpleExpr1]
+                ) [Expr1]
+                OptNumConst0(
+                ) [OptNumConst0]
+              ) [StatementPrint]
+            ) [StatementList1]
+            StatementPrint(
+              Expr1(
+                SimpleExpr1(
+                  Term1(
+                    FactorCharConst(
+                     I
+                    ) [FactorCharConst]
+                  ) [Term1]
+                ) [SimpleExpr1]
+              ) [Expr1]
+              OptNumConst0(
+              ) [OptNumConst0]
+            ) [StatementPrint]
+          ) [StatementList1]
+          StatementPrint(
+            Expr1(
+              SimpleExpr1(
+                Term1(
+                  FactorCharConst(
+                   r
+                  ) [FactorCharConst]
+                ) [Term1]
+              ) [SimpleExpr1]
+            ) [Expr1]
+            OptNumConst0(
+            ) [OptNumConst0]
+          ) [StatementPrint]
+        ) [StatementList1]
+        StatementPrint(
+          Expr1(
+            SimpleExpr1(
+              Term1(
+                FactorCharConst(
+                 t
+                ) [FactorCharConst]
+              ) [Term1]
+            ) [SimpleExpr1]
+          ) [Expr1]
+          OptNumConst0(
+          ) [OptNumConst0]
+        ) [StatementPrint]
+      ) [StatementList1]
+    ) [MethodDecl]
+  ) [MethodDeclList1]
+) [Program]
+INFO  18:20:54,923 - Generisanje koda završeno (obj/todo.obj)
+INFO  18:20:54,931 - Compiling source file: /Users/leairt/eclipse-workspace/Microjava Compiler/Microjava-Compiler/junit/p011.mj
+INFO  18:20:54,931 - #2 program
+INFO  18:20:54,931 - #21 p011
+INFO  18:20:54,931 - #49 {
+INFO  18:20:54,931 - #14 void
+INFO  18:20:54,932 - #21 main
+INFO  18:20:54,932 - #45 (
+INFO  18:20:54,932 - #46 )
+INFO  18:20:54,932 - #49 {
+INFO  18:20:54,932 - #11 print
+INFO  18:20:54,932 - #45 (
+INFO  18:20:54,932 - #22 1
+INFO  18:20:54,932 - #25 +
+INFO  18:20:54,932 - #22 3
+INFO  18:20:54,932 - #46 )
+INFO  18:20:54,932 - #41 ;
+INFO  18:20:54,932 - #11 print
+INFO  18:20:54,932 - #45 (
+INFO  18:20:54,932 - #21 eol
+INFO  18:20:54,932 - #46 )
+INFO  18:20:54,932 - #41 ;
+INFO  18:20:54,932 - #11 print
+INFO  18:20:54,932 - #45 (
+INFO  18:20:54,932 - #22 15
+INFO  18:20:54,932 - #26 -
+INFO  18:20:54,932 - #22 2
+INFO  18:20:54,932 - #46 )
+INFO  18:20:54,932 - #41 ;
+INFO  18:20:54,932 - #11 print
+INFO  18:20:54,932 - #45 (
+INFO  18:20:54,932 - #21 eol
+INFO  18:20:54,932 - #46 )
+INFO  18:20:54,932 - #41 ;
+INFO  18:20:54,932 - #11 print
+INFO  18:20:54,932 - #45 (
+INFO  18:20:54,932 - #22 7
+INFO  18:20:54,932 - #27 *
+INFO  18:20:54,932 - #22 4
+INFO  18:20:54,932 - #46 )
+INFO  18:20:54,933 - #41 ;
+INFO  18:20:54,933 - #11 print
+INFO  18:20:54,934 - #45 (
+INFO  18:20:54,934 - #21 eol
+INFO  18:20:54,934 - #46 )
+INFO  18:20:54,934 - #41 ;
+INFO  18:20:54,934 - #11 print
+INFO  18:20:54,934 - #45 (
+INFO  18:20:54,934 - #22 17
+INFO  18:20:54,934 - #28 /
+INFO  18:20:54,934 - #22 3
+INFO  18:20:54,935 - #46 )
+INFO  18:20:54,935 - #41 ;
+INFO  18:20:54,935 - #11 print
+INFO  18:20:54,935 - #45 (
+INFO  18:20:54,935 - #21 eol
+INFO  18:20:54,935 - #46 )
+INFO  18:20:54,935 - #41 ;
+INFO  18:20:54,935 - #11 print
+INFO  18:20:54,935 - #45 (
+INFO  18:20:54,935 - #22 17
+INFO  18:20:54,935 - #29 %
+INFO  18:20:54,935 - #22 3
+INFO  18:20:54,935 - #46 )
+INFO  18:20:54,935 - #41 ;
+INFO  18:20:54,935 - #11 print
+INFO  18:20:54,935 - #45 (
+INFO  18:20:54,935 - #21 eol
+INFO  18:20:54,935 - #46 )
+INFO  18:20:54,935 - #41 ;
+INFO  18:20:54,935 - #11 print
+INFO  18:20:54,935 - #45 (
+INFO  18:20:54,935 - #22 2
+INFO  18:20:54,935 - #27 *
+INFO  18:20:54,935 - #22 3
+INFO  18:20:54,935 - #25 +
+INFO  18:20:54,935 - #22 5
+INFO  18:20:54,935 - #46 )
+INFO  18:20:54,935 - #41 ;
+INFO  18:20:54,935 - #11 print
+INFO  18:20:54,935 - #45 (
+INFO  18:20:54,935 - #21 eol
+INFO  18:20:54,938 - #46 )
+INFO  18:20:54,939 - #41 ;
+INFO  18:20:54,939 - #11 print
+INFO  18:20:54,939 - #45 (
+INFO  18:20:54,939 - #22 2
+INFO  18:20:54,939 - #25 +
+INFO  18:20:54,939 - #22 3
+INFO  18:20:54,939 - #27 *
+INFO  18:20:54,939 - #22 5
+INFO  18:20:54,939 - #46 )
+INFO  18:20:54,939 - #41 ;
+INFO  18:20:54,939 - #50 }
+INFO  18:20:54,939 - #50 }
+INFO  18:20:54,940 - Program(
+  ProgramName(
+   p011
+  ) [ProgramName]
+  GlobalDeclList0(
+  ) [GlobalDeclList0]
+  MethodDeclList1(
+    MethodDeclList0(
+    ) [MethodDeclList0]
+    MethodDecl(
+      MethodRetTypeVoid(
+      ) [MethodRetTypeVoid]
+      MethodName(
+       main
+      ) [MethodName]
+      OptFormPars0(
+      ) [OptFormPars0]
+      VarDeclList0(
+      ) [VarDeclList0]
+      StatementList1(
+        StatementList1(
+          StatementList1(
+            StatementList1(
+              StatementList1(
+                StatementList1(
+                  StatementList1(
+                    StatementList1(
+                      StatementList1(
+                        StatementList1(
+                          StatementList1(
+                            StatementList1(
+                              StatementList1(
+                                StatementList0(
+                                ) [StatementList0]
+                                StatementPrint(
+                                  Expr1(
+                                    SimpleExpr3(
+                                      SimpleExpr1(
+                                        Term1(
+                                          FactorNumConst(
+                                           1
+                                          ) [FactorNumConst]
+                                        ) [Term1]
+                                      ) [SimpleExpr1]
+                                      AddopADD(
+                                      ) [AddopADD]
+                                      Term1(
+                                        FactorNumConst(
+                                         3
+                                        ) [FactorNumConst]
+                                      ) [Term1]
+                                    ) [SimpleExpr3]
+                                  ) [Expr1]
+                                  OptNumConst0(
+                                  ) [OptNumConst0]
+                                ) [StatementPrint]
+                              ) [StatementList1]
+                              StatementPrint(
+                                Expr1(
+                                  SimpleExpr1(
+                                    Term1(
+                                      FactorDesignator(
+                                        Designator(
+                                         eol
+                                          DesignatorSuffixList0(
+                                          ) [DesignatorSuffixList0]
+                                        ) [Designator]
+                                        OptCall0(
+                                        ) [OptCall0]
+                                      ) [FactorDesignator]
+                                    ) [Term1]
+                                  ) [SimpleExpr1]
+                                ) [Expr1]
+                                OptNumConst0(
+                                ) [OptNumConst0]
+                              ) [StatementPrint]
+                            ) [StatementList1]
+                            StatementPrint(
+                              Expr1(
+                                SimpleExpr3(
+                                  SimpleExpr1(
+                                    Term1(
+                                      FactorNumConst(
+                                       15
+                                      ) [FactorNumConst]
+                                    ) [Term1]
+                                  ) [SimpleExpr1]
+                                  AddopSUB(
+                                  ) [AddopSUB]
+                                  Term1(
+                                    FactorNumConst(
+                                     2
+                                    ) [FactorNumConst]
+                                  ) [Term1]
+                                ) [SimpleExpr3]
+                              ) [Expr1]
+                              OptNumConst0(
+                              ) [OptNumConst0]
+                            ) [StatementPrint]
+                          ) [StatementList1]
+                          StatementPrint(
+                            Expr1(
+                              SimpleExpr1(
+                                Term1(
+                                  FactorDesignator(
+                                    Designator(
+                                     eol
+                                      DesignatorSuffixList0(
+                                      ) [DesignatorSuffixList0]
+                                    ) [Designator]
+                                    OptCall0(
+                                    ) [OptCall0]
+                                  ) [FactorDesignator]
+                                ) [Term1]
+                              ) [SimpleExpr1]
+                            ) [Expr1]
+                            OptNumConst0(
+                            ) [OptNumConst0]
+                          ) [StatementPrint]
+                        ) [StatementList1]
+                        StatementPrint(
+                          Expr1(
+                            SimpleExpr1(
+                              Term2(
+                                Term1(
+                                  FactorNumConst(
+                                   7
+                                  ) [FactorNumConst]
+                                ) [Term1]
+                                MulopMUL(
+                                ) [MulopMUL]
+                                FactorNumConst(
+                                 4
+                                ) [FactorNumConst]
+                              ) [Term2]
+                            ) [SimpleExpr1]
+                          ) [Expr1]
+                          OptNumConst0(
+                          ) [OptNumConst0]
+                        ) [StatementPrint]
+                      ) [StatementList1]
+                      StatementPrint(
+                        Expr1(
+                          SimpleExpr1(
+                            Term1(
+                              FactorDesignator(
+                                Designator(
+                                 eol
+                                  DesignatorSuffixList0(
+                                  ) [DesignatorSuffixList0]
+                                ) [Designator]
+                                OptCall0(
+                                ) [OptCall0]
+                              ) [FactorDesignator]
+                            ) [Term1]
+                          ) [SimpleExpr1]
+                        ) [Expr1]
+                        OptNumConst0(
+                        ) [OptNumConst0]
+                      ) [StatementPrint]
+                    ) [StatementList1]
+                    StatementPrint(
+                      Expr1(
+                        SimpleExpr1(
+                          Term2(
+                            Term1(
+                              FactorNumConst(
+                               17
+                              ) [FactorNumConst]
+                            ) [Term1]
+                            MulopDIV(
+                            ) [MulopDIV]
+                            FactorNumConst(
+                             3
+                            ) [FactorNumConst]
+                          ) [Term2]
+                        ) [SimpleExpr1]
+                      ) [Expr1]
+                      OptNumConst0(
+                      ) [OptNumConst0]
+                    ) [StatementPrint]
+                  ) [StatementList1]
+                  StatementPrint(
+                    Expr1(
+                      SimpleExpr1(
+                        Term1(
+                          FactorDesignator(
+                            Designator(
+                             eol
+                              DesignatorSuffixList0(
+                              ) [DesignatorSuffixList0]
+                            ) [Designator]
+                            OptCall0(
+                            ) [OptCall0]
+                          ) [FactorDesignator]
+                        ) [Term1]
+                      ) [SimpleExpr1]
+                    ) [Expr1]
+                    OptNumConst0(
+                    ) [OptNumConst0]
+                  ) [StatementPrint]
+                ) [StatementList1]
+                StatementPrint(
+                  Expr1(
+                    SimpleExpr1(
+                      Term2(
+                        Term1(
+                          FactorNumConst(
+                           17
+                          ) [FactorNumConst]
+                        ) [Term1]
+                        MulopMOD(
+                        ) [MulopMOD]
+                        FactorNumConst(
+                         3
+                        ) [FactorNumConst]
+                      ) [Term2]
+                    ) [SimpleExpr1]
+                  ) [Expr1]
+                  OptNumConst0(
+                  ) [OptNumConst0]
+                ) [StatementPrint]
+              ) [StatementList1]
+              StatementPrint(
+                Expr1(
+                  SimpleExpr1(
+                    Term1(
+                      FactorDesignator(
+                        Designator(
+                         eol
+                          DesignatorSuffixList0(
+                          ) [DesignatorSuffixList0]
+                        ) [Designator]
+                        OptCall0(
+                        ) [OptCall0]
+                      ) [FactorDesignator]
+                    ) [Term1]
+                  ) [SimpleExpr1]
+                ) [Expr1]
+                OptNumConst0(
+                ) [OptNumConst0]
+              ) [StatementPrint]
+            ) [StatementList1]
+            StatementPrint(
+              Expr1(
+                SimpleExpr3(
+                  SimpleExpr1(
+                    Term2(
+                      Term1(
+                        FactorNumConst(
+                         2
+                        ) [FactorNumConst]
+                      ) [Term1]
+                      MulopMUL(
+                      ) [MulopMUL]
+                      FactorNumConst(
+                       3
+                      ) [FactorNumConst]
+                    ) [Term2]
+                  ) [SimpleExpr1]
+                  AddopADD(
+                  ) [AddopADD]
+                  Term1(
+                    FactorNumConst(
+                     5
+                    ) [FactorNumConst]
+                  ) [Term1]
+                ) [SimpleExpr3]
+              ) [Expr1]
+              OptNumConst0(
+              ) [OptNumConst0]
+            ) [StatementPrint]
+          ) [StatementList1]
+          StatementPrint(
+            Expr1(
+              SimpleExpr1(
+                Term1(
+                  FactorDesignator(
+                    Designator(
+                     eol
+                      DesignatorSuffixList0(
+                      ) [DesignatorSuffixList0]
+                    ) [Designator]
+                    OptCall0(
+                    ) [OptCall0]
+                  ) [FactorDesignator]
+                ) [Term1]
+              ) [SimpleExpr1]
+            ) [Expr1]
+            OptNumConst0(
+            ) [OptNumConst0]
+          ) [StatementPrint]
+        ) [StatementList1]
+        StatementPrint(
+          Expr1(
+            SimpleExpr3(
+              SimpleExpr1(
+                Term1(
+                  FactorNumConst(
+                   2
+                  ) [FactorNumConst]
+                ) [Term1]
+              ) [SimpleExpr1]
+              AddopADD(
+              ) [AddopADD]
+              Term2(
+                Term1(
+                  FactorNumConst(
+                   3
+                  ) [FactorNumConst]
+                ) [Term1]
+                MulopMUL(
+                ) [MulopMUL]
+                FactorNumConst(
+                 5
+                ) [FactorNumConst]
+              ) [Term2]
+            ) [SimpleExpr3]
+          ) [Expr1]
+          OptNumConst0(
+          ) [OptNumConst0]
+        ) [StatementPrint]
+      ) [StatementList1]
+    ) [MethodDecl]
+  ) [MethodDeclList1]
+) [Program]
+INFO  18:20:54,942 - Generisanje koda završeno (obj/todo.obj)
+INFO  18:20:54,945 - Compiling source file: /Users/leairt/eclipse-workspace/Microjava Compiler/Microjava-Compiler/junit/p012.mj
+INFO  18:20:54,946 - #2 program
+INFO  18:20:54,946 - #21 p012
+INFO  18:20:54,946 - #49 {
+INFO  18:20:54,946 - #14 void
+INFO  18:20:54,946 - #21 main
+INFO  18:20:54,946 - #45 (
+INFO  18:20:54,946 - #46 )
+INFO  18:20:54,946 - #21 int
+INFO  18:20:54,946 - #21 a
+INFO  18:20:54,946 - #43 ,
+INFO  18:20:54,946 - #21 b
+INFO  18:20:54,946 - #41 ;
+INFO  18:20:54,946 - #21 char
+INFO  18:20:54,946 - #21 carr
+INFO  18:20:54,946 - #47 [
+INFO  18:20:54,946 - #48 ]
+INFO  18:20:54,946 - #41 ;
+INFO  18:20:54,946 - #49 {
+INFO  18:20:54,946 - #21 a
+INFO  18:20:54,946 - #38 =
+INFO  18:20:54,946 - #22 5
+INFO  18:20:54,946 - #41 ;
+INFO  18:20:54,946 - #11 print
+INFO  18:20:54,946 - #45 (
+INFO  18:20:54,946 - #21 a
+INFO  18:20:54,946 - #46 )
+INFO  18:20:54,946 - #41 ;
+INFO  18:20:54,946 - #11 print
+INFO  18:20:54,946 - #45 (
+INFO  18:20:54,946 - #21 a
+INFO  18:20:54,946 - #46 )
+INFO  18:20:54,946 - #41 ;
+INFO  18:20:54,946 - #50 }
+INFO  18:20:54,946 - #50 }
+INFO  18:20:54,946 - Program(
+  ProgramName(
+   p012
+  ) [ProgramName]
+  GlobalDeclList0(
+  ) [GlobalDeclList0]
+  MethodDeclList1(
+    MethodDeclList0(
+    ) [MethodDeclList0]
+    MethodDecl(
+      MethodRetTypeVoid(
+      ) [MethodRetTypeVoid]
+      MethodName(
+       main
+      ) [MethodName]
+      OptFormPars0(
+      ) [OptFormPars0]
+      VarDeclList1(
+        VarDeclList1(
+          VarDeclList0(
+          ) [VarDeclList0]
+          VarDeclValid(
+            Type(
+             int
+            ) [Type]
+            VarItemList2(
+              VarItemList1(
+                VarItem(
+                 a
+                  OptArray0(
+                  ) [OptArray0]
+                ) [VarItem]
+              ) [VarItemList1]
+              VarItem(
+               b
+                OptArray0(
+                ) [OptArray0]
+              ) [VarItem]
+            ) [VarItemList2]
+          ) [VarDeclValid]
+        ) [VarDeclList1]
+        VarDeclValid(
+          Type(
+           char
+          ) [Type]
+          VarItemList1(
+            VarItem(
+             carr
+              OptArray1(
+              ) [OptArray1]
+            ) [VarItem]
+          ) [VarItemList1]
+        ) [VarDeclValid]
+      ) [VarDeclList1]
+      StatementList1(
+        StatementList1(
+          StatementList1(
+            StatementList0(
+            ) [StatementList0]
+            StatementDesignator(
+              DesignatorStatement(
+                Designator(
+                 a
+                  DesignatorSuffixList0(
+                  ) [DesignatorSuffixList0]
+                ) [Designator]
+                DesignatorStmtTail1(
+                  Assignop(
+                  ) [Assignop]
+                  Expr1(
+                    SimpleExpr1(
+                      Term1(
+                        FactorNumConst(
+                         5
+                        ) [FactorNumConst]
+                      ) [Term1]
+                    ) [SimpleExpr1]
+                  ) [Expr1]
+                ) [DesignatorStmtTail1]
+              ) [DesignatorStatement]
+            ) [StatementDesignator]
+          ) [StatementList1]
+          StatementPrint(
+            Expr1(
+              SimpleExpr1(
+                Term1(
+                  FactorDesignator(
+                    Designator(
+                     a
+                      DesignatorSuffixList0(
+                      ) [DesignatorSuffixList0]
+                    ) [Designator]
+                    OptCall0(
+                    ) [OptCall0]
+                  ) [FactorDesignator]
+                ) [Term1]
+              ) [SimpleExpr1]
+            ) [Expr1]
+            OptNumConst0(
+            ) [OptNumConst0]
+          ) [StatementPrint]
+        ) [StatementList1]
+        StatementPrint(
+          Expr1(
+            SimpleExpr1(
+              Term1(
+                FactorDesignator(
+                  Designator(
+                   a
+                    DesignatorSuffixList0(
+                    ) [DesignatorSuffixList0]
+                  ) [Designator]
+                  OptCall0(
+                  ) [OptCall0]
+                ) [FactorDesignator]
+              ) [Term1]
+            ) [SimpleExpr1]
+          ) [Expr1]
+          OptNumConst0(
+          ) [OptNumConst0]
+        ) [StatementPrint]
+      ) [StatementList1]
+    ) [MethodDecl]
+  ) [MethodDeclList1]
+) [Program]
+INFO  18:20:54,947 - Generisanje koda završeno (obj/todo.obj)
+INFO  18:20:54,949 - Compiling source file: /Users/leairt/eclipse-workspace/Microjava Compiler/Microjava-Compiler/junit/p013.mj
+INFO  18:20:54,951 - #2 program
+INFO  18:20:54,951 - #21 p012
+INFO  18:20:54,951 - #49 {
+INFO  18:20:54,951 - #14 void
+INFO  18:20:54,951 - #21 main
+INFO  18:20:54,952 - #45 (
+INFO  18:20:54,952 - #46 )
+INFO  18:20:54,952 - #21 int
+INFO  18:20:54,952 - #21 a
+INFO  18:20:54,952 - #43 ,
+INFO  18:20:54,952 - #21 b
+INFO  18:20:54,952 - #41 ;
+INFO  18:20:54,952 - #21 char
+INFO  18:20:54,952 - #21 carr
+INFO  18:20:54,952 - #47 [
+INFO  18:20:54,952 - #48 ]
+INFO  18:20:54,952 - #41 ;
+INFO  18:20:54,952 - #49 {
+INFO  18:20:54,952 - #21 a
+INFO  18:20:54,952 - #38 =
+INFO  18:20:54,952 - #26 -
+INFO  18:20:54,952 - #22 5
+INFO  18:20:54,952 - #41 ;
+INFO  18:20:54,953 - #11 print
+INFO  18:20:54,953 - #45 (
+INFO  18:20:54,953 - #21 a
+INFO  18:20:54,953 - #46 )
+INFO  18:20:54,953 - #41 ;
+INFO  18:20:54,953 - #11 print
+INFO  18:20:54,953 - #45 (
+INFO  18:20:54,953 - #21 a
+INFO  18:20:54,953 - #46 )
+INFO  18:20:54,953 - #41 ;
+INFO  18:20:54,953 - #50 }
+INFO  18:20:54,953 - #50 }
+INFO  18:20:54,953 - Program(
+  ProgramName(
+   p012
+  ) [ProgramName]
+  GlobalDeclList0(
+  ) [GlobalDeclList0]
+  MethodDeclList1(
+    MethodDeclList0(
+    ) [MethodDeclList0]
+    MethodDecl(
+      MethodRetTypeVoid(
+      ) [MethodRetTypeVoid]
+      MethodName(
+       main
+      ) [MethodName]
+      OptFormPars0(
+      ) [OptFormPars0]
+      VarDeclList1(
+        VarDeclList1(
+          VarDeclList0(
+          ) [VarDeclList0]
+          VarDeclValid(
+            Type(
+             int
+            ) [Type]
+            VarItemList2(
+              VarItemList1(
+                VarItem(
+                 a
+                  OptArray0(
+                  ) [OptArray0]
+                ) [VarItem]
+              ) [VarItemList1]
+              VarItem(
+               b
+                OptArray0(
+                ) [OptArray0]
+              ) [VarItem]
+            ) [VarItemList2]
+          ) [VarDeclValid]
+        ) [VarDeclList1]
+        VarDeclValid(
+          Type(
+           char
+          ) [Type]
+          VarItemList1(
+            VarItem(
+             carr
+              OptArray1(
+              ) [OptArray1]
+            ) [VarItem]
+          ) [VarItemList1]
+        ) [VarDeclValid]
+      ) [VarDeclList1]
+      StatementList1(
+        StatementList1(
+          StatementList1(
+            StatementList0(
+            ) [StatementList0]
+            StatementDesignator(
+              DesignatorStatement(
+                Designator(
+                 a
+                  DesignatorSuffixList0(
+                  ) [DesignatorSuffixList0]
+                ) [Designator]
+                DesignatorStmtTail1(
+                  Assignop(
+                  ) [Assignop]
+                  Expr1(
+                    SimpleExpr2(
+                      Term1(
+                        FactorNumConst(
+                         5
+                        ) [FactorNumConst]
+                      ) [Term1]
+                    ) [SimpleExpr2]
+                  ) [Expr1]
+                ) [DesignatorStmtTail1]
+              ) [DesignatorStatement]
+            ) [StatementDesignator]
+          ) [StatementList1]
+          StatementPrint(
+            Expr1(
+              SimpleExpr1(
+                Term1(
+                  FactorDesignator(
+                    Designator(
+                     a
+                      DesignatorSuffixList0(
+                      ) [DesignatorSuffixList0]
+                    ) [Designator]
+                    OptCall0(
+                    ) [OptCall0]
+                  ) [FactorDesignator]
+                ) [Term1]
+              ) [SimpleExpr1]
+            ) [Expr1]
+            OptNumConst0(
+            ) [OptNumConst0]
+          ) [StatementPrint]
+        ) [StatementList1]
+        StatementPrint(
+          Expr1(
+            SimpleExpr1(
+              Term1(
+                FactorDesignator(
+                  Designator(
+                   a
+                    DesignatorSuffixList0(
+                    ) [DesignatorSuffixList0]
+                  ) [Designator]
+                  OptCall0(
+                  ) [OptCall0]
+                ) [FactorDesignator]
+              ) [Term1]
+            ) [SimpleExpr1]
+          ) [Expr1]
+          OptNumConst0(
+          ) [OptNumConst0]
+        ) [StatementPrint]
+      ) [StatementList1]
+    ) [MethodDecl]
+  ) [MethodDeclList1]
+) [Program]
+INFO  18:20:54,954 - Generisanje koda završeno (obj/todo.obj)
+INFO  18:20:54,955 - Compiling source file: /Users/leairt/eclipse-workspace/Microjava Compiler/Microjava-Compiler/junit/p100.mj
+INFO  18:20:54,955 - #2 program
+INFO  18:20:54,955 - #49 {
+ERROR 18:20:54,955 - 
+Sintaksna greska na liniji 3
+ERROR 18:20:54,957 - Fatalna greska, parsiranje se ne moze nastaviti na liniji 3
+DEBUG 18:20:54,957 - dump errors
+DEBUG 18:20:54,957 - CompilerException: SYNTAX_ERROR [lineNumber=3, errorCode=SYNTAX_ERROR, data=null, refObj=null]
+DEBUG 18:20:54,957 - CompilerException: UNRECOVERED_SYNTAX_ERROR [lineNumber=3, errorCode=UNRECOVERED_SYNTAX_ERROR, data=null, refObj=null]
+INFO  18:20:54,958 - Compiling source file: /Users/leairt/eclipse-workspace/Microjava Compiler/Microjava-Compiler/junit/p101.mj
+INFO  18:20:54,958 - #2 program
+INFO  18:20:54,958 - #21 p101
+INFO  18:20:54,958 - #21 int
+INFO  18:20:54,958 - #21 x
+INFO  18:20:54,958 - #41 ;
+INFO  18:20:54,958 - #49 {
+INFO  18:20:54,958 - #14 void
+INFO  18:20:54,958 - #21 main
+INFO  18:20:54,958 - #45 (
+INFO  18:20:54,958 - #46 )
+INFO  18:20:54,958 - #49 {
+INFO  18:20:54,958 - #21 x
+INFO  18:20:54,958 - #38 =
+INFO  18:20:54,958 - #26 -
+INFO  18:20:54,958 - #22 1
+INFO  18:20:54,958 - #41 ;
+INFO  18:20:54,958 - #21 x
+INFO  18:20:54,958 - #38 =
+INFO  18:20:54,958 - #25 +
+ERROR 18:20:54,958 - 
+Sintaksna greska na liniji 7
+INFO  18:20:54,958 - #22 1
+INFO  18:20:54,958 - #41 ;
+INFO  18:20:54,958 - #11 print
+INFO  18:20:54,959 - #45 (
+INFO  18:20:54,959 - #21 x
+INFO  18:20:54,959 - #46 )
+INFO  18:20:54,959 - #41 ;
+INFO  18:20:54,959 - #50 }
+INFO  18:20:54,959 - #50 }
+DEBUG 18:20:54,959 - dump errors
+DEBUG 18:20:54,959 - CompilerException: SYNTAX_ERROR [lineNumber=7, errorCode=SYNTAX_ERROR, data=null, refObj=null]
+INFO  18:20:54,960 - Compiling source file: /Users/leairt/eclipse-workspace/Microjava Compiler/Microjava-Compiler/junit/p200.mj
+INFO  18:20:54,960 - #2 program
+INFO  18:20:54,960 - #21 p200
+INFO  18:20:54,960 - #49 {
+INFO  18:20:54,960 - #14 void
+INFO  18:20:54,960 - #21 main
+INFO  18:20:54,960 - #45 (
+INFO  18:20:54,960 - #46 )
+INFO  18:20:54,960 - #49 {
+INFO  18:20:54,960 - #11 print
+INFO  18:20:54,960 - #45 (
+INFO  18:20:54,960 - #21 x
+INFO  18:20:54,960 - #46 )
+INFO  18:20:54,960 - #41 ;
+INFO  18:20:54,960 - #50 }
+INFO  18:20:54,960 - #50 }
+INFO  18:20:54,960 - Program(
+  ProgramName(
+   p200
+  ) [ProgramName]
+  GlobalDeclList0(
+  ) [GlobalDeclList0]
+  MethodDeclList1(
+    MethodDeclList0(
+    ) [MethodDeclList0]
+    MethodDecl(
+      MethodRetTypeVoid(
+      ) [MethodRetTypeVoid]
+      MethodName(
+       main
+      ) [MethodName]
+      OptFormPars0(
+      ) [OptFormPars0]
+      VarDeclList0(
+      ) [VarDeclList0]
+      StatementList1(
+        StatementList0(
+        ) [StatementList0]
+        StatementPrint(
+          Expr1(
+            SimpleExpr1(
+              Term1(
+                FactorDesignator(
+                  Designator(
+                   x
+                    DesignatorSuffixList0(
+                    ) [DesignatorSuffixList0]
+                  ) [Designator]
+                  OptCall0(
+                  ) [OptCall0]
+                ) [FactorDesignator]
+              ) [Term1]
+            ) [SimpleExpr1]
+          ) [Expr1]
+          OptNumConst0(
+          ) [OptNumConst0]
+        ) [StatementPrint]
+      ) [StatementList1]
+    ) [MethodDecl]
+  ) [MethodDeclList1]
+) [Program]
+INFO  18:20:54,961 - Generisanje koda završeno (obj/todo.obj)
+INFO  18:20:54,963 - Compiling source file: /Users/leairt/eclipse-workspace/Microjava Compiler/Microjava-Compiler/junit/p201.mj
+INFO  18:20:54,963 - #2 program
+INFO  18:20:54,963 - #21 p007
+INFO  18:20:54,963 - #21 long
+INFO  18:20:54,963 - #21 x
+INFO  18:20:54,963 - #41 ;
+INFO  18:20:54,963 - #49 {
+INFO  18:20:54,963 - #14 void
+INFO  18:20:54,963 - #21 main
+INFO  18:20:54,963 - #45 (
+INFO  18:20:54,963 - #46 )
+INFO  18:20:54,963 - #49 {
+INFO  18:20:54,963 - #21 x
+INFO  18:20:54,963 - #38 =
+INFO  18:20:54,963 - #22 1
+INFO  18:20:54,963 - #41 ;
+INFO  18:20:54,963 - #11 print
+INFO  18:20:54,963 - #45 (
+INFO  18:20:54,963 - #21 x
+INFO  18:20:54,963 - #46 )
+INFO  18:20:54,963 - #41 ;
+INFO  18:20:54,963 - #50 }
+INFO  18:20:54,963 - #50 }
+INFO  18:20:54,963 - Program(
+  ProgramName(
+   p007
+  ) [ProgramName]
   GlobalDeclList1(
     GlobalDeclList0(
     ) [GlobalDeclList0]
     GlobalDeclVar(
-      VarDecl(
+      VarDeclValid(
+        Type(
+         long
+        ) [Type]
+        VarItemList1(
+          VarItem(
+           x
+            OptArray0(
+            ) [OptArray0]
+          ) [VarItem]
+        ) [VarItemList1]
+      ) [VarDeclValid]
+    ) [GlobalDeclVar]
+  ) [GlobalDeclList1]
+  MethodDeclList1(
+    MethodDeclList0(
+    ) [MethodDeclList0]
+    MethodDecl(
+      MethodRetTypeVoid(
+      ) [MethodRetTypeVoid]
+      MethodName(
+       main
+      ) [MethodName]
+      OptFormPars0(
+      ) [OptFormPars0]
+      VarDeclList0(
+      ) [VarDeclList0]
+      StatementList1(
+        StatementList1(
+          StatementList0(
+          ) [StatementList0]
+          StatementDesignator(
+            DesignatorStatement(
+              Designator(
+               x
+                DesignatorSuffixList0(
+                ) [DesignatorSuffixList0]
+              ) [Designator]
+              DesignatorStmtTail1(
+                Assignop(
+                ) [Assignop]
+                Expr1(
+                  SimpleExpr1(
+                    Term1(
+                      FactorNumConst(
+                       1
+                      ) [FactorNumConst]
+                    ) [Term1]
+                  ) [SimpleExpr1]
+                ) [Expr1]
+              ) [DesignatorStmtTail1]
+            ) [DesignatorStatement]
+          ) [StatementDesignator]
+        ) [StatementList1]
+        StatementPrint(
+          Expr1(
+            SimpleExpr1(
+              Term1(
+                FactorDesignator(
+                  Designator(
+                   x
+                    DesignatorSuffixList0(
+                    ) [DesignatorSuffixList0]
+                  ) [Designator]
+                  OptCall0(
+                  ) [OptCall0]
+                ) [FactorDesignator]
+              ) [Term1]
+            ) [SimpleExpr1]
+          ) [Expr1]
+          OptNumConst0(
+          ) [OptNumConst0]
+        ) [StatementPrint]
+      ) [StatementList1]
+    ) [MethodDecl]
+  ) [MethodDeclList1]
+) [Program]
+ERROR 18:20:54,963 - Nepostojeci tip long u tabeli simbola
+DEBUG 18:20:54,964 - dump errors
+DEBUG 18:20:54,964 - CompilerException: CANNOT_BE_RESOLVED_AS_TYPE [lineNumber=3, errorCode=CANNOT_BE_RESOLVED_AS_TYPE, data=long, refObj=null]
+INFO  18:20:54,964 - Compiling source file: /Users/leairt/eclipse-workspace/Microjava Compiler/Microjava-Compiler/junit/p202.mj
+INFO  18:20:54,964 - #2 program
+INFO  18:20:54,964 - #21 p202
+INFO  18:20:54,964 - #49 {
+INFO  18:20:54,964 - #14 void
+INFO  18:20:54,964 - #21 main
+INFO  18:20:54,964 - #45 (
+INFO  18:20:54,964 - #46 )
+INFO  18:20:54,964 - #49 {
+INFO  18:20:54,964 - #21 x
+INFO  18:20:54,964 - #38 =
+INFO  18:20:54,964 - #22 1
+INFO  18:20:54,964 - #41 ;
+INFO  18:20:54,964 - #50 }
+INFO  18:20:54,964 - #50 }
+INFO  18:20:54,964 - Program(
+  ProgramName(
+   p202
+  ) [ProgramName]
+  GlobalDeclList0(
+  ) [GlobalDeclList0]
+  MethodDeclList1(
+    MethodDeclList0(
+    ) [MethodDeclList0]
+    MethodDecl(
+      MethodRetTypeVoid(
+      ) [MethodRetTypeVoid]
+      MethodName(
+       main
+      ) [MethodName]
+      OptFormPars0(
+      ) [OptFormPars0]
+      VarDeclList0(
+      ) [VarDeclList0]
+      StatementList1(
+        StatementList0(
+        ) [StatementList0]
+        StatementDesignator(
+          DesignatorStatement(
+            Designator(
+             x
+              DesignatorSuffixList0(
+              ) [DesignatorSuffixList0]
+            ) [Designator]
+            DesignatorStmtTail1(
+              Assignop(
+              ) [Assignop]
+              Expr1(
+                SimpleExpr1(
+                  Term1(
+                    FactorNumConst(
+                     1
+                    ) [FactorNumConst]
+                  ) [Term1]
+                ) [SimpleExpr1]
+              ) [Expr1]
+            ) [DesignatorStmtTail1]
+          ) [DesignatorStatement]
+        ) [StatementDesignator]
+      ) [StatementList1]
+    ) [MethodDecl]
+  ) [MethodDeclList1]
+) [Program]
+INFO  18:20:54,965 - Generisanje koda završeno (obj/todo.obj)
+INFO  18:20:54,967 - Compiling source file: /Users/leairt/eclipse-workspace/Microjava Compiler/Microjava-Compiler/junit/p203.mj
+INFO  18:20:54,967 - #2 program
+INFO  18:20:54,967 - #21 p203
+INFO  18:20:54,967 - #21 int
+INFO  18:20:54,967 - #21 x
+INFO  18:20:54,967 - #41 ;
+INFO  18:20:54,967 - #21 int
+INFO  18:20:54,967 - #21 x
+INFO  18:20:54,967 - #41 ;
+INFO  18:20:54,967 - #49 {
+INFO  18:20:54,967 - #14 void
+INFO  18:20:54,967 - #21 main
+INFO  18:20:54,967 - #45 (
+INFO  18:20:54,967 - #46 )
+INFO  18:20:54,967 - #49 {
+INFO  18:20:54,967 - #21 x
+INFO  18:20:54,967 - #38 =
+INFO  18:20:54,967 - #22 2
+INFO  18:20:54,967 - #41 ;
+INFO  18:20:54,967 - #50 }
+INFO  18:20:54,967 - #50 }
+INFO  18:20:54,968 - Program(
+  ProgramName(
+   p203
+  ) [ProgramName]
+  GlobalDeclList1(
+    GlobalDeclList1(
+      GlobalDeclList0(
+      ) [GlobalDeclList0]
+      GlobalDeclVar(
+        VarDeclValid(
+          Type(
+           int
+          ) [Type]
+          VarItemList1(
+            VarItem(
+             x
+              OptArray0(
+              ) [OptArray0]
+            ) [VarItem]
+          ) [VarItemList1]
+        ) [VarDeclValid]
+      ) [GlobalDeclVar]
+    ) [GlobalDeclList1]
+    GlobalDeclVar(
+      VarDeclValid(
         Type(
          int
         ) [Type]
         VarItemList1(
           VarItem(
-           a
+           x
             OptArray0(
             ) [OptArray0]
           ) [VarItem]
         ) [VarItemList1]
-      ) [VarDecl]
+      ) [VarDeclValid]
     ) [GlobalDeclVar]
   ) [GlobalDeclList1]
   MethodDeclList1(
-    MethodDeclList1(
-      MethodDeclList1(
-        MethodDeclList0(
-        ) [MethodDeclList0]
-        MethodDeclDerived1(
-        ) [MethodDeclDerived1]
-      ) [MethodDeclList1]
-      MethodDeclDerived1(
-      ) [MethodDeclDerived1]
-    ) [MethodDeclList1]
-    MethodDeclDerived1(
-    ) [MethodDeclDerived1]
+    MethodDeclList0(
+    ) [MethodDeclList0]
+    MethodDecl(
+      MethodRetTypeVoid(
+      ) [MethodRetTypeVoid]
+      MethodName(
+       main
+      ) [MethodName]
+      OptFormPars0(
+      ) [OptFormPars0]
+      VarDeclList0(
+      ) [VarDeclList0]
+      StatementList1(
+        StatementList0(
+        ) [StatementList0]
+        StatementDesignator(
+          DesignatorStatement(
+            Designator(
+             x
+              DesignatorSuffixList0(
+              ) [DesignatorSuffixList0]
+            ) [Designator]
+            DesignatorStmtTail1(
+              Assignop(
+              ) [Assignop]
+              Expr1(
+                SimpleExpr1(
+                  Term1(
+                    FactorNumConst(
+                     2
+                    ) [FactorNumConst]
+                  ) [Term1]
+                ) [SimpleExpr1]
+              ) [Expr1]
+            ) [DesignatorStmtTail1]
+          ) [DesignatorStatement]
+        ) [StatementDesignator]
+      ) [StatementList1]
+    ) [MethodDecl]
   ) [MethodDeclList1]
 ) [Program]
-INFO  11:30:33,401 - ===================================
-INFO  11:30:33,401 -  Print count calls = 0
-INFO  11:30:33,402 -  Deklarisanih promenljivih ima = 1
+INFO  18:20:54,968 - Generisanje koda završeno (obj/todo.obj)
+INFO  18:20:54,973 - Compiling source file: /Users/leairt/eclipse-workspace/Microjava Compiler/Microjava-Compiler/junit/p204.mj
+INFO  18:20:54,973 - #2 program
+INFO  18:20:54,973 - #21 p204
+INFO  18:20:54,974 - #8 const
+INFO  18:20:54,974 - #21 int
+INFO  18:20:54,974 - #21 x
+INFO  18:20:54,974 - #38 =
+INFO  18:20:54,974 - #22 1
+INFO  18:20:54,974 - #41 ;
+INFO  18:20:54,974 - #21 int
+INFO  18:20:54,974 - #21 x
+INFO  18:20:54,974 - #41 ;
+INFO  18:20:54,974 - #49 {
+INFO  18:20:54,974 - #14 void
+INFO  18:20:54,974 - #21 main
+INFO  18:20:54,974 - #45 (
+INFO  18:20:54,974 - #46 )
+INFO  18:20:54,974 - #49 {
+INFO  18:20:54,974 - #21 x
+INFO  18:20:54,974 - #38 =
+INFO  18:20:54,974 - #22 2
+INFO  18:20:54,974 - #41 ;
+INFO  18:20:54,974 - #50 }
+INFO  18:20:54,974 - #50 }
+INFO  18:20:54,974 - Program(
+  ProgramName(
+   p204
+  ) [ProgramName]
+  GlobalDeclList1(
+    GlobalDeclList1(
+      GlobalDeclList0(
+      ) [GlobalDeclList0]
+      GlobalDeclConst(
+        ConstDecl(
+          Type(
+           int
+          ) [Type]
+          ConstInitList1(
+            ConstInit(
+             x
+              ConstValueNum(
+               1
+              ) [ConstValueNum]
+            ) [ConstInit]
+          ) [ConstInitList1]
+        ) [ConstDecl]
+      ) [GlobalDeclConst]
+    ) [GlobalDeclList1]
+    GlobalDeclVar(
+      VarDeclValid(
+        Type(
+         int
+        ) [Type]
+        VarItemList1(
+          VarItem(
+           x
+            OptArray0(
+            ) [OptArray0]
+          ) [VarItem]
+        ) [VarItemList1]
+      ) [VarDeclValid]
+    ) [GlobalDeclVar]
+  ) [GlobalDeclList1]
+  MethodDeclList1(
+    MethodDeclList0(
+    ) [MethodDeclList0]
+    MethodDecl(
+      MethodRetTypeVoid(
+      ) [MethodRetTypeVoid]
+      MethodName(
+       main
+      ) [MethodName]
+      OptFormPars0(
+      ) [OptFormPars0]
+      VarDeclList0(
+      ) [VarDeclList0]
+      StatementList1(
+        StatementList0(
+        ) [StatementList0]
+        StatementDesignator(
+          DesignatorStatement(
+            Designator(
+             x
+              DesignatorSuffixList0(
+              ) [DesignatorSuffixList0]
+            ) [Designator]
+            DesignatorStmtTail1(
+              Assignop(
+              ) [Assignop]
+              Expr1(
+                SimpleExpr1(
+                  Term1(
+                    FactorNumConst(
+                     2
+                    ) [FactorNumConst]
+                  ) [Term1]
+                ) [SimpleExpr1]
+              ) [Expr1]
+            ) [DesignatorStmtTail1]
+          ) [DesignatorStatement]
+        ) [StatementDesignator]
+      ) [StatementList1]
+    ) [MethodDecl]
+  ) [MethodDeclList1]
+) [Program]
+INFO  18:20:54,975 - Generisanje koda završeno (obj/todo.obj)
+INFO  18:20:54,977 - Compiling source file: /Users/leairt/eclipse-workspace/Microjava Compiler/Microjava-Compiler/junit/p205.mj
+INFO  18:20:54,977 - #2 program
+INFO  18:20:54,977 - #21 p204
+INFO  18:20:54,977 - #21 int
+INFO  18:20:54,977 - #21 x
+INFO  18:20:54,977 - #41 ;
+INFO  18:20:54,977 - #8 const
+INFO  18:20:54,977 - #21 int
+INFO  18:20:54,977 - #21 x
+INFO  18:20:54,977 - #38 =
+INFO  18:20:54,977 - #22 1
+INFO  18:20:54,977 - #41 ;
+INFO  18:20:54,977 - #49 {
+INFO  18:20:54,977 - #14 void
+INFO  18:20:54,977 - #21 main
+INFO  18:20:54,977 - #45 (
+INFO  18:20:54,977 - #46 )
+INFO  18:20:54,977 - #49 {
+INFO  18:20:54,977 - #21 x
+INFO  18:20:54,977 - #38 =
+INFO  18:20:54,977 - #22 2
+INFO  18:20:54,977 - #41 ;
+INFO  18:20:54,977 - #50 }
+INFO  18:20:54,977 - #50 }
+INFO  18:20:54,977 - Program(
+  ProgramName(
+   p204
+  ) [ProgramName]
+  GlobalDeclList1(
+    GlobalDeclList1(
+      GlobalDeclList0(
+      ) [GlobalDeclList0]
+      GlobalDeclVar(
+        VarDeclValid(
+          Type(
+           int
+          ) [Type]
+          VarItemList1(
+            VarItem(
+             x
+              OptArray0(
+              ) [OptArray0]
+            ) [VarItem]
+          ) [VarItemList1]
+        ) [VarDeclValid]
+      ) [GlobalDeclVar]
+    ) [GlobalDeclList1]
+    GlobalDeclConst(
+      ConstDecl(
+        Type(
+         int
+        ) [Type]
+        ConstInitList1(
+          ConstInit(
+           x
+            ConstValueNum(
+             1
+            ) [ConstValueNum]
+          ) [ConstInit]
+        ) [ConstInitList1]
+      ) [ConstDecl]
+    ) [GlobalDeclConst]
+  ) [GlobalDeclList1]
+  MethodDeclList1(
+    MethodDeclList0(
+    ) [MethodDeclList0]
+    MethodDecl(
+      MethodRetTypeVoid(
+      ) [MethodRetTypeVoid]
+      MethodName(
+       main
+      ) [MethodName]
+      OptFormPars0(
+      ) [OptFormPars0]
+      VarDeclList0(
+      ) [VarDeclList0]
+      StatementList1(
+        StatementList0(
+        ) [StatementList0]
+        StatementDesignator(
+          DesignatorStatement(
+            Designator(
+             x
+              DesignatorSuffixList0(
+              ) [DesignatorSuffixList0]
+            ) [Designator]
+            DesignatorStmtTail1(
+              Assignop(
+              ) [Assignop]
+              Expr1(
+                SimpleExpr1(
+                  Term1(
+                    FactorNumConst(
+                     2
+                    ) [FactorNumConst]
+                  ) [Term1]
+                ) [SimpleExpr1]
+              ) [Expr1]
+            ) [DesignatorStmtTail1]
+          ) [DesignatorStatement]
+        ) [StatementDesignator]
+      ) [StatementList1]
+    ) [MethodDecl]
+  ) [MethodDeclList1]
+) [Program]
+ERROR 18:20:54,978 - Dvostruka definicija enum vrednosti x
+DEBUG 18:20:54,978 - dump errors
+DEBUG 18:20:54,978 - CompilerException: DUPLICATED_NAME [lineNumber=4, errorCode=DUPLICATED_NAME, data=x, refObj=null]
+INFO  18:20:54,978 - Compiling source file: /Users/leairt/eclipse-workspace/Microjava Compiler/Microjava-Compiler/junit/p206.mj
+INFO  18:20:54,978 - #2 program
+INFO  18:20:54,978 - #21 p206
+INFO  18:20:54,978 - #8 const
+INFO  18:20:54,978 - #21 p206
+INFO  18:20:54,978 - #21 x
+INFO  18:20:54,978 - #38 =
+INFO  18:20:54,978 - #22 1
+INFO  18:20:54,978 - #41 ;
+INFO  18:20:54,978 - #49 {
+INFO  18:20:54,978 - #14 void
+INFO  18:20:54,978 - #21 main
+INFO  18:20:54,978 - #45 (
+INFO  18:20:54,978 - #46 )
+INFO  18:20:54,978 - #49 {
+INFO  18:20:54,978 - #50 }
+INFO  18:20:54,978 - #50 }
+INFO  18:20:54,978 - Program(
+  ProgramName(
+   p206
+  ) [ProgramName]
+  GlobalDeclList1(
+    GlobalDeclList0(
+    ) [GlobalDeclList0]
+    GlobalDeclConst(
+      ConstDecl(
+        Type(
+         p206
+        ) [Type]
+        ConstInitList1(
+          ConstInit(
+           x
+            ConstValueNum(
+             1
+            ) [ConstValueNum]
+          ) [ConstInit]
+        ) [ConstInitList1]
+      ) [ConstDecl]
+    ) [GlobalDeclConst]
+  ) [GlobalDeclList1]
+  MethodDeclList1(
+    MethodDeclList0(
+    ) [MethodDeclList0]
+    MethodDecl(
+      MethodRetTypeVoid(
+      ) [MethodRetTypeVoid]
+      MethodName(
+       main
+      ) [MethodName]
+      OptFormPars0(
+      ) [OptFormPars0]
+      VarDeclList0(
+      ) [VarDeclList0]
+      StatementList0(
+      ) [StatementList0]
+    ) [MethodDecl]
+  ) [MethodDeclList1]
+) [Program]
+ERROR 18:20:54,978 - Neadekvatan tip p206 u tabeli simbola
+ERROR 18:20:54,978 - Neadekvatna dodela vrednosti konstante x
+DEBUG 18:20:54,982 - dump errors
+DEBUG 18:20:54,982 - CompilerException: CANNOT_BE_RESOLVED_AS_TYPE [lineNumber=3, errorCode=CANNOT_BE_RESOLVED_AS_TYPE, data=p206, refObj=null]
+DEBUG 18:20:54,982 - CompilerException: TODO [lineNumber=3, errorCode=TODO, data=x, refObj=null]

@@ -1,5 +1,8 @@
 package rs.ac.bg.etf.pp1;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.apache.log4j.Logger;
 
 import rs.ac.bg.etf.pp1.ast.*;
@@ -9,12 +12,14 @@ import rs.etf.pp1.symboltable.*;
 import rs.etf.pp1.symboltable.concepts.*;
 
 public class SemanticAnalyzer extends VisitorAdaptor {
+	private static Logger log = Logger.getLogger(SemanticAnalyzer.class);	
 	
 	Struct boolType = Tab.find("bool").getType();
 
 	Obj currentProgram = null;
-	Struct currentType = null;
+	Boolean currentHasMainMethod = false;
 	
+	Struct currentType = null;
 	Struct currentConstType = null;
 	int currentConstValue;
 		
@@ -25,39 +30,30 @@ public class SemanticAnalyzer extends VisitorAdaptor {
 	Struct currentMethodRetType = null;
 	String currentMethodName = null;
 	
-	boolean errorDetected = false;
-	int nVars = 0;
-	Logger log = Logger.getLogger(getClass());
+	Boolean currentIsArray = false;
 
-	java.util.List<CompilerException> errors = new java.util.ArrayList<>();
+	int nVars;
+	List<CompilerException> errors = new ArrayList<>();
 
-	public java.util.List<CompilerException> getErrors() {
-		return errors;
-	}
 
 	public int getnVars() {
 		return nVars;
 	}
 
-	public void report_error(String message, SyntaxNode info) {
-		errorDetected = true;
-		StringBuilder msg = new StringBuilder(message);
-		int line = (info == null) ? 0: info.getLine();
-		if (line != 0)
-			msg.append (" na liniji ").append(line);
-		log.error(msg.toString());
+    // errors
+
+    public void report_error(ErrorCode errorCode, SyntaxNode info, String data) {
+		int line = (info == null) ? 0: info.getLine();		
+        errors.add(new CompilerException(errorCode, line, data));        
 	}
 
-	public void report_info(String message, SyntaxNode info) {
-		StringBuilder msg = new StringBuilder(message); 
-		int line = (info == null) ? 0: info.getLine();
-		if (line != 0)
-			msg.append (" na liniji ").append(line);
-		log.info(msg.toString());
-	}
+    public java.util.List<CompilerException> getErrors() {
+    	return errors;
+    }
+
 	
 	public boolean passed(){
-    	return !errorDetected;
+    	return errors.isEmpty();
     }
 
 	
@@ -96,29 +92,44 @@ public class SemanticAnalyzer extends VisitorAdaptor {
 		currentConstType = Tab.intType;
 	}
 	
-	// CONST DECLARATION
+	// CONST
 	@Override
 	public void visit(ConstInit constInit){
 		Obj constObj = Tab.find(constInit.getName());
 		if(constObj != Tab.noObj){
-			report_error("Dvostruka definicija " + constInit.getName(), constInit);
+			log.error("Dvostruka definicija enum vrednosti " + constInit.getName());  
+    		report_error(ErrorCode.DUPLICATED_NAME, constInit, constInit.getName());
 			return;
 		}
 		if(!currentConstType.assignableTo(currentType)){
-			report_error("Neadekvatna dodela vrednosti konstante " + constInit.getName(), constInit);
+			log.error("Neadekvatna dodela vrednosti konstante " + constInit.getName());
+			report_error(ErrorCode.TODO, constInit, constInit.getName());	  
 			return;
 		}
 		constObj = Tab.insert(Obj.Con, constInit.getName(), currentType);
 		constObj.setAdr(currentConstValue);
 	}
 	
-	// VAR DECLARATION
+	// VAR
 	@Override
 	public void visit(VarItem varItem){
-		Tab.insert(Obj.Var, varItem.getName(), currentType);
+		if(currentIsArray)
+			Tab.insert(Obj.Var, varItem.getName(), new Struct(Struct.Array, currentType));
+		else
+			Tab.insert(Obj.Var, varItem.getName(), currentType);
 	}
 	
-	// ENUM DECLARATION
+	@Override
+	public void visit(OptArray0 optArray0){
+		currentIsArray = false;
+	}
+	
+	@Override
+	public void visit(OptArray1 optArray1){
+		currentIsArray = true;
+	}
+	
+	// ENUM
 	@Override
 	public void visit(EnumDecl enumDecl){
 		Tab.chainLocalSymbols(currentEnum);
@@ -129,7 +140,8 @@ public class SemanticAnalyzer extends VisitorAdaptor {
 	public void visit(EnumName enumName){
 		Obj enumObj = Tab.find(enumName.getName());
 		if(enumObj != Tab.noObj){
-			report_error("Dvostruka definicija enuma " + enumName.getName(), enumName);
+			log.error("Dvostruka definicija enuma " + enumName.getName());
+			report_error(ErrorCode.DUPLICATED_NAME, enumName, enumName.getName());		
 			return;
 		}
 		enumObj = Tab.insert(Obj.Type, enumName.getName(), new Struct(Struct.Enum));
@@ -142,7 +154,8 @@ public class SemanticAnalyzer extends VisitorAdaptor {
 	public void visit(EnumItemNoAssign enumItem){
 		Obj enumItemObj = Tab.find(enumItem.getName());
 		if(enumItemObj != Tab.noObj){
-			report_error("Dvostruka definicija enum vrednosti " + enumItem.getName(), enumItem);
+			log.error("Dvostruka definicija enum vrednosti " + enumItem.getName());
+			report_error(ErrorCode.DUPLICATED_NAME, enumItem, enumItem.getName());	
 			return;
 		}
 		enumItemObj = Tab.insert(Obj.Con,  enumItem.getName(), currentEnum.getType());
@@ -154,7 +167,13 @@ public class SemanticAnalyzer extends VisitorAdaptor {
 	public void visit(EnumItemWithAssign enumItem){
 		Obj enumItemObj = Tab.find(enumItem.getName());
 		if(enumItemObj != Tab.noObj){
-			report_error("Dvostruka definicija enum vrednosti " + enumItem.getName(), enumItem);
+			log.error("Dvostruka definicija enum vrednosti " + enumItem.getName());
+			report_error(ErrorCode.DUPLICATED_NAME, enumItem, enumItem.getName());	
+			return;
+		}
+		if(enumItem.getValue() < currentEnumValue){
+			log.error("Neadekvatna vrednost enum item-a " + enumItem.getName());
+			report_error(ErrorCode.TODO, enumItem, enumItem.getName());
 			return;
 		}
 		enumItemObj = Tab.insert(Obj.Con,  enumItem.getName(), currentEnum.getType());
@@ -162,7 +181,7 @@ public class SemanticAnalyzer extends VisitorAdaptor {
 		currentEnumValue = enumItem.getValue() + 1;
 	}
 	
-	// METHOD DECLARATION
+	// METHOD
 	@Override
 	public void visit(MethodDecl methodDecl){
 		Tab.chainLocalSymbols(currentMethod);
@@ -172,38 +191,67 @@ public class SemanticAnalyzer extends VisitorAdaptor {
 	@Override
 	public void visit(MethodName methodName){
 		currentMethodName = methodName.getName();
+		if(currentMethodName.equals("main")){ 
+			if(currentHasMainMethod) {
+				// report_error("Dvostruka definicija main funkcije", methodName);
+				log.error("Dvostruka definicija main funkcije");
+			}
+			else {
+				currentHasMainMethod = true;
+				if(currentMethodRetType != Tab.noType) {
+					// report_error("Pogresan povratni tip main funkcije", methodName);
+					log.error("Pogresan povratni tip main funkcije");
+					report_error(ErrorCode.INVALID_RETURN_TYPE, methodName, methodName.getName());
+				}
+			}
+		}
+		currentMethod = Tab.insert(Obj.Meth, currentMethodName, currentMethodRetType);
+		methodName.obj = currentMethod;
+		Tab.openScope();
 	}
 	
 	@Override
 	public void visit(MethodRetTypeVoid methodRetType){
 		currentMethodRetType = Tab.noType;
-		currentMethod = Tab.insert(Obj.Meth, currentMethodName, currentMethodRetType);
-		Tab.openScope();
 	}
 	
 	@Override
 	public void visit(MethodRetTypeObject methodRetType){
 		currentMethodRetType = currentType;
-		currentMethod = Tab.insert(Obj.Meth, currentMethodName, currentMethodRetType);
-		Tab.openScope();
 	}
+	
+	// FORMAL PARAMETER
+	@Override
+	public void visit(FormPar formPar){
+		if(currentIsArray)
+			Tab.insert(Obj.Var, formPar.getI2(), new Struct(Struct.Array, currentType));
+		else
+			Tab.insert(Obj.Var, formPar.getI2(), currentType);
+	}
+
 	
 	// TYPE
 	@Override
 	public void visit(Type type){
 		Obj typeObj = Tab.find(type.getType());
 		if(typeObj == Tab.noObj){
-			report_error("Nepostojeci tip " + type.getType() + " u tabeli simbola! ", type);
+			// report_error("Nepostojeci tip " + type.getType() + " u tabeli simbola! ", type);
+			log.error("Nepostojeci tip " + type.getType() + " u tabeli simbola");
+			report_error(ErrorCode.CANNOT_BE_RESOLVED_AS_TYPE, type, type.getType());
 			currentType = Tab.noType;
 			return;
 		}
 		if(typeObj.getKind() != Obj.Type){
-			report_error("Neadekvatan tip " + type.getType() + " u tabeli simbola! ", type);
+			// report_error("Neadekvatan tip " + type.getType() + " u tabeli simbola! ", type);
+			log.error("Neadekvatan tip " + type.getType() + " u tabeli simbola");
+			report_error(ErrorCode.CANNOT_BE_RESOLVED_AS_TYPE, type, type.getType());
 			currentType = Tab.noType;
 			return;
 		}
 		currentType = typeObj.getType();
 	}
+	
+	// 
 	
 	/*public void visit(VarDecl varDecl){
 		//varDeclCount++;
