@@ -1,0 +1,41 @@
+// test svih relacijskih operatora: eq, neq, gt, ge, lt, le
+program p318
+{
+    void main()
+        int a, b;
+        char c, d;
+        bool x, y;
+    {
+        a = 5;
+        b = 3;
+        c = 'b';
+        d = 'a';
+        x = true;
+        y = false;
+
+        // true slucajevi za svih 6 relop operatora
+        print(a == 5 ? 1 : 0);
+        print(a != b ? 1 : 0);
+        print(a > b ? 1 : 0);
+        print(a >= 5 ? 1 : 0);
+        print(b < a ? 1 : 0);
+        print(b <= 3 ? 1 : 0);
+        print(eol);
+
+        // false slucajevi za svih 6 relop operatora
+        print(a == b ? 1 : 0);
+        print(a != 5 ? 1 : 0);
+        print(a > 7 ? 1 : 0);
+        print(b >= a ? 1 : 0);
+        print(a < b ? 1 : 0);
+        print(a <= b ? 1 : 0);
+        print(eol);
+
+        // dodatno: eq i neq nad char i bool
+        print(c == 'b' ? 1 : 0);
+        print(c != d ? 1 : 0);
+        print(x == true ? 1 : 0);
+        print(x != y ? 1 : 0);
+        print(eol);
+    }
+}

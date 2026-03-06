@@ -25,13 +25,19 @@ public class SemanticAnalyzer extends VisitorAdaptor {
 	Struct currentConstType = null;
 	int currentConstValue;
 		
-	Obj currentEnum = null;
-	int currentEnumValue;
-	
-	Obj currentMethod = null;
-	Struct currentMethodRetType = null;
-	String currentMethodName = null;
-	int currentMethodParamCount = 0;
+		Obj currentEnum = null;
+		int currentEnumValue;
+		java.util.Set<Integer> currentEnumAssignedValues = new java.util.HashSet<>();
+		
+		Obj currentMethod = null;
+		Struct currentMethodRetType = null;
+		String currentMethodName = null;
+		int currentMethodParamCount = 0;
+		boolean currentMethodHasReturn = false;
+		List<Struct> currentMethodFormalParamTypes = new ArrayList<>();
+	int loopDepth = 0;
+	int switchDepth = 0;
+	List<java.util.Set<Integer>> switchCaseValues = new ArrayList<>();
 	
 	Boolean currentIsArray = false;
 
@@ -103,14 +109,73 @@ public class SemanticAnalyzer extends VisitorAdaptor {
 		}
 		return types;
 	}
+
+	private List<Struct> getActArgTypes(OptActPars optActPars) {
+		List<Struct> types = new ArrayList<>();
+		if (optActPars instanceof OptActPars1) {
+			ActPars actPars = ((OptActPars1) optActPars).getActPars();
+			collectActArgTypes(actPars.getExprList(), types);
+		}
+		return types;
+	}
+
+	private List<Obj> getFormalParams(Obj methodObj) {
+		List<Obj> params = new ArrayList<>();
+		if (methodObj == null || methodObj == Tab.noObj) {
+			return params;
+		}
+		int needed = methodObj.getLevel();
+		for (Obj sym : methodObj.getLocalSymbols()) {
+			if (params.size() >= needed) {
+				break;
+			}
+			if (sym.getKind() == Obj.Var) {
+				params.add(sym);
+			}
+		}
+		return params;
+	}
+
+	private void validateCallArguments(Obj methodObj, OptActPars optActPars, SyntaxNode info) {
+		List<Struct> actual = getActArgTypes(optActPars);
+		if (methodObj == currentMethod) {
+			if (actual.size() != currentMethodFormalParamTypes.size()) {
+				log.error("Greska na liniji " + info.getLine() + ": neispravan broj argumenata za funkciju " + methodObj.getName());
+				report_error(ErrorCode.TODO, info, methodObj.getName());
+				return;
+			}
+			for (int i = 0; i < actual.size(); i++) {
+				if (!actual.get(i).assignableTo(currentMethodFormalParamTypes.get(i))) {
+					log.error("Greska na liniji " + info.getLine() + ": neispravan tip argumenta #" + (i + 1) + " za funkciju " + methodObj.getName());
+					report_error(ErrorCode.TODO, info, methodObj.getName());
+					return;
+				}
+			}
+			return;
+		}
+		
+		List<Obj> formal = getFormalParams(methodObj);
+		if (actual.size() != formal.size()) {
+			log.error("Greska na liniji " + info.getLine() + ": neispravan broj argumenata za funkciju " + methodObj.getName());
+			report_error(ErrorCode.TODO, info, methodObj.getName());
+			return;
+		}
+		for (int i = 0; i < actual.size(); i++) {
+			if (!actual.get(i).assignableTo(formal.get(i).getType())) {
+				log.error("Greska na liniji " + info.getLine() + ": neispravan tip argumenta #" + (i + 1) + " za funkciju " + methodObj.getName());
+				report_error(ErrorCode.TODO, info, methodObj.getName());
+				return;
+			}
+		}
+	}
 	
-	private boolean validateBuiltInCall(Obj functionObj, FactorDesignator callSite) {
+	private boolean validateBuiltInCall(Obj functionObj, OptActPars optActPars, SyntaxNode callSite) {
 		String fn = functionObj.getName();
 		if (!"ord".equals(fn) && !"chr".equals(fn) && !"len".equals(fn)) {
 			return true;
 		}
 		
-		List<Struct> args = getActArgTypes((OptCall1) callSite.getOptCall());
+		List<Struct> args = getActArgTypes(optActPars);
 		if (args.size() != 1) {
 			log.error("Greska na liniji " + callSite.getLine() + ": funkcija " + fn + " mora imati tacno 1 argument");
 			report_error(ErrorCode.TODO, callSite, fn);
@@ -137,6 +202,10 @@ public class SemanticAnalyzer extends VisitorAdaptor {
 		}
 		
 		return true;
+	}
+	
+	private boolean validateBuiltInCall(Obj functionObj, FactorDesignator callSite) {
+		return validateBuiltInCall(functionObj, ((OptCall1) callSite.getOptCall()).getOptActPars(), callSite);
 	}
 	
 	private Obj getDesignator(Designator designator) {
@@ -306,7 +375,7 @@ public class SemanticAnalyzer extends VisitorAdaptor {
     		report_error(ErrorCode.DUPLICATED_NAME, constInit, constInit.getName());
 			return;
 		}
-		if(!currentConstType.assignableTo(currentType)){
+		if(!currentConstType.equals(currentType)){
 			log.error("Neadekvatna dodela vrednosti konstante " + constInit.getName());
 			report_error(ErrorCode.INVALID_CONSTANT_VALUE, constInit, constInit.getName());	  
 			return;
@@ -355,11 +424,12 @@ public class SemanticAnalyzer extends VisitorAdaptor {
 			report_error(ErrorCode.DUPLICATED_NAME, enumName, enumName.getName());		
 			return;
 		}
-		enumObj = Tab.insert(Obj.Type, enumName.getName(), new Struct(Struct.Enum));
-		currentEnum = enumObj;
-		currentEnumValue = 0;
-		Tab.openScope();
-	}
+			enumObj = Tab.insert(Obj.Type, enumName.getName(), new Struct(Struct.Enum));
+			currentEnum = enumObj;
+			currentEnumValue = 0;
+			currentEnumAssignedValues.clear();
+			Tab.openScope();
+		}
 	
 	@Override
 	public void visit(EnumItemNoAssign enumItem){
@@ -369,8 +439,12 @@ public class SemanticAnalyzer extends VisitorAdaptor {
 			report_error(ErrorCode.DUPLICATED_NAME, enumItem, enumItem.getName());	
 			return;
 		}
+		while (currentEnumAssignedValues.contains(currentEnumValue)) {
+			currentEnumValue++;
+		}
 		enumItemObj = Tab.insert(Obj.Con,  enumItem.getName(), currentEnum.getType());
 		enumItemObj.setAdr(currentEnumValue);
+		currentEnumAssignedValues.add(currentEnumValue);
 		currentEnumValue++;
 	}
 	
@@ -382,13 +456,14 @@ public class SemanticAnalyzer extends VisitorAdaptor {
 			report_error(ErrorCode.DUPLICATED_NAME, enumItem, enumItem.getName());	
 			return;
 		}
-		if(enumItem.getValue() < currentEnumValue){
-			log.error("Neadekvatna vrednost enum item-a " + enumItem.getName());
+		if(currentEnumAssignedValues.contains(enumItem.getValue())){
+			log.error("Duplirana vrednost enum item-a " + enumItem.getName());
 			report_error(ErrorCode.INVALID_CONSTANT_VALUE, enumItem, enumItem.getName());
 			return;
 		}
 		enumItemObj = Tab.insert(Obj.Con,  enumItem.getName(), currentEnum.getType());
 		enumItemObj.setAdr(enumItem.getValue());
+		currentEnumAssignedValues.add(enumItem.getValue());
 		currentEnumValue = enumItem.getValue() + 1;
 	}
 	
@@ -401,6 +476,10 @@ public class SemanticAnalyzer extends VisitorAdaptor {
 		}
 		
 		if (currentMethod != null) {
+			if (currentMethod.getType() != Tab.noType && !currentMethodHasReturn) {
+				log.error("Greska: metoda " + currentMethod.getName() + " nema return iskaz");
+				report_error(ErrorCode.INVALID_RETURN_TYPE, methodDecl, currentMethod.getName());
+			}
 			currentMethod.setLevel(currentMethodParamCount);
 		}
 		
@@ -409,12 +488,16 @@ public class SemanticAnalyzer extends VisitorAdaptor {
 		currentMethod = null;
 		currentMethodName = null;
 		currentMethodParamCount = 0;
+		currentMethodHasReturn = false;
+		currentMethodFormalParamTypes.clear();
 	}
 	
 	@Override
 	public void visit(MethodName methodName){
 		currentMethodName = methodName.getName();
 		currentMethodParamCount = 0;
+		currentMethodHasReturn = false;
+		currentMethodFormalParamTypes.clear();
 		
 		if(Tab.currentScope.findSymbol(currentMethodName) != null) {
 			log.error("Dvostruka definicija funkcije " + currentMethodName);
@@ -437,6 +520,7 @@ public class SemanticAnalyzer extends VisitorAdaptor {
 			}
 		}
 		currentMethod = Tab.insert(Obj.Meth, currentMethodName, currentMethodRetType);
+		currentMethod.setLevel(0);
 		methodName.obj = currentMethod;
 		Tab.openScope();
 	}
@@ -466,6 +550,10 @@ public class SemanticAnalyzer extends VisitorAdaptor {
 			Tab.insert(Obj.Var, formPar.getName(), currentType);
 		
 		currentMethodParamCount++;
+		currentMethodFormalParamTypes.add(currentIsArray ? new Struct(Struct.Array, currentType) : currentType);
+		if (currentMethod != null && currentMethod != Tab.noObj) {
+			currentMethod.setLevel(currentMethodParamCount);
+		}
 	}
 
 	
@@ -548,6 +636,9 @@ public class SemanticAnalyzer extends VisitorAdaptor {
 			if (!validateBuiltInCall(designatorObj, factorDesignator)) {
 				setNodeType(factorDesignator, Tab.noType);
 				return;
+			}
+			if (!"ord".equals(designatorObj.getName()) && !"chr".equals(designatorObj.getName()) && !"len".equals(designatorObj.getName())) {
+				validateCallArguments(designatorObj, ((OptCall1) factorDesignator.getOptCall()).getOptActPars(), factorDesignator);
 			}
 		}
 		
@@ -747,6 +838,16 @@ public class SemanticAnalyzer extends VisitorAdaptor {
 			log.error("Greska na liniji " + designatorStatement.getLine() + ": " + designatorObj.getName() + " nije funkcija");
 			report_error(ErrorCode.TODO, designatorStatement, designatorObj.getName());
 		}
+		
+		if (tail instanceof DesignatorStmtTail2 && designatorObj.getKind() == Obj.Meth) {
+			OptActPars optActPars = ((DesignatorStmtTail2) tail).getOptActPars();
+			if (!validateBuiltInCall(designatorObj, optActPars, designatorStatement)) {
+				return;
+			}
+			if (!"ord".equals(designatorObj.getName()) && !"chr".equals(designatorObj.getName()) && !"len".equals(designatorObj.getName())) {
+				validateCallArguments(designatorObj, optActPars, designatorStatement);
+			}
+		}
 	}
 	
 	@Override
@@ -780,8 +881,11 @@ public class SemanticAnalyzer extends VisitorAdaptor {
 	@Override
 	public void visit(StatementReturn statementReturn) {
 		if (currentMethod == null || currentMethod == Tab.noObj) {
+			log.error("Greska na liniji " + statementReturn.getLine() + ": return mora biti unutar funkcije");
+			report_error(ErrorCode.INVALID_RETURN_TYPE, statementReturn, "");
 			return;
 		}
+		currentMethodHasReturn = true;
 		
 		if (statementReturn.getOptExpr() instanceof OptExpr0) {
 			if (currentMethod.getType() != Tab.noType) {
@@ -795,6 +899,87 @@ public class SemanticAnalyzer extends VisitorAdaptor {
 		if (!exprType.assignableTo(currentMethod.getType())) {
 			log.error("Greska na liniji " + statementReturn.getLine() + ": pogresan tip povratne vrednosti");
 			report_error(ErrorCode.INVALID_RETURN_TYPE, statementReturn, currentMethod.getName());
+		}
+	}
+
+	@Override
+	public void visit(StatementBreak statementBreak) {
+		if (loopDepth == 0 && switchDepth == 0) {
+			log.error("Greska na liniji " + statementBreak.getLine() + ": break mora biti unutar for/switch");
+			report_error(ErrorCode.TODO, statementBreak, "");
+		}
+	}
+	
+	@Override
+	public void visit(StatementContinue statementContinue) {
+		if (loopDepth == 0) {
+			log.error("Greska na liniji " + statementContinue.getLine() + ": continue mora biti unutar for petlje");
+			report_error(ErrorCode.TODO, statementContinue, "");
+		}
+	}
+
+	@Override
+	public void visit(StatementFor statementFor) {
+		if (statementFor.getOptCondition() instanceof OptCondition1) {
+			Struct condType = getNodeType(((OptCondition1) statementFor.getOptCondition()).getCondition());
+			if (!condType.equals(boolType)) {
+				log.error("Greska na liniji " + statementFor.getLine() + ": uslov for mora biti bool");
+				report_error(ErrorCode.TODO, statementFor, "");
+			}
+		}
+		loopDepth = Math.max(0, loopDepth - 1);
+	}
+
+	@Override
+	public void visit(OptCondition0 optCondition0) {
+		if (optCondition0.getParent() instanceof StatementFor) {
+			loopDepth++;
+		}
+	}
+	
+	@Override
+	public void visit(OptCondition1 optCondition1) {
+		if (optCondition1.getParent() instanceof StatementFor) {
+			loopDepth++;
+		}
+	}
+
+	@Override
+	public void visit(StatementSwitch statementSwitch) {
+		Struct exprType = getNodeType(statementSwitch.getExpr());
+		if (!isIntLikeType(exprType)) {
+			log.error("Greska na liniji " + statementSwitch.getLine() + ": switch izraz mora biti int");
+			report_error(ErrorCode.TODO, statementSwitch, "");
+		}
+		switchDepth = Math.max(0, switchDepth - 1);
+		if (!switchCaseValues.isEmpty()) {
+			switchCaseValues.remove(switchCaseValues.size() - 1);
+		}
+	}
+
+	@Override
+	public void visit(CaseList0 caseList0) {
+		SyntaxNode p = caseList0.getParent();
+		while (p != null && !(p instanceof StatementSwitch)) {
+			p = p.getParent();
+		}
+		if (p instanceof StatementSwitch) {
+			switchDepth++;
+			switchCaseValues.add(new java.util.HashSet<>());
+		}
+	}
+
+	@Override
+	public void visit(Case caseNode) {
+		if (switchCaseValues.isEmpty()) {
+			return;
+		}
+		java.util.Set<Integer> used = switchCaseValues.get(switchCaseValues.size() - 1);
+		if (used.contains(caseNode.getN1())) {
+			log.error("Greska na liniji " + caseNode.getLine() + ": duplirana switch case vrednost " + caseNode.getN1());
+			report_error(ErrorCode.TODO, caseNode, "");
+		} else {
+			used.add(caseNode.getN1());
 		}
 	}
 	

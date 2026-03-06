@@ -1,0 +1,14 @@
+program b003
+{
+	void main()
+		int x;
+	{
+		x = 2;
+		switch (x) {
+			case 1: print(10); break;
+			case 2: print(20);
+			case 3: print(30); break;
+		}
+		print(eol);
+	}
+}

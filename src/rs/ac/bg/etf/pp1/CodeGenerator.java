@@ -1,11 +1,20 @@
 package rs.ac.bg.etf.pp1;
 
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Map;
+import java.util.Set;
 
 import rs.ac.bg.etf.pp1.ast.ActPars;
 import rs.ac.bg.etf.pp1.ast.AddopADD;
+import rs.ac.bg.etf.pp1.ast.Case;
+import rs.ac.bg.etf.pp1.ast.CaseList;
+import rs.ac.bg.etf.pp1.ast.CaseList0;
+import rs.ac.bg.etf.pp1.ast.CaseList1;
 import rs.ac.bg.etf.pp1.ast.CondFact;
+import rs.ac.bg.etf.pp1.ast.Condition;
 import rs.ac.bg.etf.pp1.ast.Designator;
 import rs.ac.bg.etf.pp1.ast.DesignatorSuffix;
 import rs.ac.bg.etf.pp1.ast.DesignatorSuffix1;
@@ -32,8 +41,16 @@ import rs.ac.bg.etf.pp1.ast.MethodDecl;
 import rs.ac.bg.etf.pp1.ast.MethodName;
 import rs.ac.bg.etf.pp1.ast.MulopDIV;
 import rs.ac.bg.etf.pp1.ast.MulopMUL;
+import rs.ac.bg.etf.pp1.ast.OptCondition0;
+import rs.ac.bg.etf.pp1.ast.OptCondition1;
 import rs.ac.bg.etf.pp1.ast.OptCall0;
 import rs.ac.bg.etf.pp1.ast.OptCall1;
+import rs.ac.bg.etf.pp1.ast.OptDesignatorStatement;
+import rs.ac.bg.etf.pp1.ast.OptDesignatorStatement0;
+import rs.ac.bg.etf.pp1.ast.OptDesignatorStatement1;
+import rs.ac.bg.etf.pp1.ast.OptElse0;
+import rs.ac.bg.etf.pp1.ast.OptElse1;
+import rs.ac.bg.etf.pp1.ast.OptExpr1;
 import rs.ac.bg.etf.pp1.ast.OptNumConst1;
 import rs.ac.bg.etf.pp1.ast.OptRel0;
 import rs.ac.bg.etf.pp1.ast.OptRel1;
@@ -49,8 +66,21 @@ import rs.ac.bg.etf.pp1.ast.SimpleExpr;
 import rs.ac.bg.etf.pp1.ast.SimpleExpr1;
 import rs.ac.bg.etf.pp1.ast.SimpleExpr2;
 import rs.ac.bg.etf.pp1.ast.SimpleExpr3;
+import rs.ac.bg.etf.pp1.ast.Statement;
+import rs.ac.bg.etf.pp1.ast.StatementBreak;
+import rs.ac.bg.etf.pp1.ast.StatementContinue;
+import rs.ac.bg.etf.pp1.ast.StatementDesignator;
+import rs.ac.bg.etf.pp1.ast.StatementFor;
+import rs.ac.bg.etf.pp1.ast.StatementIf;
 import rs.ac.bg.etf.pp1.ast.StatementPrint;
 import rs.ac.bg.etf.pp1.ast.StatementRead;
+import rs.ac.bg.etf.pp1.ast.StatementReturn;
+import rs.ac.bg.etf.pp1.ast.StatementStmtList;
+import rs.ac.bg.etf.pp1.ast.StatementSwitch;
+import rs.ac.bg.etf.pp1.ast.StatementList;
+import rs.ac.bg.etf.pp1.ast.StatementList0;
+import rs.ac.bg.etf.pp1.ast.StatementList1;
+import rs.ac.bg.etf.pp1.ast.SyntaxNode;
 import rs.ac.bg.etf.pp1.ast.Term;
 import rs.ac.bg.etf.pp1.ast.Term1;
 import rs.ac.bg.etf.pp1.ast.Term2;
@@ -68,6 +98,35 @@ public class CodeGenerator extends VisitorAdaptor {
 
 	private Obj currentProgram;
 	private Obj currentMethod;
+	
+	private final Map<StatementIf, List<Integer>> ifFalseJumps = new HashMap<>();
+	private final Map<StatementIf, Integer> ifEndJumps = new HashMap<>();
+	
+	private static class LoopContext {
+		StatementFor node;
+		int condStart = -1;
+		int bodyJump = -1;
+		int falseJump = -1;
+		int updateStart = -1;
+		List<Integer> breakJumps = new ArrayList<>();
+		List<Integer> continueJumps = new ArrayList<>();
+	}
+	private final Map<StatementFor, LoopContext> forContexts = new HashMap<>();
+	private final List<LoopContext> loopStack = new ArrayList<>();
+	
+	private static class SwitchContext {
+		StatementSwitch node;
+		List<Integer> breakJumps = new ArrayList<>();
+	}
+	private final List<SwitchContext> switchStack = new ArrayList<>();
+	
+	private final Set<SyntaxNode> suppressedRoots = new HashSet<>();
+	private boolean forceEmit = false;
+	
+	private static class BoolLists {
+		List<Integer> trueJumps = new ArrayList<>();
+		List<Integer> falseJumps = new ArrayList<>();
+	}
 
 	public int getMainPC() {
 		return this.mainPC;
@@ -106,6 +165,7 @@ public class CodeGenerator extends VisitorAdaptor {
 
 	@Override
 	public void visit(StatementPrint statementPrint) {
+		if (isSuppressed(statementPrint)) return;
 		boolean bytePrint = isCharExpression(statementPrint.getExpr());
 		int width = bytePrint ? 1 : 0;
 
@@ -115,10 +175,12 @@ public class CodeGenerator extends VisitorAdaptor {
 
 		Code.loadConst(width);
 		Code.put(bytePrint ? Code.bprint : Code.print);
+		afterThenStatement(statementPrint);
 	}
 	
 	@Override
 	public void visit(DesignatorStatement designatorStatement) {
+		if (isSuppressed(designatorStatement)) return;
 		Obj target = resolveDesignatorObj(designatorStatement.getDesignator());
 		if (target == Tab.noObj) {
 			return;
@@ -197,53 +259,29 @@ public class CodeGenerator extends VisitorAdaptor {
 	}
 
 	@Override
-	public void visit(StatementRead statementRead) {
-		Obj target = resolveDesignatorObj(statementRead.getDesignator());
-		if (target == Tab.noObj) {
-			return;
-		}
-
-		if (target.getKind() == Obj.Var) {
-			Code.put(target.getType() == Tab.charType ? Code.bread : Code.read);
-			Code.store(target);
-			return;
-		}
-
-		if (target.getKind() == Obj.Elem) {
-			// Designator je vec izgenerisao index; ukloni ga i regenerisi adr/index.
-			Code.put(Code.pop);
-
-			Obj baseObj = findSymbol(statementRead.getDesignator().getName());
-			DesignatorSuffix3 indexSuffix = getLastIndexSuffix(statementRead.getDesignator());
-			if (baseObj == Tab.noObj || indexSuffix == null) {
-				return;
-			}
-
-			Code.load(baseObj);
-			indexSuffix.getExpr().traverseBottomUp(this);
-			Struct elemType = baseObj.getType().getElemType();
-			Code.put(elemType == Tab.charType ? Code.bread : Code.read);
-			Code.put(elemType == Tab.charType ? Code.bastore : Code.astore);
-		}
-	}
-
-	@Override
 	public void visit(FactorNumConst factorNumConst) {
+		if (isInsideIfCondition(factorNumConst) && !forceEmit) return;
+		if (isSuppressed(factorNumConst)) return;
 		Code.loadConst(factorNumConst.getN1());
 	}
 
 	@Override
 	public void visit(FactorCharConst factorCharConst) {
+		if (isInsideIfCondition(factorCharConst) && !forceEmit) return;
+		if (isSuppressed(factorCharConst)) return;
 		Code.loadConst(factorCharConst.getC1());
 	}
 
 	@Override
 	public void visit(FactorBoolConst factorBoolConst) {
+		if (isInsideIfCondition(factorBoolConst) && !forceEmit) return;
+		if (isSuppressed(factorBoolConst)) return;
 		Code.loadConst(factorBoolConst.getB1());
 	}
 
 	@Override
 	public void visit(FactorNewArr factorNewArr) {
+		if (isSuppressed(factorNewArr)) return;
 		Struct elemType = resolveTypeSymbol(factorNewArr.getType());
 		Code.put(Code.newarray);
 		Code.put(elemType == Tab.charType ? 0 : 1);
@@ -251,6 +289,8 @@ public class CodeGenerator extends VisitorAdaptor {
 
 	@Override
 	public void visit(FactorDesignator factorDesignator) {
+		if (isInsideIfCondition(factorDesignator) && !forceEmit) return;
+		if (isSuppressed(factorDesignator)) return;
 		if (factorDesignator.getOptCall() instanceof OptCall1) {
 			emitFunctionCall(factorDesignator.getDesignator());
 		} else {
@@ -260,6 +300,8 @@ public class CodeGenerator extends VisitorAdaptor {
 
 	@Override
 	public void visit(Term2 term2) {
+		if (isInsideIfCondition(term2) && !forceEmit) return;
+		if (isSuppressed(term2)) return;
 		if (term2.getMulop() instanceof MulopMUL) {
 			Code.put(Code.mul);
 		} else if (term2.getMulop() instanceof MulopDIV) {
@@ -271,11 +313,15 @@ public class CodeGenerator extends VisitorAdaptor {
 
 	@Override
 	public void visit(SimpleExpr2 simpleExpr2) {
+		if (isInsideIfCondition(simpleExpr2) && !forceEmit) return;
+		if (isSuppressed(simpleExpr2)) return;
 		Code.put(Code.neg);
 	}
 
 	@Override
 	public void visit(SimpleExpr3 simpleExpr3) {
+		if (isInsideIfCondition(simpleExpr3) && !forceEmit) return;
+		if (isSuppressed(simpleExpr3)) return;
 		if (simpleExpr3.getAddop() instanceof AddopADD) {
 			Code.put(Code.add);
 		} else {
@@ -285,6 +331,8 @@ public class CodeGenerator extends VisitorAdaptor {
 
 	@Override
 	public void visit(CondFact condFact) {
+		if (isInsideIfCondition(condFact) && !forceEmit) return;
+		if (isSuppressed(condFact)) return;
 		if (condFact.getOptRel() instanceof OptRel0) {
 			return;
 		}
@@ -306,14 +354,12 @@ public class CodeGenerator extends VisitorAdaptor {
 
 	@Override
 	public void visit(Expr2 expr2) {
-		// Deca su vec izracunala cond/true/false; ocisti ih i regenerisi ternarni izraz bez opkoda 59/60.
+		if (isSuppressed(expr2)) return;
+		// Deca su vec izracunala cond/true/false; zadrzi cond, odbaci preevaluirane grane.
 		Code.put(Code.pop);
 		Code.put(Code.pop);
-		Code.put(Code.pop);
-
-		expr2.getCondFact().traverseBottomUp(this);
 		Code.loadConst(0);
-		Code.putFalseJump(Code.ne, 0); // skok kada je cond == 0
+		Code.putFalseJump(Code.ne, 0);
 		int falseBranchJump = Code.pc - 2;
 
 		expr2.getExpr().traverseBottomUp(this);
@@ -326,6 +372,342 @@ public class CodeGenerator extends VisitorAdaptor {
 		Code.fixup(endJump);
 	}
 
+	private void handleIfCondition(SyntaxNode conditionNode) {
+		if (isSuppressed(conditionNode)) return;
+		if (conditionNode.getParent() instanceof StatementIf) {
+			BoolLists lists = emitConditionLists(conditionNode);
+			fixJumps(lists.trueJumps, Code.pc);
+			ifFalseJumps.put((StatementIf) conditionNode.getParent(), lists.falseJumps);
+		}
+	}
+	
+	@Override
+	public void visit(rs.ac.bg.etf.pp1.ast.Condition1 condition1) {
+		handleIfCondition(condition1);
+	}
+	
+	@Override
+	public void visit(rs.ac.bg.etf.pp1.ast.Condition2 condition2) {
+		handleIfCondition(condition2);
+	}
+
+	@Override
+	public void visit(StatementIf statementIf) {
+		if (isSuppressed(statementIf)) return;
+		Integer endJump = ifEndJumps.remove(statementIf);
+		if (endJump != null) {
+			Code.fixup(endJump);
+			afterThenStatement(statementIf);
+			return;
+		}
+		List<Integer> falseJumps = ifFalseJumps.remove(statementIf);
+		if (falseJumps != null) {
+			fixJumps(falseJumps, Code.pc);
+		}
+		afterThenStatement(statementIf);
+	}
+
+	private void handleOptDesignatorStatement(OptDesignatorStatement optDesignatorStatement) {
+		if (isSuppressed(optDesignatorStatement)) return;
+		if (!(optDesignatorStatement.getParent() instanceof StatementFor)) return;
+		StatementFor forNode = (StatementFor) optDesignatorStatement.getParent();
+		LoopContext ctx = forContexts.computeIfAbsent(forNode, n -> {
+			LoopContext c = new LoopContext();
+			c.node = n;
+			return c;
+		});
+		if (forNode.getOptDesignatorStatement() == optDesignatorStatement) {
+			ctx.condStart = Code.pc;
+			return;
+		}
+		if (forNode.getOptDesignatorStatement1() == optDesignatorStatement) {
+			if (optDesignatorStatement instanceof OptDesignatorStatement1) {
+				Code.putJump(ctx.condStart);
+			} else {
+				ctx.updateStart = ctx.condStart;
+			}
+			if (ctx.bodyJump >= 0) {
+				Code.fixup(ctx.bodyJump);
+				ctx.bodyJump = -1;
+			}
+			if (!loopStack.contains(ctx)) {
+				loopStack.add(ctx);
+			}
+		}
+	}
+	
+	@Override
+	public void visit(OptDesignatorStatement0 optDesignatorStatement0) {
+		handleOptDesignatorStatement(optDesignatorStatement0);
+	}
+	
+	@Override
+	public void visit(OptDesignatorStatement1 optDesignatorStatement1) {
+		handleOptDesignatorStatement(optDesignatorStatement1);
+	}
+
+	@Override
+	public void visit(OptCondition1 optCondition1) {
+		if (isSuppressed(optCondition1)) return;
+		if (!(optCondition1.getParent() instanceof StatementFor)) return;
+		StatementFor forNode = (StatementFor) optCondition1.getParent();
+		LoopContext ctx = forContexts.computeIfAbsent(forNode, n -> {
+			LoopContext c = new LoopContext();
+			c.node = n;
+			return c;
+		});
+		Code.loadConst(0);
+		Code.putFalseJump(Code.ne, 0);
+		ctx.falseJump = Code.pc - 2;
+		Code.putJump(0);
+		ctx.bodyJump = Code.pc - 2;
+		ctx.updateStart = Code.pc;
+	}
+
+	@Override
+	public void visit(OptCondition0 optCondition0) {
+		if (isSuppressed(optCondition0)) return;
+		if (!(optCondition0.getParent() instanceof StatementFor)) return;
+		StatementFor forNode = (StatementFor) optCondition0.getParent();
+		LoopContext ctx = forContexts.computeIfAbsent(forNode, n -> {
+			LoopContext c = new LoopContext();
+			c.node = n;
+			return c;
+		});
+		Code.putJump(0);
+		ctx.bodyJump = Code.pc - 2;
+		ctx.updateStart = Code.pc;
+	}
+
+	@Override
+	public void visit(StatementFor statementFor) {
+		if (isSuppressed(statementFor)) return;
+		LoopContext ctx = forContexts.remove(statementFor);
+		if (ctx == null) return;
+		loopStack.remove(ctx);
+		if (ctx.updateStart < 0) ctx.updateStart = ctx.condStart;
+		Code.putJump(ctx.updateStart);
+		int loopEnd = Code.pc;
+		if (ctx.falseJump >= 0) Code.fixup(ctx.falseJump);
+		for (Integer adr : ctx.breakJumps) Code.fixup(adr);
+		for (Integer adr : ctx.continueJumps) Code.put2(adr, ctx.updateStart - adr + 1);
+		afterThenStatement(statementFor);
+	}
+
+	@Override
+	public void visit(StatementBreak statementBreak) {
+		if (isSuppressed(statementBreak)) return;
+		if (!switchStack.isEmpty()) {
+			Code.putJump(0);
+			switchStack.get(switchStack.size() - 1).breakJumps.add(Code.pc - 2);
+			afterThenStatement(statementBreak);
+			return;
+		}
+		if (!loopStack.isEmpty()) {
+			Code.putJump(0);
+			loopStack.get(loopStack.size() - 1).breakJumps.add(Code.pc - 2);
+		}
+		afterThenStatement(statementBreak);
+	}
+
+	@Override
+	public void visit(StatementContinue statementContinue) {
+		if (isSuppressed(statementContinue)) return;
+		if (!loopStack.isEmpty()) {
+			LoopContext ctx = loopStack.get(loopStack.size() - 1);
+			if (ctx.updateStart >= 0) {
+				Code.putJump(ctx.updateStart);
+			} else {
+				Code.putJump(0);
+				ctx.continueJumps.add(Code.pc - 2);
+			}
+		}
+		afterThenStatement(statementContinue);
+	}
+
+	@Override
+	public void visit(StatementReturn statementReturn) {
+		if (isSuppressed(statementReturn)) return;
+		if (statementReturn.getOptExpr() instanceof OptExpr1) {
+			// expr je vec na steku
+		}
+		Code.put(Code.exit);
+		Code.put(Code.return_);
+		afterThenStatement(statementReturn);
+	}
+
+	@Override
+	public void visit(Expr expr) {
+		if (isSuppressed(expr)) return;
+		if (expr.getParent() instanceof StatementSwitch) {
+			StatementSwitch sw = (StatementSwitch) expr.getParent();
+			if (sw.getExpr() == expr) {
+				suppressedRoots.add(sw.getCaseList());
+			}
+		}
+	}
+
+	@Override
+	public void visit(StatementSwitch statementSwitch) {
+		if (isSuppressed(statementSwitch)) return;
+		// Ukloni vec izracunatu vrednost switch izraza i ručno generiši case grananje.
+		Code.put(Code.pop);
+		List<Case> cases = new ArrayList<>();
+		collectCases(statementSwitch.getCaseList(), cases);
+		List<Integer> caseBodyJumps = new ArrayList<>();
+		SwitchContext sw = new SwitchContext();
+		sw.node = statementSwitch;
+		switchStack.add(sw);
+		for (Case c : cases) {
+			statementSwitch.getExpr().traverseBottomUp(this);
+			Code.loadConst(c.getN1());
+			Code.putFalseJump(Code.eq, 0);
+			int notEq = Code.pc - 2;
+			Code.putJump(0);
+			caseBodyJumps.add(Code.pc - 2);
+			Code.fixup(notEq);
+		}
+		Code.putJump(0);
+		int endNoMatch = Code.pc - 2;
+		for (int i = 0; i < cases.size(); i++) {
+			Code.fixup(caseBodyJumps.get(i));
+			emitStatementList(cases.get(i).getStatementList());
+		}
+		Code.fixup(endNoMatch);
+		for (Integer adr : sw.breakJumps) {
+			Code.fixup(adr);
+		}
+		switchStack.remove(switchStack.size() - 1);
+		suppressedRoots.remove(statementSwitch.getCaseList());
+		afterThenStatement(statementSwitch);
+	}
+
+	private boolean isInsideIfCondition(SyntaxNode node) {
+		SyntaxNode cur = node;
+		SyntaxNode condRoot = null;
+		while (cur != null) {
+			if (cur instanceof rs.ac.bg.etf.pp1.ast.Condition1 || cur instanceof rs.ac.bg.etf.pp1.ast.Condition2) {
+				condRoot = cur;
+			}
+			if (cur instanceof StatementIf) {
+				StatementIf si = (StatementIf) cur;
+				return condRoot != null && si.getCondition() == condRoot;
+			}
+			cur = cur.getParent();
+		}
+		return false;
+	}
+
+	private void fixJumps(List<Integer> jumps, int targetPc) {
+		for (Integer adr : jumps) {
+			Code.put2(adr, targetPc - adr + 1);
+		}
+	}
+
+	private BoolLists emitCondFactLists(CondFact cf) {
+		BoolLists bl = new BoolLists();
+		boolean old = forceEmit;
+		forceEmit = true;
+		try {
+			if (cf.getOptRel() instanceof OptRel1) {
+				OptRel1 rel = (OptRel1) cf.getOptRel();
+				cf.getSimpleExpr().traverseBottomUp(this);
+				rel.getSimpleExpr().traverseBottomUp(this);
+				int op = mapRelop(rel.getRelop());
+				Code.putFalseJump(op, 0);
+				bl.falseJumps.add(Code.pc - 2);
+				Code.putJump(0);
+				bl.trueJumps.add(Code.pc - 2);
+			} else {
+				cf.getSimpleExpr().traverseBottomUp(this);
+				Code.loadConst(0);
+				Code.putFalseJump(Code.ne, 0);
+				bl.falseJumps.add(Code.pc - 2);
+				Code.putJump(0);
+				bl.trueJumps.add(Code.pc - 2);
+			}
+		} finally {
+			forceEmit = old;
+		}
+		return bl;
+	}
+
+	private BoolLists emitCondTermLists(SyntaxNode termNode) {
+		if (termNode instanceof rs.ac.bg.etf.pp1.ast.CondTerm1) {
+			return emitCondFactLists(((rs.ac.bg.etf.pp1.ast.CondTerm1) termNode).getCondFact());
+		}
+		rs.ac.bg.etf.pp1.ast.CondTerm2 t2 = (rs.ac.bg.etf.pp1.ast.CondTerm2) termNode;
+		BoolLists left = emitCondTermLists(t2.getCondTerm());
+		fixJumps(left.trueJumps, Code.pc);
+		BoolLists right = emitCondFactLists(t2.getCondFact());
+		BoolLists out = new BoolLists();
+		out.trueJumps.addAll(right.trueJumps);
+		out.falseJumps.addAll(left.falseJumps);
+		out.falseJumps.addAll(right.falseJumps);
+		return out;
+	}
+
+	private BoolLists emitConditionLists(SyntaxNode conditionNode) {
+		if (conditionNode instanceof rs.ac.bg.etf.pp1.ast.Condition1) {
+			return emitCondTermLists(((rs.ac.bg.etf.pp1.ast.Condition1) conditionNode).getCondTerm());
+		}
+		rs.ac.bg.etf.pp1.ast.Condition2 c2 = (rs.ac.bg.etf.pp1.ast.Condition2) conditionNode;
+		BoolLists left = emitConditionLists(c2.getCondition());
+		fixJumps(left.falseJumps, Code.pc);
+		BoolLists right = emitCondTermLists(c2.getCondTerm());
+		BoolLists out = new BoolLists();
+		out.trueJumps.addAll(left.trueJumps);
+		out.trueJumps.addAll(right.trueJumps);
+		out.falseJumps.addAll(right.falseJumps);
+		return out;
+	}
+
+	@Override
+	public void visit(StatementDesignator statementDesignator) {
+		if (isSuppressed(statementDesignator)) return;
+		afterThenStatement(statementDesignator);
+	}
+
+	@Override
+	public void visit(StatementRead statementRead) {
+		if (isSuppressed(statementRead)) return;
+		Obj target = resolveDesignatorObj(statementRead.getDesignator());
+		if (target == Tab.noObj) {
+			return;
+		}
+
+		if (target.getKind() == Obj.Var) {
+			Code.put(target.getType() == Tab.charType ? Code.bread : Code.read);
+			Code.store(target);
+			afterThenStatement(statementRead);
+			return;
+		}
+
+		if (target.getKind() == Obj.Elem) {
+			// Designator je vec izgenerisao index; ukloni ga i regenerisi adr/index.
+			Code.put(Code.pop);
+
+			Obj baseObj = findSymbol(statementRead.getDesignator().getName());
+			DesignatorSuffix3 indexSuffix = getLastIndexSuffix(statementRead.getDesignator());
+			if (baseObj == Tab.noObj || indexSuffix == null) {
+				return;
+			}
+
+			Code.load(baseObj);
+			indexSuffix.getExpr().traverseBottomUp(this);
+			Struct elemType = baseObj.getType().getElemType();
+			Code.put(elemType == Tab.charType ? Code.bread : Code.read);
+			Code.put(elemType == Tab.charType ? Code.bastore : Code.astore);
+			afterThenStatement(statementRead);
+		}
+	}
+
+	@Override
+	public void visit(StatementStmtList statementStmtList) {
+		if (isSuppressed(statementStmtList)) return;
+		afterThenStatement(statementStmtList);
+	}
+
 	private int mapRelop(Relop relop) {
 		if (relop instanceof RelopEQ) return Code.eq;
 		if (relop instanceof RelopNEQ) return Code.ne;
@@ -333,6 +715,56 @@ public class CodeGenerator extends VisitorAdaptor {
 		if (relop instanceof RelopGE) return Code.ge;
 		if (relop instanceof RelopLT) return Code.lt;
 		return Code.le;
+	}
+
+	private boolean isSuppressed(SyntaxNode node) {
+		if (forceEmit || node == null) return false;
+		SyntaxNode cur = node;
+		while (cur != null) {
+			if (suppressedRoots.contains(cur)) return true;
+			cur = cur.getParent();
+		}
+		boolean inCase = false;
+		cur = node;
+		while (cur != null) {
+			if (cur instanceof Case) inCase = true;
+			if (cur instanceof StatementSwitch) {
+				if (inCase) return true;
+				break;
+			}
+			cur = cur.getParent();
+		}
+		return false;
+	}
+
+	private void afterThenStatement(Statement statementNode) {
+		SyntaxNode p = statementNode.getParent();
+		if (!(p instanceof StatementIf)) return;
+		StatementIf ifNode = (StatementIf) p;
+		if (ifNode.getStatement() != statementNode) return;
+		if (!(ifNode.getOptElse() instanceof OptElse1)) return;
+		Code.putJump(0);
+		ifEndJumps.put(ifNode, Code.pc - 2);
+		List<Integer> falseJumps = ifFalseJumps.remove(ifNode);
+		if (falseJumps != null) fixJumps(falseJumps, Code.pc);
+	}
+
+	private void collectCases(CaseList list, List<Case> out) {
+		if (list instanceof CaseList1) {
+			CaseList1 l = (CaseList1) list;
+			collectCases(l.getCaseList(), out);
+			out.add(l.getCase());
+		}
+	}
+
+	private void emitStatementList(StatementList list) {
+		boolean old = forceEmit;
+		forceEmit = true;
+		try {
+			if (list != null) list.traverseBottomUp(this);
+		} finally {
+			forceEmit = old;
+		}
 	}
 
 	private Struct resolveTypeSymbol(Type typeNode) {

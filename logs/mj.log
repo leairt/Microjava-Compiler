@@ -1437,3 +1437,631 @@ INFO  14:34:54,347 - Pretraga na 9(eol), nadjeno rs.etf.pp1.symboltable.concepts
 INFO  14:34:54,347 - Pretraga na 10(chr), nadjeno rs.etf.pp1.symboltable.concepts.Obj@5197848c
 ERROR 14:34:54,347 - Greska na liniji 10: chr zahteva argument tipa int
 ERROR 14:34:54,347 - Greska na liniji 10: print podrzava samo int/char/bool
+INFO  23:04:19,413 - #2 program
+INFO  23:04:19,414 - #21 b006
+INFO  23:04:19,414 - #49 {
+INFO  23:04:19,417 - #21 int
+INFO  23:04:19,417 - #21 pick
+INFO  23:04:19,417 - #45 (
+INFO  23:04:19,418 - #21 int
+INFO  23:04:19,418 - #21 a
+INFO  23:04:19,418 - #43 ,
+INFO  23:04:19,419 - #21 int
+INFO  23:04:19,419 - #21 b
+INFO  23:04:19,419 - #43 ,
+INFO  23:04:19,419 - #21 bool
+INFO  23:04:19,419 - #21 t
+INFO  23:04:19,419 - #46 )
+INFO  23:04:19,419 - #49 {
+INFO  23:04:19,419 - #9 if
+INFO  23:04:19,420 - #45 (
+INFO  23:04:19,420 - #21 t
+INFO  23:04:19,420 - #46 )
+INFO  23:04:19,421 - #13 return
+INFO  23:04:19,421 - #21 a
+INFO  23:04:19,421 - #41 ;
+INFO  23:04:19,421 - #7 else
+INFO  23:04:19,422 - #13 return
+INFO  23:04:19,422 - #21 b
+INFO  23:04:19,422 - #41 ;
+INFO  23:04:19,422 - #50 }
+INFO  23:04:19,422 - #14 void
+INFO  23:04:19,422 - #21 main
+INFO  23:04:19,422 - #45 (
+INFO  23:04:19,423 - #46 )
+INFO  23:04:19,423 - #21 int
+INFO  23:04:19,423 - #21 i
+INFO  23:04:19,423 - #43 ,
+INFO  23:04:19,423 - #21 s
+INFO  23:04:19,423 - #41 ;
+INFO  23:04:19,423 - #21 bool
+INFO  23:04:19,424 - #21 f
+INFO  23:04:19,424 - #41 ;
+INFO  23:04:19,424 - #49 {
+INFO  23:04:19,424 - #21 s
+INFO  23:04:19,424 - #38 =
+INFO  23:04:19,424 - #22 0
+INFO  23:04:19,424 - #41 ;
+INFO  23:04:19,424 - #17 for
+INFO  23:04:19,426 - #45 (
+INFO  23:04:19,426 - #21 i
+INFO  23:04:19,426 - #38 =
+INFO  23:04:19,426 - #22 1
+INFO  23:04:19,426 - #41 ;
+INFO  23:04:19,426 - #21 i
+INFO  23:04:19,426 - #35 <=
+INFO  23:04:19,426 - #22 3
+INFO  23:04:19,426 - #41 ;
+INFO  23:04:19,426 - #21 i
+INFO  23:04:19,427 - #39 ++
+INFO  23:04:19,427 - #46 )
+INFO  23:04:19,427 - #49 {
+INFO  23:04:19,427 - #21 f
+INFO  23:04:19,427 - #38 =
+INFO  23:04:19,427 - #21 i
+INFO  23:04:19,427 - #29 %
+INFO  23:04:19,427 - #22 2
+INFO  23:04:19,427 - #30 ==
+INFO  23:04:19,428 - #22 1
+INFO  23:04:19,428 - #41 ;
+ERROR 23:04:19,428 - 
+Sintaksna greska na liniji 14
+INFO  23:04:19,429 - #21 s
+INFO  23:04:19,429 - #38 =
+INFO  23:04:19,429 - #21 s
+INFO  23:04:19,430 - #25 +
+INFO  23:04:19,430 - #21 pick
+INFO  23:04:19,430 - #45 (
+INFO  23:04:19,430 - #21 i
+INFO  23:04:19,430 - #27 *
+INFO  23:04:19,430 - #22 2
+INFO  23:04:19,430 - #43 ,
+INFO  23:04:19,430 - #21 i
+INFO  23:04:19,430 - #27 *
+INFO  23:04:19,430 - #22 3
+INFO  23:04:19,430 - #43 ,
+INFO  23:04:19,430 - #21 f
+INFO  23:04:19,431 - #46 )
+INFO  23:04:19,431 - #41 ;
+INFO  23:04:19,431 - #50 }
+INFO  23:04:19,431 - #11 print
+INFO  23:04:19,432 - #45 (
+INFO  23:04:19,432 - #21 s
+INFO  23:04:19,433 - #46 )
+INFO  23:04:19,433 - #41 ;
+INFO  23:04:19,433 - #11 print
+INFO  23:04:19,433 - #45 (
+INFO  23:04:19,433 - #21 eol
+INFO  23:04:19,433 - #46 )
+INFO  23:04:19,433 - #41 ;
+INFO  23:04:19,433 - #50 }
+INFO  23:04:19,433 - #50 }
+INFO  23:04:19,434 - #2 program
+INFO  23:04:19,434 - #21 b007
+INFO  23:04:19,434 - #49 {
+INFO  23:04:19,434 - #14 void
+INFO  23:04:19,434 - #21 main
+INFO  23:04:19,434 - #45 (
+INFO  23:04:19,434 - #46 )
+INFO  23:04:19,434 - #49 {
+INFO  23:04:19,434 - #3 break
+INFO  23:04:19,434 - #41 ;
+INFO  23:04:19,434 - #50 }
+INFO  23:04:19,434 - #50 }
+INFO  23:04:19,435 - Program(
+  ProgramName(
+   b007
+  ) [ProgramName]
+  GlobalDeclList0(
+  ) [GlobalDeclList0]
+  MethodDeclList1(
+    MethodDeclList0(
+    ) [MethodDeclList0]
+    MethodDecl(
+      MethodRetTypeVoid(
+      ) [MethodRetTypeVoid]
+      MethodName(
+       main
+      ) [MethodName]
+      OptFormPars0(
+      ) [OptFormPars0]
+      VarDeclList0(
+      ) [VarDeclList0]
+      StatementList1(
+        StatementList0(
+        ) [StatementList0]
+        StatementBreak(
+        ) [StatementBreak]
+      ) [StatementList1]
+    ) [MethodDecl]
+  ) [MethodDeclList1]
+) [Program]
+ERROR 23:04:19,437 - Greska na liniji 0: break mora biti unutar for/switch
+INFO  23:04:19,438 - #2 program
+INFO  23:04:19,438 - #21 b008
+INFO  23:04:19,438 - #49 {
+INFO  23:04:19,438 - #14 void
+INFO  23:04:19,438 - #21 main
+INFO  23:04:19,438 - #45 (
+INFO  23:04:19,438 - #46 )
+INFO  23:04:19,438 - #21 int
+INFO  23:04:19,438 - #21 x
+INFO  23:04:19,438 - #41 ;
+INFO  23:04:19,438 - #49 {
+INFO  23:04:19,438 - #21 x
+INFO  23:04:19,438 - #38 =
+INFO  23:04:19,438 - #22 1
+INFO  23:04:19,439 - #41 ;
+INFO  23:04:19,439 - #19 switch
+INFO  23:04:19,439 - #45 (
+INFO  23:04:19,439 - #21 x
+INFO  23:04:19,439 - #46 )
+INFO  23:04:19,439 - #49 {
+INFO  23:04:19,439 - #20 case
+INFO  23:04:19,440 - #22 1
+INFO  23:04:19,440 - #42 :
+INFO  23:04:19,440 - #16 continue
+INFO  23:04:19,440 - #41 ;
+INFO  23:04:19,440 - #50 }
+INFO  23:04:19,440 - #50 }
+INFO  23:04:19,440 - #50 }
+INFO  23:04:19,441 - Program(
+  ProgramName(
+   b008
+  ) [ProgramName]
+  GlobalDeclList0(
+  ) [GlobalDeclList0]
+  MethodDeclList1(
+    MethodDeclList0(
+    ) [MethodDeclList0]
+    MethodDecl(
+      MethodRetTypeVoid(
+      ) [MethodRetTypeVoid]
+      MethodName(
+       main
+      ) [MethodName]
+      OptFormPars0(
+      ) [OptFormPars0]
+      VarDeclList1(
+        VarDeclList0(
+        ) [VarDeclList0]
+        VarDeclValid(
+          Type(
+           int
+          ) [Type]
+          VarItemList1(
+            VarItem(
+             x
+              OptArray0(
+              ) [OptArray0]
+            ) [VarItem]
+          ) [VarItemList1]
+        ) [VarDeclValid]
+      ) [VarDeclList1]
+      StatementList1(
+        StatementList1(
+          StatementList0(
+          ) [StatementList0]
+          StatementDesignator(
+            DesignatorStatement(
+              Designator(
+               x
+                DesignatorSuffixList0(
+                ) [DesignatorSuffixList0]
+              ) [Designator]
+              DesignatorStmtTail1(
+                Assignop(
+                ) [Assignop]
+                Expr1(
+                  SimpleExpr1(
+                    Term1(
+                      FactorNumConst(
+                       1
+                      ) [FactorNumConst]
+                    ) [Term1]
+                  ) [SimpleExpr1]
+                ) [Expr1]
+              ) [DesignatorStmtTail1]
+            ) [DesignatorStatement]
+          ) [StatementDesignator]
+        ) [StatementList1]
+        StatementSwitch(
+          Expr1(
+            SimpleExpr1(
+              Term1(
+                FactorDesignator(
+                  Designator(
+                   x
+                    DesignatorSuffixList0(
+                    ) [DesignatorSuffixList0]
+                  ) [Designator]
+                  OptCall0(
+                  ) [OptCall0]
+                ) [FactorDesignator]
+              ) [Term1]
+            ) [SimpleExpr1]
+          ) [Expr1]
+          CaseList1(
+            CaseList0(
+            ) [CaseList0]
+            Case(
+             1
+              StatementList1(
+                StatementList0(
+                ) [StatementList0]
+                StatementContinue(
+                ) [StatementContinue]
+              ) [StatementList1]
+            ) [Case]
+          ) [CaseList1]
+        ) [StatementSwitch]
+      ) [StatementList1]
+    ) [MethodDecl]
+  ) [MethodDeclList1]
+) [Program]
+INFO  23:04:19,442 - Pretraga na 6(x), nadjeno rs.etf.pp1.symboltable.concepts.Obj@49097b5d
+INFO  23:04:19,442 - Pretraga na 7(x), nadjeno rs.etf.pp1.symboltable.concepts.Obj@49097b5d
+ERROR 23:04:19,442 - Greska na liniji 0: continue mora biti unutar for petlje
+INFO  23:04:19,443 - #2 program
+INFO  23:04:19,443 - #21 b009
+INFO  23:04:19,443 - #49 {
+INFO  23:04:19,443 - #21 int
+INFO  23:04:19,443 - #21 sum
+INFO  23:04:19,443 - #45 (
+INFO  23:04:19,443 - #21 int
+INFO  23:04:19,443 - #21 a
+INFO  23:04:19,443 - #43 ,
+INFO  23:04:19,443 - #21 int
+INFO  23:04:19,443 - #21 b
+INFO  23:04:19,443 - #46 )
+INFO  23:04:19,443 - #49 {
+INFO  23:04:19,443 - #13 return
+INFO  23:04:19,443 - #21 a
+INFO  23:04:19,443 - #25 +
+INFO  23:04:19,443 - #21 b
+INFO  23:04:19,443 - #41 ;
+INFO  23:04:19,443 - #50 }
+INFO  23:04:19,443 - #14 void
+INFO  23:04:19,443 - #21 main
+INFO  23:04:19,443 - #45 (
+INFO  23:04:19,443 - #46 )
+INFO  23:04:19,443 - #21 int
+INFO  23:04:19,443 - #21 x
+INFO  23:04:19,443 - #41 ;
+INFO  23:04:19,443 - #49 {
+INFO  23:04:19,443 - #21 x
+INFO  23:04:19,443 - #38 =
+INFO  23:04:19,443 - #21 sum
+INFO  23:04:19,444 - #45 (
+INFO  23:04:19,444 - #22 1
+INFO  23:04:19,444 - #46 )
+INFO  23:04:19,444 - #41 ;
+INFO  23:04:19,444 - #11 print
+INFO  23:04:19,444 - #45 (
+INFO  23:04:19,444 - #21 x
+INFO  23:04:19,444 - #46 )
+INFO  23:04:19,444 - #41 ;
+INFO  23:04:19,444 - #50 }
+INFO  23:04:19,445 - #50 }
+INFO  23:04:19,445 - Program(
+  ProgramName(
+   b009
+  ) [ProgramName]
+  GlobalDeclList0(
+  ) [GlobalDeclList0]
+  MethodDeclList1(
+    MethodDeclList1(
+      MethodDeclList0(
+      ) [MethodDeclList0]
+      MethodDecl(
+        MethodRetTypeObject(
+          Type(
+           int
+          ) [Type]
+        ) [MethodRetTypeObject]
+        MethodName(
+         sum
+        ) [MethodName]
+        OptFormPars1(
+          FormParsList2(
+            FormParsList1(
+              FormPar(
+                Type(
+                 int
+                ) [Type]
+               a
+                OptArray0(
+                ) [OptArray0]
+              ) [FormPar]
+            ) [FormParsList1]
+            FormPar(
+              Type(
+               int
+              ) [Type]
+             b
+              OptArray0(
+              ) [OptArray0]
+            ) [FormPar]
+          ) [FormParsList2]
+        ) [OptFormPars1]
+        VarDeclList0(
+        ) [VarDeclList0]
+        StatementList1(
+          StatementList0(
+          ) [StatementList0]
+          StatementReturn(
+            OptExpr1(
+              Expr1(
+                SimpleExpr3(
+                  SimpleExpr1(
+                    Term1(
+                      FactorDesignator(
+                        Designator(
+                         a
+                          DesignatorSuffixList0(
+                          ) [DesignatorSuffixList0]
+                        ) [Designator]
+                        OptCall0(
+                        ) [OptCall0]
+                      ) [FactorDesignator]
+                    ) [Term1]
+                  ) [SimpleExpr1]
+                  AddopADD(
+                  ) [AddopADD]
+                  Term1(
+                    FactorDesignator(
+                      Designator(
+                       b
+                        DesignatorSuffixList0(
+                        ) [DesignatorSuffixList0]
+                      ) [Designator]
+                      OptCall0(
+                      ) [OptCall0]
+                    ) [FactorDesignator]
+                  ) [Term1]
+                ) [SimpleExpr3]
+              ) [Expr1]
+            ) [OptExpr1]
+          ) [StatementReturn]
+        ) [StatementList1]
+      ) [MethodDecl]
+    ) [MethodDeclList1]
+    MethodDecl(
+      MethodRetTypeVoid(
+      ) [MethodRetTypeVoid]
+      MethodName(
+       main
+      ) [MethodName]
+      OptFormPars0(
+      ) [OptFormPars0]
+      VarDeclList1(
+        VarDeclList0(
+        ) [VarDeclList0]
+        VarDeclValid(
+          Type(
+           int
+          ) [Type]
+          VarItemList1(
+            VarItem(
+             x
+              OptArray0(
+              ) [OptArray0]
+            ) [VarItem]
+          ) [VarItemList1]
+        ) [VarDeclValid]
+      ) [VarDeclList1]
+      StatementList1(
+        StatementList1(
+          StatementList0(
+          ) [StatementList0]
+          StatementDesignator(
+            DesignatorStatement(
+              Designator(
+               x
+                DesignatorSuffixList0(
+                ) [DesignatorSuffixList0]
+              ) [Designator]
+              DesignatorStmtTail1(
+                Assignop(
+                ) [Assignop]
+                Expr1(
+                  SimpleExpr1(
+                    Term1(
+                      FactorDesignator(
+                        Designator(
+                         sum
+                          DesignatorSuffixList0(
+                          ) [DesignatorSuffixList0]
+                        ) [Designator]
+                        OptCall1(
+                          OptActPars1(
+                            ActPars(
+                              ExprList1(
+                                Expr1(
+                                  SimpleExpr1(
+                                    Term1(
+                                      FactorNumConst(
+                                       1
+                                      ) [FactorNumConst]
+                                    ) [Term1]
+                                  ) [SimpleExpr1]
+                                ) [Expr1]
+                              ) [ExprList1]
+                            ) [ActPars]
+                          ) [OptActPars1]
+                        ) [OptCall1]
+                      ) [FactorDesignator]
+                    ) [Term1]
+                  ) [SimpleExpr1]
+                ) [Expr1]
+              ) [DesignatorStmtTail1]
+            ) [DesignatorStatement]
+          ) [StatementDesignator]
+        ) [StatementList1]
+        StatementPrint(
+          Expr1(
+            SimpleExpr1(
+              Term1(
+                FactorDesignator(
+                  Designator(
+                   x
+                    DesignatorSuffixList0(
+                    ) [DesignatorSuffixList0]
+                  ) [Designator]
+                  OptCall0(
+                  ) [OptCall0]
+                ) [FactorDesignator]
+              ) [Term1]
+            ) [SimpleExpr1]
+          ) [Expr1]
+          OptNumConst0(
+          ) [OptNumConst0]
+        ) [StatementPrint]
+      ) [StatementList1]
+    ) [MethodDecl]
+  ) [MethodDeclList1]
+) [Program]
+INFO  23:04:19,445 - Pretraga na 5(a), nadjeno rs.etf.pp1.symboltable.concepts.Obj@4d405ef7
+INFO  23:04:19,446 - Pretraga na 5(b), nadjeno rs.etf.pp1.symboltable.concepts.Obj@3f91beef
+INFO  23:04:19,447 - Pretraga na 11(x), nadjeno rs.etf.pp1.symboltable.concepts.Obj@37f8bb67
+INFO  23:04:19,447 - Pretraga na 11(sum), nadjeno rs.etf.pp1.symboltable.concepts.Obj@20ad9418
+ERROR 23:04:19,447 - Greska na liniji 11: neispravan broj argumenata za funkciju sum
+INFO  23:04:19,447 - Pretraga na 12(x), nadjeno rs.etf.pp1.symboltable.concepts.Obj@37f8bb67
+INFO  23:04:19,448 - #2 program
+INFO  23:04:19,448 - #21 b010
+INFO  23:04:19,448 - #49 {
+INFO  23:04:19,449 - #21 int
+INFO  23:04:19,449 - #21 bad
+INFO  23:04:19,449 - #45 (
+INFO  23:04:19,449 - #21 int
+INFO  23:04:19,449 - #21 x
+INFO  23:04:19,449 - #46 )
+INFO  23:04:19,449 - #49 {
+INFO  23:04:19,449 - #21 x
+INFO  23:04:19,449 - #38 =
+INFO  23:04:19,449 - #21 x
+INFO  23:04:19,449 - #25 +
+INFO  23:04:19,449 - #22 1
+INFO  23:04:19,449 - #41 ;
+INFO  23:04:19,450 - #50 }
+INFO  23:04:19,450 - #14 void
+INFO  23:04:19,450 - #21 main
+INFO  23:04:19,450 - #45 (
+INFO  23:04:19,450 - #46 )
+INFO  23:04:19,450 - #49 {
+INFO  23:04:19,450 - #11 print
+INFO  23:04:19,450 - #45 (
+INFO  23:04:19,450 - #22 1
+INFO  23:04:19,450 - #46 )
+INFO  23:04:19,450 - #41 ;
+INFO  23:04:19,450 - #50 }
+INFO  23:04:19,450 - #50 }
+INFO  23:04:19,450 - Program(
+  ProgramName(
+   b010
+  ) [ProgramName]
+  GlobalDeclList0(
+  ) [GlobalDeclList0]
+  MethodDeclList1(
+    MethodDeclList1(
+      MethodDeclList0(
+      ) [MethodDeclList0]
+      MethodDecl(
+        MethodRetTypeObject(
+          Type(
+           int
+          ) [Type]
+        ) [MethodRetTypeObject]
+        MethodName(
+         bad
+        ) [MethodName]
+        OptFormPars1(
+          FormParsList1(
+            FormPar(
+              Type(
+               int
+              ) [Type]
+             x
+              OptArray0(
+              ) [OptArray0]
+            ) [FormPar]
+          ) [FormParsList1]
+        ) [OptFormPars1]
+        VarDeclList0(
+        ) [VarDeclList0]
+        StatementList1(
+          StatementList0(
+          ) [StatementList0]
+          StatementDesignator(
+            DesignatorStatement(
+              Designator(
+               x
+                DesignatorSuffixList0(
+                ) [DesignatorSuffixList0]
+              ) [Designator]
+              DesignatorStmtTail1(
+                Assignop(
+                ) [Assignop]
+                Expr1(
+                  SimpleExpr3(
+                    SimpleExpr1(
+                      Term1(
+                        FactorDesignator(
+                          Designator(
+                           x
+                            DesignatorSuffixList0(
+                            ) [DesignatorSuffixList0]
+                          ) [Designator]
+                          OptCall0(
+                          ) [OptCall0]
+                        ) [FactorDesignator]
+                      ) [Term1]
+                    ) [SimpleExpr1]
+                    AddopADD(
+                    ) [AddopADD]
+                    Term1(
+                      FactorNumConst(
+                       1
+                      ) [FactorNumConst]
+                    ) [Term1]
+                  ) [SimpleExpr3]
+                ) [Expr1]
+              ) [DesignatorStmtTail1]
+            ) [DesignatorStatement]
+          ) [StatementDesignator]
+        ) [StatementList1]
+      ) [MethodDecl]
+    ) [MethodDeclList1]
+    MethodDecl(
+      MethodRetTypeVoid(
+      ) [MethodRetTypeVoid]
+      MethodName(
+       main
+      ) [MethodName]
+      OptFormPars0(
+      ) [OptFormPars0]
+      VarDeclList0(
+      ) [VarDeclList0]
+      StatementList1(
+        StatementList0(
+        ) [StatementList0]
+        StatementPrint(
+          Expr1(
+            SimpleExpr1(
+              Term1(
+                FactorNumConst(
+                 1
+                ) [FactorNumConst]
+              ) [Term1]
+            ) [SimpleExpr1]
+          ) [Expr1]
+          OptNumConst0(
+          ) [OptNumConst0]
+        ) [StatementPrint]
+      ) [StatementList1]
+    ) [MethodDecl]
+  ) [MethodDeclList1]
+) [Program]
+INFO  23:04:19,450 - Pretraga na 5(x), nadjeno rs.etf.pp1.symboltable.concepts.Obj@21b8d17c
+INFO  23:04:19,450 - Pretraga na 5(x), nadjeno rs.etf.pp1.symboltable.concepts.Obj@21b8d17c
+INFO  23:04:19,453 - Generisanje koda završeno (obj/b010.obj)

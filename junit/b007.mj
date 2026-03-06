@@ -1,0 +1,7 @@
+program b007
+{
+	void main()
+	{
+		break;
+	}
+}

@@ -47,6 +47,87 @@ public class TestCases {
 	    assertEquals(true, hasErrors());
 	}
 	
+	// B NIVO
+	
+	@Test
+	public void b001() {
+		execute("b001");
+		assertEquals(false, hasErrors());
+		
+		String[] out = getOutput();
+		assertEquals("111", out[0]);
+	}
+	
+	@Test
+	public void b002() {
+		execute("b002");
+		assertEquals(false, hasErrors());
+		
+		String[] out = getOutput();
+		assertEquals("19", out[0]);
+	}
+	
+	@Test
+	public void b003() {
+		execute("b003");
+		assertEquals(false, hasErrors());
+		
+		String[] out = getOutput();
+		assertEquals("2030", out[0]);
+	}
+	
+	@Test
+	public void b004() {
+		execute("b004");
+		assertEquals(false, hasErrors());
+		
+		String[] out = getOutput();
+		assertEquals("10", out[0]);
+	}
+	
+	@Test
+	public void b005() {
+		execute("b005");
+		assertEquals(false, hasErrors());
+		
+		String[] out = getOutput();
+		assertEquals("12624", out[0]);
+	}
+	
+	@Test
+	public void b006() {
+		execute("b006");
+		assertEquals(false, hasErrors());
+		
+		String[] out = getOutput();
+		assertEquals("14", out[0]);
+	}
+	
+	@Test
+	public void b007() {
+		execute("b007");
+		assertEquals(true, hasErrors());
+	}
+	
+	@Test
+	public void b008() {
+		execute("b008");
+		assertEquals(true, hasErrors());
+	}
+	
+	@Test
+	public void b009() {
+		execute("b009");
+		assertEquals(true, hasErrors());
+	}
+	
+	@Test
+	public void b010() {
+		execute("b010");
+		assertEquals(true, hasErrors());
+	}
+	
+	
 	// TESTOVI PO FAZAMA
 
 	@Test
@@ -248,6 +329,25 @@ public class TestCases {
 	}
 	
 	@Test
+	public void test302() {
+	    setInput("1\n2\n3\n");
+	    execute("test302");
+	    assertEquals(false, hasErrors());
+
+	    String[] out = getOutput();
+	    assertEquals("0165", out[0]);
+	    assertEquals("-4", out[1]);
+	    assertEquals("6012", out[2]);
+	    assertEquals("6vf1", out[3]);
+	    assertEquals("2", out[4]);
+	    assertEquals("32", out[5]);
+	    assertEquals("", out[6]);
+	    assertEquals("5", out[7]);
+	    assertEquals("9", out[8]);
+	    assertEquals("", out[9]);
+	}
+	
+	@Test
 	public void p310() {
 	    execute("p310");
 	    assertEquals(false, hasErrors());
@@ -303,6 +403,17 @@ public class TestCases {
 	public void p317() {
 	    execute("p317");
 	    assertEquals(true, hasErrors());
+	}
+	
+	@Test
+	public void p318() {
+	    execute("p318");
+	    assertEquals(false, hasErrors());
+
+	    String[] out = getOutput();
+	    assertEquals("111111", out[0]);
+	    assertEquals("000000", out[1]);
+	    assertEquals("1111", out[2]);
 	}
 
 	/* test helper operations */
