@@ -64,8 +64,7 @@ public class TestCases {
 
 		String[] out = getOutput(); 		
 		assertEquals("666", out[0]);
-		// assertEquals("true", out[1]);
-		// assertEquals("Hello", out[2]);
+		assertEquals("1", out[1]);
 	}
 
 	@Test
@@ -78,7 +77,6 @@ public class TestCases {
 		assertEquals("Irt", out[1]);
 	}
 
-	@Ignore
 	@Test
 	public void p010() {
 		execute("p010");
@@ -120,6 +118,15 @@ public class TestCases {
 		String[] out = getOutput(); 		
 		assertEquals("-5-5", out[0]);
 	}
+	
+	@Test
+	public void p014() {
+		execute("p014");
+		assertEquals(true, hasErrors());
+		assertEquals(true, hasError(ErrorCode.LEXIC_ERROR, 3));		
+		assertEquals(true, hasError(ErrorCode.LEXIC_ERROR, 4));	
+		assertEquals(true, hasError(ErrorCode.LEXIC_ERROR, 6));	
+	}
 
 	@Test
 	public void p100() {
@@ -134,6 +141,7 @@ public class TestCases {
 		assertEquals(true, hasErrors());
 		assertEquals(true, hasError(ErrorCode.SYNTAX_ERROR, 7));		
 	}
+
 
 	@Test
 	public void p200() {
@@ -183,7 +191,6 @@ public class TestCases {
 		assertEquals(true, hasError(ErrorCode.CANNOT_BE_RESOLVED_AS_TYPE));		
 	}
 
-	@Ignore
 	@Test
 	public void p301() {
 		execute("p301");
@@ -192,6 +199,76 @@ public class TestCases {
 		String[] out = getOutput(); 		
 		assertEquals("9", out[0]);
 		assertEquals("12", out[1]);
+	}
+	
+	@Test
+	public void test301() {
+		execute("test301");
+		assertEquals(false, hasErrors());
+		
+		String[] out = getOutput(); 		
+		assertEquals("9", out[0]);
+		assertEquals("12", out[1]);
+		
+		
+	}
+	
+	@Test
+	public void p310() {
+	    execute("p310");
+	    assertEquals(false, hasErrors());
+
+	    String[] out = getOutput();
+	    assertEquals("507", out[0]);
+	}
+
+	@Test
+	public void p311() {
+	    execute("p311");
+	    assertEquals(true, hasErrors());
+	}
+
+	@Test
+	public void p312() {
+	    execute("p312");
+	    assertEquals(true, hasErrors());
+	}
+
+	@Test
+	public void p313() {
+	    execute("p313");
+	    assertEquals(true, hasErrors());
+	}
+
+	@Test
+	public void p314() {
+	    execute("p314");
+	    assertEquals(true, hasErrors());
+	}
+
+	@Test
+	public void p315() {
+	    execute("p315");
+	    assertEquals(false, hasErrors());
+
+	    String[] out = getOutput();
+	    assertEquals("0", out[0]);
+	    assertEquals("3", out[1]);
+	    assertEquals("65", out[2]);
+	    assertEquals("3", out[3]);
+	}
+
+	@Test
+	public void p316() {
+	    execute("p316");
+	    assertEquals(true, hasErrors());
+	}
+
+
+	@Test
+	public void p317() {
+	    execute("p317");
+	    assertEquals(true, hasErrors());
 	}
 
 	/* test helper operations */

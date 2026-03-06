@@ -1,0 +1,1439 @@
+INFO  14:23:23,978 - #2 program
+INFO  14:23:23,979 - #21 p315
+INFO  14:23:23,979 - #4 enum
+INFO  14:23:23,980 - #21 Broj
+INFO  14:23:23,980 - #49 {
+INFO  14:23:23,980 - #21 NULA
+INFO  14:23:23,980 - #43 ,
+INFO  14:23:23,981 - #21 TRI
+INFO  14:23:23,981 - #38 =
+INFO  14:23:23,981 - #22 3
+INFO  14:23:23,981 - #50 }
+INFO  14:23:23,981 - #21 char
+INFO  14:23:23,983 - #21 c
+INFO  14:23:23,984 - #41 ;
+INFO  14:23:23,984 - #21 int
+INFO  14:23:23,984 - #21 a
+INFO  14:23:23,984 - #47 [
+INFO  14:23:23,984 - #48 ]
+INFO  14:23:23,984 - #41 ;
+INFO  14:23:23,985 - #49 {
+INFO  14:23:23,985 - #14 void
+INFO  14:23:23,985 - #21 main
+INFO  14:23:23,985 - #45 (
+INFO  14:23:23,985 - #46 )
+INFO  14:23:23,986 - #49 {
+INFO  14:23:23,986 - #21 a
+INFO  14:23:23,986 - #38 =
+INFO  14:23:23,986 - #10 new
+INFO  14:23:23,986 - #21 int
+INFO  14:23:23,986 - #47 [
+INFO  14:23:23,986 - #22 3
+INFO  14:23:23,986 - #48 ]
+INFO  14:23:23,987 - #41 ;
+INFO  14:23:23,987 - #21 c
+INFO  14:23:23,987 - #38 =
+INFO  14:23:23,987 - #21 chr
+INFO  14:23:23,987 - #45 (
+INFO  14:23:23,987 - #22 65
+INFO  14:23:23,987 - #46 )
+INFO  14:23:23,988 - #41 ;
+INFO  14:23:23,988 - #11 print
+INFO  14:23:23,988 - #45 (
+INFO  14:23:23,988 - #21 Broj
+INFO  14:23:23,988 - #44 .
+INFO  14:23:23,988 - #21 NULA
+INFO  14:23:23,988 - #46 )
+INFO  14:23:23,989 - #41 ;
+INFO  14:23:23,989 - #11 print
+INFO  14:23:23,990 - #45 (
+INFO  14:23:23,990 - #21 Broj
+INFO  14:23:23,990 - #44 .
+INFO  14:23:23,990 - #21 TRI
+INFO  14:23:23,990 - #46 )
+INFO  14:23:23,990 - #41 ;
+INFO  14:23:23,990 - #11 print
+INFO  14:23:23,990 - #45 (
+INFO  14:23:23,990 - #21 ord
+INFO  14:23:23,990 - #45 (
+INFO  14:23:23,990 - #21 c
+INFO  14:23:23,990 - #46 )
+INFO  14:23:23,990 - #46 )
+INFO  14:23:23,990 - #41 ;
+INFO  14:23:23,990 - #11 print
+INFO  14:23:23,990 - #45 (
+INFO  14:23:23,990 - #21 len
+INFO  14:23:23,990 - #45 (
+INFO  14:23:23,990 - #21 a
+INFO  14:23:23,990 - #46 )
+INFO  14:23:23,990 - #46 )
+INFO  14:23:23,990 - #41 ;
+INFO  14:23:23,990 - #50 }
+INFO  14:23:23,990 - #50 }
+INFO  14:23:23,992 - Program(
+  ProgramName(
+   p315
+  ) [ProgramName]
+  GlobalDeclList1(
+    GlobalDeclList1(
+      GlobalDeclList1(
+        GlobalDeclList0(
+        ) [GlobalDeclList0]
+        GlobalDeclEnum(
+          EnumDecl(
+            EnumName(
+             Broj
+            ) [EnumName]
+            EnumItemList2(
+              EnumItemList1(
+                EnumItemNoAssign(
+                 NULA
+                ) [EnumItemNoAssign]
+              ) [EnumItemList1]
+              EnumItemWithAssign(
+               TRI
+               3
+              ) [EnumItemWithAssign]
+            ) [EnumItemList2]
+          ) [EnumDecl]
+        ) [GlobalDeclEnum]
+      ) [GlobalDeclList1]
+      GlobalDeclVar(
+        VarDeclValid(
+          Type(
+           char
+          ) [Type]
+          VarItemList1(
+            VarItem(
+             c
+              OptArray0(
+              ) [OptArray0]
+            ) [VarItem]
+          ) [VarItemList1]
+        ) [VarDeclValid]
+      ) [GlobalDeclVar]
+    ) [GlobalDeclList1]
+    GlobalDeclVar(
+      VarDeclValid(
+        Type(
+         int
+        ) [Type]
+        VarItemList1(
+          VarItem(
+           a
+            OptArray1(
+            ) [OptArray1]
+          ) [VarItem]
+        ) [VarItemList1]
+      ) [VarDeclValid]
+    ) [GlobalDeclVar]
+  ) [GlobalDeclList1]
+  MethodDeclList1(
+    MethodDeclList0(
+    ) [MethodDeclList0]
+    MethodDecl(
+      MethodRetTypeVoid(
+      ) [MethodRetTypeVoid]
+      MethodName(
+       main
+      ) [MethodName]
+      OptFormPars0(
+      ) [OptFormPars0]
+      VarDeclList0(
+      ) [VarDeclList0]
+      StatementList1(
+        StatementList1(
+          StatementList1(
+            StatementList1(
+              StatementList1(
+                StatementList1(
+                  StatementList0(
+                  ) [StatementList0]
+                  StatementDesignator(
+                    DesignatorStatement(
+                      Designator(
+                       a
+                        DesignatorSuffixList0(
+                        ) [DesignatorSuffixList0]
+                      ) [Designator]
+                      DesignatorStmtTail1(
+                        Assignop(
+                        ) [Assignop]
+                        Expr1(
+                          SimpleExpr1(
+                            Term1(
+                              FactorNewArr(
+                                Type(
+                                 int
+                                ) [Type]
+                                Expr1(
+                                  SimpleExpr1(
+                                    Term1(
+                                      FactorNumConst(
+                                       3
+                                      ) [FactorNumConst]
+                                    ) [Term1]
+                                  ) [SimpleExpr1]
+                                ) [Expr1]
+                              ) [FactorNewArr]
+                            ) [Term1]
+                          ) [SimpleExpr1]
+                        ) [Expr1]
+                      ) [DesignatorStmtTail1]
+                    ) [DesignatorStatement]
+                  ) [StatementDesignator]
+                ) [StatementList1]
+                StatementDesignator(
+                  DesignatorStatement(
+                    Designator(
+                     c
+                      DesignatorSuffixList0(
+                      ) [DesignatorSuffixList0]
+                    ) [Designator]
+                    DesignatorStmtTail1(
+                      Assignop(
+                      ) [Assignop]
+                      Expr1(
+                        SimpleExpr1(
+                          Term1(
+                            FactorDesignator(
+                              Designator(
+                               chr
+                                DesignatorSuffixList0(
+                                ) [DesignatorSuffixList0]
+                              ) [Designator]
+                              OptCall1(
+                                OptActPars1(
+                                  ActPars(
+                                    ExprList1(
+                                      Expr1(
+                                        SimpleExpr1(
+                                          Term1(
+                                            FactorNumConst(
+                                             65
+                                            ) [FactorNumConst]
+                                          ) [Term1]
+                                        ) [SimpleExpr1]
+                                      ) [Expr1]
+                                    ) [ExprList1]
+                                  ) [ActPars]
+                                ) [OptActPars1]
+                              ) [OptCall1]
+                            ) [FactorDesignator]
+                          ) [Term1]
+                        ) [SimpleExpr1]
+                      ) [Expr1]
+                    ) [DesignatorStmtTail1]
+                  ) [DesignatorStatement]
+                ) [StatementDesignator]
+              ) [StatementList1]
+              StatementPrint(
+                Expr1(
+                  SimpleExpr1(
+                    Term1(
+                      FactorDesignator(
+                        Designator(
+                         Broj
+                          DesignatorSuffixList1(
+                            DesignatorSuffixList0(
+                            ) [DesignatorSuffixList0]
+                            DesignatorSuffix1(
+                             NULA
+                            ) [DesignatorSuffix1]
+                          ) [DesignatorSuffixList1]
+                        ) [Designator]
+                        OptCall0(
+                        ) [OptCall0]
+                      ) [FactorDesignator]
+                    ) [Term1]
+                  ) [SimpleExpr1]
+                ) [Expr1]
+                OptNumConst0(
+                ) [OptNumConst0]
+              ) [StatementPrint]
+            ) [StatementList1]
+            StatementPrint(
+              Expr1(
+                SimpleExpr1(
+                  Term1(
+                    FactorDesignator(
+                      Designator(
+                       Broj
+                        DesignatorSuffixList1(
+                          DesignatorSuffixList0(
+                          ) [DesignatorSuffixList0]
+                          DesignatorSuffix1(
+                           TRI
+                          ) [DesignatorSuffix1]
+                        ) [DesignatorSuffixList1]
+                      ) [Designator]
+                      OptCall0(
+                      ) [OptCall0]
+                    ) [FactorDesignator]
+                  ) [Term1]
+                ) [SimpleExpr1]
+              ) [Expr1]
+              OptNumConst0(
+              ) [OptNumConst0]
+            ) [StatementPrint]
+          ) [StatementList1]
+          StatementPrint(
+            Expr1(
+              SimpleExpr1(
+                Term1(
+                  FactorDesignator(
+                    Designator(
+                     ord
+                      DesignatorSuffixList0(
+                      ) [DesignatorSuffixList0]
+                    ) [Designator]
+                    OptCall1(
+                      OptActPars1(
+                        ActPars(
+                          ExprList1(
+                            Expr1(
+                              SimpleExpr1(
+                                Term1(
+                                  FactorDesignator(
+                                    Designator(
+                                     c
+                                      DesignatorSuffixList0(
+                                      ) [DesignatorSuffixList0]
+                                    ) [Designator]
+                                    OptCall0(
+                                    ) [OptCall0]
+                                  ) [FactorDesignator]
+                                ) [Term1]
+                              ) [SimpleExpr1]
+                            ) [Expr1]
+                          ) [ExprList1]
+                        ) [ActPars]
+                      ) [OptActPars1]
+                    ) [OptCall1]
+                  ) [FactorDesignator]
+                ) [Term1]
+              ) [SimpleExpr1]
+            ) [Expr1]
+            OptNumConst0(
+            ) [OptNumConst0]
+          ) [StatementPrint]
+        ) [StatementList1]
+        StatementPrint(
+          Expr1(
+            SimpleExpr1(
+              Term1(
+                FactorDesignator(
+                  Designator(
+                   len
+                    DesignatorSuffixList0(
+                    ) [DesignatorSuffixList0]
+                  ) [Designator]
+                  OptCall1(
+                    OptActPars1(
+                      ActPars(
+                        ExprList1(
+                          Expr1(
+                            SimpleExpr1(
+                              Term1(
+                                FactorDesignator(
+                                  Designator(
+                                   a
+                                    DesignatorSuffixList0(
+                                    ) [DesignatorSuffixList0]
+                                  ) [Designator]
+                                  OptCall0(
+                                  ) [OptCall0]
+                                ) [FactorDesignator]
+                              ) [Term1]
+                            ) [SimpleExpr1]
+                          ) [Expr1]
+                        ) [ExprList1]
+                      ) [ActPars]
+                    ) [OptActPars1]
+                  ) [OptCall1]
+                ) [FactorDesignator]
+              ) [Term1]
+            ) [SimpleExpr1]
+          ) [Expr1]
+          OptNumConst0(
+          ) [OptNumConst0]
+        ) [StatementPrint]
+      ) [StatementList1]
+    ) [MethodDecl]
+  ) [MethodDeclList1]
+) [Program]
+INFO  14:23:23,996 - Pretraga na 9(a), nadjeno rs.etf.pp1.symboltable.concepts.Obj@5e9f23b4
+INFO  14:23:23,996 - Pretraga na 10(c), nadjeno rs.etf.pp1.symboltable.concepts.Obj@6576fe71
+INFO  14:23:23,996 - Pretraga na 10(chr), nadjeno rs.etf.pp1.symboltable.concepts.Obj@300ffa5d
+INFO  14:23:23,996 - Pretraga na 11(Broj), nadjeno rs.etf.pp1.symboltable.concepts.Obj@179d3b25
+INFO  14:23:23,998 - Pretraga na 11(NULA), nadjeno rs.etf.pp1.symboltable.concepts.Obj@254989ff
+ERROR 14:23:23,998 - Greska na liniji 11: print podrzava samo int/char/bool
+INFO  14:23:24,000 - Pretraga na 12(Broj), nadjeno rs.etf.pp1.symboltable.concepts.Obj@179d3b25
+INFO  14:23:24,000 - Pretraga na 12(TRI), nadjeno rs.etf.pp1.symboltable.concepts.Obj@439f5b3d
+ERROR 14:23:24,000 - Greska na liniji 12: print podrzava samo int/char/bool
+INFO  14:23:24,000 - Pretraga na 13(ord), nadjeno rs.etf.pp1.symboltable.concepts.Obj@685f4c2e
+INFO  14:23:24,000 - Pretraga na 13(c), nadjeno rs.etf.pp1.symboltable.concepts.Obj@6576fe71
+INFO  14:23:24,000 - Pretraga na 14(len), nadjeno rs.etf.pp1.symboltable.concepts.Obj@533ddba
+INFO  14:23:24,000 - Pretraga na 14(a), nadjeno rs.etf.pp1.symboltable.concepts.Obj@5e9f23b4
+INFO  14:23:45,309 - #2 program
+INFO  14:23:45,310 - #21 p315
+INFO  14:23:45,310 - #4 enum
+INFO  14:23:45,312 - #21 Broj
+INFO  14:23:45,312 - #49 {
+INFO  14:23:45,312 - #21 NULA
+INFO  14:23:45,312 - #43 ,
+INFO  14:23:45,312 - #21 TRI
+INFO  14:23:45,312 - #38 =
+INFO  14:23:45,312 - #22 3
+INFO  14:23:45,313 - #50 }
+INFO  14:23:45,313 - #21 char
+INFO  14:23:45,313 - #21 c
+INFO  14:23:45,313 - #41 ;
+INFO  14:23:45,315 - #21 int
+INFO  14:23:45,316 - #21 a
+INFO  14:23:45,316 - #47 [
+INFO  14:23:45,316 - #48 ]
+INFO  14:23:45,316 - #41 ;
+INFO  14:23:45,316 - #49 {
+INFO  14:23:45,316 - #14 void
+INFO  14:23:45,317 - #21 main
+INFO  14:23:45,317 - #45 (
+INFO  14:23:45,317 - #46 )
+INFO  14:23:45,317 - #49 {
+INFO  14:23:45,318 - #21 a
+INFO  14:23:45,318 - #38 =
+INFO  14:23:45,318 - #10 new
+INFO  14:23:45,318 - #21 int
+INFO  14:23:45,318 - #47 [
+INFO  14:23:45,319 - #22 3
+INFO  14:23:45,319 - #48 ]
+INFO  14:23:45,319 - #41 ;
+INFO  14:23:45,319 - #21 c
+INFO  14:23:45,319 - #38 =
+INFO  14:23:45,319 - #21 chr
+INFO  14:23:45,319 - #45 (
+INFO  14:23:45,319 - #22 65
+INFO  14:23:45,319 - #46 )
+INFO  14:23:45,320 - #41 ;
+INFO  14:23:45,320 - #11 print
+INFO  14:23:45,320 - #45 (
+INFO  14:23:45,320 - #21 Broj
+INFO  14:23:45,320 - #44 .
+INFO  14:23:45,320 - #21 NULA
+INFO  14:23:45,320 - #46 )
+INFO  14:23:45,320 - #41 ;
+INFO  14:23:45,321 - #11 print
+INFO  14:23:45,321 - #45 (
+INFO  14:23:45,321 - #21 Broj
+INFO  14:23:45,321 - #44 .
+INFO  14:23:45,321 - #21 TRI
+INFO  14:23:45,321 - #46 )
+INFO  14:23:45,321 - #41 ;
+INFO  14:23:45,321 - #11 print
+INFO  14:23:45,321 - #45 (
+INFO  14:23:45,321 - #21 ord
+INFO  14:23:45,321 - #45 (
+INFO  14:23:45,322 - #21 c
+INFO  14:23:45,322 - #46 )
+INFO  14:23:45,322 - #46 )
+INFO  14:23:45,322 - #41 ;
+INFO  14:23:45,322 - #11 print
+INFO  14:23:45,322 - #45 (
+INFO  14:23:45,322 - #21 len
+INFO  14:23:45,322 - #45 (
+INFO  14:23:45,322 - #21 a
+INFO  14:23:45,322 - #46 )
+INFO  14:23:45,322 - #46 )
+INFO  14:23:45,322 - #41 ;
+INFO  14:23:45,322 - #50 }
+INFO  14:23:45,322 - #50 }
+INFO  14:23:45,323 - Program(
+  ProgramName(
+   p315
+  ) [ProgramName]
+  GlobalDeclList1(
+    GlobalDeclList1(
+      GlobalDeclList1(
+        GlobalDeclList0(
+        ) [GlobalDeclList0]
+        GlobalDeclEnum(
+          EnumDecl(
+            EnumName(
+             Broj
+            ) [EnumName]
+            EnumItemList2(
+              EnumItemList1(
+                EnumItemNoAssign(
+                 NULA
+                ) [EnumItemNoAssign]
+              ) [EnumItemList1]
+              EnumItemWithAssign(
+               TRI
+               3
+              ) [EnumItemWithAssign]
+            ) [EnumItemList2]
+          ) [EnumDecl]
+        ) [GlobalDeclEnum]
+      ) [GlobalDeclList1]
+      GlobalDeclVar(
+        VarDeclValid(
+          Type(
+           char
+          ) [Type]
+          VarItemList1(
+            VarItem(
+             c
+              OptArray0(
+              ) [OptArray0]
+            ) [VarItem]
+          ) [VarItemList1]
+        ) [VarDeclValid]
+      ) [GlobalDeclVar]
+    ) [GlobalDeclList1]
+    GlobalDeclVar(
+      VarDeclValid(
+        Type(
+         int
+        ) [Type]
+        VarItemList1(
+          VarItem(
+           a
+            OptArray1(
+            ) [OptArray1]
+          ) [VarItem]
+        ) [VarItemList1]
+      ) [VarDeclValid]
+    ) [GlobalDeclVar]
+  ) [GlobalDeclList1]
+  MethodDeclList1(
+    MethodDeclList0(
+    ) [MethodDeclList0]
+    MethodDecl(
+      MethodRetTypeVoid(
+      ) [MethodRetTypeVoid]
+      MethodName(
+       main
+      ) [MethodName]
+      OptFormPars0(
+      ) [OptFormPars0]
+      VarDeclList0(
+      ) [VarDeclList0]
+      StatementList1(
+        StatementList1(
+          StatementList1(
+            StatementList1(
+              StatementList1(
+                StatementList1(
+                  StatementList0(
+                  ) [StatementList0]
+                  StatementDesignator(
+                    DesignatorStatement(
+                      Designator(
+                       a
+                        DesignatorSuffixList0(
+                        ) [DesignatorSuffixList0]
+                      ) [Designator]
+                      DesignatorStmtTail1(
+                        Assignop(
+                        ) [Assignop]
+                        Expr1(
+                          SimpleExpr1(
+                            Term1(
+                              FactorNewArr(
+                                Type(
+                                 int
+                                ) [Type]
+                                Expr1(
+                                  SimpleExpr1(
+                                    Term1(
+                                      FactorNumConst(
+                                       3
+                                      ) [FactorNumConst]
+                                    ) [Term1]
+                                  ) [SimpleExpr1]
+                                ) [Expr1]
+                              ) [FactorNewArr]
+                            ) [Term1]
+                          ) [SimpleExpr1]
+                        ) [Expr1]
+                      ) [DesignatorStmtTail1]
+                    ) [DesignatorStatement]
+                  ) [StatementDesignator]
+                ) [StatementList1]
+                StatementDesignator(
+                  DesignatorStatement(
+                    Designator(
+                     c
+                      DesignatorSuffixList0(
+                      ) [DesignatorSuffixList0]
+                    ) [Designator]
+                    DesignatorStmtTail1(
+                      Assignop(
+                      ) [Assignop]
+                      Expr1(
+                        SimpleExpr1(
+                          Term1(
+                            FactorDesignator(
+                              Designator(
+                               chr
+                                DesignatorSuffixList0(
+                                ) [DesignatorSuffixList0]
+                              ) [Designator]
+                              OptCall1(
+                                OptActPars1(
+                                  ActPars(
+                                    ExprList1(
+                                      Expr1(
+                                        SimpleExpr1(
+                                          Term1(
+                                            FactorNumConst(
+                                             65
+                                            ) [FactorNumConst]
+                                          ) [Term1]
+                                        ) [SimpleExpr1]
+                                      ) [Expr1]
+                                    ) [ExprList1]
+                                  ) [ActPars]
+                                ) [OptActPars1]
+                              ) [OptCall1]
+                            ) [FactorDesignator]
+                          ) [Term1]
+                        ) [SimpleExpr1]
+                      ) [Expr1]
+                    ) [DesignatorStmtTail1]
+                  ) [DesignatorStatement]
+                ) [StatementDesignator]
+              ) [StatementList1]
+              StatementPrint(
+                Expr1(
+                  SimpleExpr1(
+                    Term1(
+                      FactorDesignator(
+                        Designator(
+                         Broj
+                          DesignatorSuffixList1(
+                            DesignatorSuffixList0(
+                            ) [DesignatorSuffixList0]
+                            DesignatorSuffix1(
+                             NULA
+                            ) [DesignatorSuffix1]
+                          ) [DesignatorSuffixList1]
+                        ) [Designator]
+                        OptCall0(
+                        ) [OptCall0]
+                      ) [FactorDesignator]
+                    ) [Term1]
+                  ) [SimpleExpr1]
+                ) [Expr1]
+                OptNumConst0(
+                ) [OptNumConst0]
+              ) [StatementPrint]
+            ) [StatementList1]
+            StatementPrint(
+              Expr1(
+                SimpleExpr1(
+                  Term1(
+                    FactorDesignator(
+                      Designator(
+                       Broj
+                        DesignatorSuffixList1(
+                          DesignatorSuffixList0(
+                          ) [DesignatorSuffixList0]
+                          DesignatorSuffix1(
+                           TRI
+                          ) [DesignatorSuffix1]
+                        ) [DesignatorSuffixList1]
+                      ) [Designator]
+                      OptCall0(
+                      ) [OptCall0]
+                    ) [FactorDesignator]
+                  ) [Term1]
+                ) [SimpleExpr1]
+              ) [Expr1]
+              OptNumConst0(
+              ) [OptNumConst0]
+            ) [StatementPrint]
+          ) [StatementList1]
+          StatementPrint(
+            Expr1(
+              SimpleExpr1(
+                Term1(
+                  FactorDesignator(
+                    Designator(
+                     ord
+                      DesignatorSuffixList0(
+                      ) [DesignatorSuffixList0]
+                    ) [Designator]
+                    OptCall1(
+                      OptActPars1(
+                        ActPars(
+                          ExprList1(
+                            Expr1(
+                              SimpleExpr1(
+                                Term1(
+                                  FactorDesignator(
+                                    Designator(
+                                     c
+                                      DesignatorSuffixList0(
+                                      ) [DesignatorSuffixList0]
+                                    ) [Designator]
+                                    OptCall0(
+                                    ) [OptCall0]
+                                  ) [FactorDesignator]
+                                ) [Term1]
+                              ) [SimpleExpr1]
+                            ) [Expr1]
+                          ) [ExprList1]
+                        ) [ActPars]
+                      ) [OptActPars1]
+                    ) [OptCall1]
+                  ) [FactorDesignator]
+                ) [Term1]
+              ) [SimpleExpr1]
+            ) [Expr1]
+            OptNumConst0(
+            ) [OptNumConst0]
+          ) [StatementPrint]
+        ) [StatementList1]
+        StatementPrint(
+          Expr1(
+            SimpleExpr1(
+              Term1(
+                FactorDesignator(
+                  Designator(
+                   len
+                    DesignatorSuffixList0(
+                    ) [DesignatorSuffixList0]
+                  ) [Designator]
+                  OptCall1(
+                    OptActPars1(
+                      ActPars(
+                        ExprList1(
+                          Expr1(
+                            SimpleExpr1(
+                              Term1(
+                                FactorDesignator(
+                                  Designator(
+                                   a
+                                    DesignatorSuffixList0(
+                                    ) [DesignatorSuffixList0]
+                                  ) [Designator]
+                                  OptCall0(
+                                  ) [OptCall0]
+                                ) [FactorDesignator]
+                              ) [Term1]
+                            ) [SimpleExpr1]
+                          ) [Expr1]
+                        ) [ExprList1]
+                      ) [ActPars]
+                    ) [OptActPars1]
+                  ) [OptCall1]
+                ) [FactorDesignator]
+              ) [Term1]
+            ) [SimpleExpr1]
+          ) [Expr1]
+          OptNumConst0(
+          ) [OptNumConst0]
+        ) [StatementPrint]
+      ) [StatementList1]
+    ) [MethodDecl]
+  ) [MethodDeclList1]
+) [Program]
+INFO  14:23:45,328 - Pretraga na 9(a), nadjeno rs.etf.pp1.symboltable.concepts.Obj@5e9f23b4
+INFO  14:23:45,328 - Pretraga na 10(c), nadjeno rs.etf.pp1.symboltable.concepts.Obj@6576fe71
+INFO  14:23:45,328 - Pretraga na 10(chr), nadjeno rs.etf.pp1.symboltable.concepts.Obj@300ffa5d
+INFO  14:23:45,328 - Pretraga na 11(Broj), nadjeno rs.etf.pp1.symboltable.concepts.Obj@179d3b25
+INFO  14:23:45,330 - Pretraga na 11(NULA), nadjeno rs.etf.pp1.symboltable.concepts.Obj@254989ff
+INFO  14:23:45,330 - Pretraga na 12(Broj), nadjeno rs.etf.pp1.symboltable.concepts.Obj@179d3b25
+INFO  14:23:45,330 - Pretraga na 12(TRI), nadjeno rs.etf.pp1.symboltable.concepts.Obj@439f5b3d
+INFO  14:23:45,330 - Pretraga na 13(ord), nadjeno rs.etf.pp1.symboltable.concepts.Obj@685f4c2e
+INFO  14:23:45,330 - Pretraga na 13(c), nadjeno rs.etf.pp1.symboltable.concepts.Obj@6576fe71
+INFO  14:23:45,330 - Pretraga na 14(len), nadjeno rs.etf.pp1.symboltable.concepts.Obj@533ddba
+INFO  14:23:45,330 - Pretraga na 14(a), nadjeno rs.etf.pp1.symboltable.concepts.Obj@5e9f23b4
+INFO  14:23:45,332 - Generisanje koda završeno (obj/p315.obj)
+INFO  14:34:44,045 - #2 program
+INFO  14:34:44,046 - #21 p315
+INFO  14:34:44,046 - #4 enum
+INFO  14:34:44,047 - #21 Broj
+INFO  14:34:44,047 - #49 {
+INFO  14:34:44,047 - #21 NULA
+INFO  14:34:44,048 - #43 ,
+INFO  14:34:44,048 - #21 TRI
+INFO  14:34:44,048 - #38 =
+INFO  14:34:44,048 - #22 3
+INFO  14:34:44,048 - #50 }
+INFO  14:34:44,048 - #21 char
+INFO  14:34:44,049 - #21 c
+INFO  14:34:44,049 - #41 ;
+INFO  14:34:44,052 - #21 int
+INFO  14:34:44,052 - #21 a
+INFO  14:34:44,052 - #47 [
+INFO  14:34:44,052 - #48 ]
+INFO  14:34:44,052 - #41 ;
+INFO  14:34:44,052 - #49 {
+INFO  14:34:44,053 - #14 void
+INFO  14:34:44,053 - #21 main
+INFO  14:34:44,053 - #45 (
+INFO  14:34:44,053 - #46 )
+INFO  14:34:44,054 - #49 {
+INFO  14:34:44,054 - #21 a
+INFO  14:34:44,054 - #38 =
+INFO  14:34:44,054 - #10 new
+INFO  14:34:44,055 - #21 int
+INFO  14:34:44,055 - #47 [
+INFO  14:34:44,055 - #22 3
+INFO  14:34:44,055 - #48 ]
+INFO  14:34:44,055 - #41 ;
+INFO  14:34:44,056 - #21 c
+INFO  14:34:44,056 - #38 =
+INFO  14:34:44,056 - #21 chr
+INFO  14:34:44,056 - #45 (
+INFO  14:34:44,056 - #22 65
+INFO  14:34:44,056 - #46 )
+INFO  14:34:44,056 - #41 ;
+INFO  14:34:44,056 - #11 print
+INFO  14:34:44,056 - #45 (
+INFO  14:34:44,056 - #21 Broj
+INFO  14:34:44,056 - #44 .
+INFO  14:34:44,056 - #21 NULA
+INFO  14:34:44,056 - #46 )
+INFO  14:34:44,057 - #41 ;
+INFO  14:34:44,058 - #11 print
+INFO  14:34:44,058 - #45 (
+INFO  14:34:44,058 - #21 eol
+INFO  14:34:44,058 - #46 )
+INFO  14:34:44,058 - #41 ;
+INFO  14:34:44,058 - #11 print
+INFO  14:34:44,058 - #45 (
+INFO  14:34:44,058 - #21 Broj
+INFO  14:34:44,058 - #44 .
+INFO  14:34:44,058 - #21 TRI
+INFO  14:34:44,058 - #46 )
+INFO  14:34:44,058 - #41 ;
+INFO  14:34:44,058 - #11 print
+INFO  14:34:44,059 - #45 (
+INFO  14:34:44,059 - #21 eol
+INFO  14:34:44,059 - #46 )
+INFO  14:34:44,059 - #41 ;
+INFO  14:34:44,059 - #11 print
+INFO  14:34:44,059 - #45 (
+INFO  14:34:44,059 - #21 ord
+INFO  14:34:44,059 - #45 (
+INFO  14:34:44,059 - #21 c
+INFO  14:34:44,059 - #46 )
+INFO  14:34:44,059 - #46 )
+INFO  14:34:44,059 - #41 ;
+INFO  14:34:44,059 - #11 print
+INFO  14:34:44,059 - #45 (
+INFO  14:34:44,059 - #21 eol
+INFO  14:34:44,059 - #46 )
+INFO  14:34:44,059 - #41 ;
+INFO  14:34:44,059 - #11 print
+INFO  14:34:44,059 - #45 (
+INFO  14:34:44,059 - #21 len
+INFO  14:34:44,059 - #45 (
+INFO  14:34:44,059 - #21 a
+INFO  14:34:44,060 - #46 )
+INFO  14:34:44,060 - #46 )
+INFO  14:34:44,060 - #41 ;
+INFO  14:34:44,060 - #50 }
+INFO  14:34:44,060 - #50 }
+INFO  14:34:44,061 - Program(
+  ProgramName(
+   p315
+  ) [ProgramName]
+  GlobalDeclList1(
+    GlobalDeclList1(
+      GlobalDeclList1(
+        GlobalDeclList0(
+        ) [GlobalDeclList0]
+        GlobalDeclEnum(
+          EnumDecl(
+            EnumName(
+             Broj
+            ) [EnumName]
+            EnumItemList2(
+              EnumItemList1(
+                EnumItemNoAssign(
+                 NULA
+                ) [EnumItemNoAssign]
+              ) [EnumItemList1]
+              EnumItemWithAssign(
+               TRI
+               3
+              ) [EnumItemWithAssign]
+            ) [EnumItemList2]
+          ) [EnumDecl]
+        ) [GlobalDeclEnum]
+      ) [GlobalDeclList1]
+      GlobalDeclVar(
+        VarDeclValid(
+          Type(
+           char
+          ) [Type]
+          VarItemList1(
+            VarItem(
+             c
+              OptArray0(
+              ) [OptArray0]
+            ) [VarItem]
+          ) [VarItemList1]
+        ) [VarDeclValid]
+      ) [GlobalDeclVar]
+    ) [GlobalDeclList1]
+    GlobalDeclVar(
+      VarDeclValid(
+        Type(
+         int
+        ) [Type]
+        VarItemList1(
+          VarItem(
+           a
+            OptArray1(
+            ) [OptArray1]
+          ) [VarItem]
+        ) [VarItemList1]
+      ) [VarDeclValid]
+    ) [GlobalDeclVar]
+  ) [GlobalDeclList1]
+  MethodDeclList1(
+    MethodDeclList0(
+    ) [MethodDeclList0]
+    MethodDecl(
+      MethodRetTypeVoid(
+      ) [MethodRetTypeVoid]
+      MethodName(
+       main
+      ) [MethodName]
+      OptFormPars0(
+      ) [OptFormPars0]
+      VarDeclList0(
+      ) [VarDeclList0]
+      StatementList1(
+        StatementList1(
+          StatementList1(
+            StatementList1(
+              StatementList1(
+                StatementList1(
+                  StatementList1(
+                    StatementList1(
+                      StatementList1(
+                        StatementList0(
+                        ) [StatementList0]
+                        StatementDesignator(
+                          DesignatorStatement(
+                            Designator(
+                             a
+                              DesignatorSuffixList0(
+                              ) [DesignatorSuffixList0]
+                            ) [Designator]
+                            DesignatorStmtTail1(
+                              Assignop(
+                              ) [Assignop]
+                              Expr1(
+                                SimpleExpr1(
+                                  Term1(
+                                    FactorNewArr(
+                                      Type(
+                                       int
+                                      ) [Type]
+                                      Expr1(
+                                        SimpleExpr1(
+                                          Term1(
+                                            FactorNumConst(
+                                             3
+                                            ) [FactorNumConst]
+                                          ) [Term1]
+                                        ) [SimpleExpr1]
+                                      ) [Expr1]
+                                    ) [FactorNewArr]
+                                  ) [Term1]
+                                ) [SimpleExpr1]
+                              ) [Expr1]
+                            ) [DesignatorStmtTail1]
+                          ) [DesignatorStatement]
+                        ) [StatementDesignator]
+                      ) [StatementList1]
+                      StatementDesignator(
+                        DesignatorStatement(
+                          Designator(
+                           c
+                            DesignatorSuffixList0(
+                            ) [DesignatorSuffixList0]
+                          ) [Designator]
+                          DesignatorStmtTail1(
+                            Assignop(
+                            ) [Assignop]
+                            Expr1(
+                              SimpleExpr1(
+                                Term1(
+                                  FactorDesignator(
+                                    Designator(
+                                     chr
+                                      DesignatorSuffixList0(
+                                      ) [DesignatorSuffixList0]
+                                    ) [Designator]
+                                    OptCall1(
+                                      OptActPars1(
+                                        ActPars(
+                                          ExprList1(
+                                            Expr1(
+                                              SimpleExpr1(
+                                                Term1(
+                                                  FactorNumConst(
+                                                   65
+                                                  ) [FactorNumConst]
+                                                ) [Term1]
+                                              ) [SimpleExpr1]
+                                            ) [Expr1]
+                                          ) [ExprList1]
+                                        ) [ActPars]
+                                      ) [OptActPars1]
+                                    ) [OptCall1]
+                                  ) [FactorDesignator]
+                                ) [Term1]
+                              ) [SimpleExpr1]
+                            ) [Expr1]
+                          ) [DesignatorStmtTail1]
+                        ) [DesignatorStatement]
+                      ) [StatementDesignator]
+                    ) [StatementList1]
+                    StatementPrint(
+                      Expr1(
+                        SimpleExpr1(
+                          Term1(
+                            FactorDesignator(
+                              Designator(
+                               Broj
+                                DesignatorSuffixList1(
+                                  DesignatorSuffixList0(
+                                  ) [DesignatorSuffixList0]
+                                  DesignatorSuffix1(
+                                   NULA
+                                  ) [DesignatorSuffix1]
+                                ) [DesignatorSuffixList1]
+                              ) [Designator]
+                              OptCall0(
+                              ) [OptCall0]
+                            ) [FactorDesignator]
+                          ) [Term1]
+                        ) [SimpleExpr1]
+                      ) [Expr1]
+                      OptNumConst0(
+                      ) [OptNumConst0]
+                    ) [StatementPrint]
+                  ) [StatementList1]
+                  StatementPrint(
+                    Expr1(
+                      SimpleExpr1(
+                        Term1(
+                          FactorDesignator(
+                            Designator(
+                             eol
+                              DesignatorSuffixList0(
+                              ) [DesignatorSuffixList0]
+                            ) [Designator]
+                            OptCall0(
+                            ) [OptCall0]
+                          ) [FactorDesignator]
+                        ) [Term1]
+                      ) [SimpleExpr1]
+                    ) [Expr1]
+                    OptNumConst0(
+                    ) [OptNumConst0]
+                  ) [StatementPrint]
+                ) [StatementList1]
+                StatementPrint(
+                  Expr1(
+                    SimpleExpr1(
+                      Term1(
+                        FactorDesignator(
+                          Designator(
+                           Broj
+                            DesignatorSuffixList1(
+                              DesignatorSuffixList0(
+                              ) [DesignatorSuffixList0]
+                              DesignatorSuffix1(
+                               TRI
+                              ) [DesignatorSuffix1]
+                            ) [DesignatorSuffixList1]
+                          ) [Designator]
+                          OptCall0(
+                          ) [OptCall0]
+                        ) [FactorDesignator]
+                      ) [Term1]
+                    ) [SimpleExpr1]
+                  ) [Expr1]
+                  OptNumConst0(
+                  ) [OptNumConst0]
+                ) [StatementPrint]
+              ) [StatementList1]
+              StatementPrint(
+                Expr1(
+                  SimpleExpr1(
+                    Term1(
+                      FactorDesignator(
+                        Designator(
+                         eol
+                          DesignatorSuffixList0(
+                          ) [DesignatorSuffixList0]
+                        ) [Designator]
+                        OptCall0(
+                        ) [OptCall0]
+                      ) [FactorDesignator]
+                    ) [Term1]
+                  ) [SimpleExpr1]
+                ) [Expr1]
+                OptNumConst0(
+                ) [OptNumConst0]
+              ) [StatementPrint]
+            ) [StatementList1]
+            StatementPrint(
+              Expr1(
+                SimpleExpr1(
+                  Term1(
+                    FactorDesignator(
+                      Designator(
+                       ord
+                        DesignatorSuffixList0(
+                        ) [DesignatorSuffixList0]
+                      ) [Designator]
+                      OptCall1(
+                        OptActPars1(
+                          ActPars(
+                            ExprList1(
+                              Expr1(
+                                SimpleExpr1(
+                                  Term1(
+                                    FactorDesignator(
+                                      Designator(
+                                       c
+                                        DesignatorSuffixList0(
+                                        ) [DesignatorSuffixList0]
+                                      ) [Designator]
+                                      OptCall0(
+                                      ) [OptCall0]
+                                    ) [FactorDesignator]
+                                  ) [Term1]
+                                ) [SimpleExpr1]
+                              ) [Expr1]
+                            ) [ExprList1]
+                          ) [ActPars]
+                        ) [OptActPars1]
+                      ) [OptCall1]
+                    ) [FactorDesignator]
+                  ) [Term1]
+                ) [SimpleExpr1]
+              ) [Expr1]
+              OptNumConst0(
+              ) [OptNumConst0]
+            ) [StatementPrint]
+          ) [StatementList1]
+          StatementPrint(
+            Expr1(
+              SimpleExpr1(
+                Term1(
+                  FactorDesignator(
+                    Designator(
+                     eol
+                      DesignatorSuffixList0(
+                      ) [DesignatorSuffixList0]
+                    ) [Designator]
+                    OptCall0(
+                    ) [OptCall0]
+                  ) [FactorDesignator]
+                ) [Term1]
+              ) [SimpleExpr1]
+            ) [Expr1]
+            OptNumConst0(
+            ) [OptNumConst0]
+          ) [StatementPrint]
+        ) [StatementList1]
+        StatementPrint(
+          Expr1(
+            SimpleExpr1(
+              Term1(
+                FactorDesignator(
+                  Designator(
+                   len
+                    DesignatorSuffixList0(
+                    ) [DesignatorSuffixList0]
+                  ) [Designator]
+                  OptCall1(
+                    OptActPars1(
+                      ActPars(
+                        ExprList1(
+                          Expr1(
+                            SimpleExpr1(
+                              Term1(
+                                FactorDesignator(
+                                  Designator(
+                                   a
+                                    DesignatorSuffixList0(
+                                    ) [DesignatorSuffixList0]
+                                  ) [Designator]
+                                  OptCall0(
+                                  ) [OptCall0]
+                                ) [FactorDesignator]
+                              ) [Term1]
+                            ) [SimpleExpr1]
+                          ) [Expr1]
+                        ) [ExprList1]
+                      ) [ActPars]
+                    ) [OptActPars1]
+                  ) [OptCall1]
+                ) [FactorDesignator]
+              ) [Term1]
+            ) [SimpleExpr1]
+          ) [Expr1]
+          OptNumConst0(
+          ) [OptNumConst0]
+        ) [StatementPrint]
+      ) [StatementList1]
+    ) [MethodDecl]
+  ) [MethodDeclList1]
+) [Program]
+INFO  14:34:44,067 - Pretraga na 9(a), nadjeno rs.etf.pp1.symboltable.concepts.Obj@5e9f23b4
+INFO  14:34:44,068 - Pretraga na 10(c), nadjeno rs.etf.pp1.symboltable.concepts.Obj@6576fe71
+INFO  14:34:44,068 - Pretraga na 10(chr), nadjeno rs.etf.pp1.symboltable.concepts.Obj@300ffa5d
+INFO  14:34:44,068 - Pretraga na 11(Broj), nadjeno rs.etf.pp1.symboltable.concepts.Obj@179d3b25
+INFO  14:34:44,070 - Pretraga na 11(NULA), nadjeno rs.etf.pp1.symboltable.concepts.Obj@254989ff
+INFO  14:34:44,070 - Pretraga na 12(eol), nadjeno rs.etf.pp1.symboltable.concepts.Obj@439f5b3d
+INFO  14:34:44,070 - Pretraga na 13(Broj), nadjeno rs.etf.pp1.symboltable.concepts.Obj@179d3b25
+INFO  14:34:44,070 - Pretraga na 13(TRI), nadjeno rs.etf.pp1.symboltable.concepts.Obj@685f4c2e
+INFO  14:34:44,070 - Pretraga na 14(eol), nadjeno rs.etf.pp1.symboltable.concepts.Obj@439f5b3d
+INFO  14:34:44,070 - Pretraga na 15(ord), nadjeno rs.etf.pp1.symboltable.concepts.Obj@533ddba
+INFO  14:34:44,070 - Pretraga na 15(c), nadjeno rs.etf.pp1.symboltable.concepts.Obj@6576fe71
+INFO  14:34:44,070 - Pretraga na 16(eol), nadjeno rs.etf.pp1.symboltable.concepts.Obj@439f5b3d
+INFO  14:34:44,070 - Pretraga na 17(len), nadjeno rs.etf.pp1.symboltable.concepts.Obj@25f38edc
+INFO  14:34:44,070 - Pretraga na 17(a), nadjeno rs.etf.pp1.symboltable.concepts.Obj@5e9f23b4
+INFO  14:34:44,072 - Generisanje koda završeno (obj/p315.obj)
+INFO  14:34:54,332 - #2 program
+INFO  14:34:54,333 - #21 p317
+INFO  14:34:54,333 - #49 {
+INFO  14:34:54,334 - #14 void
+INFO  14:34:54,334 - #21 main
+INFO  14:34:54,334 - #45 (
+INFO  14:34:54,334 - #46 )
+INFO  14:34:54,335 - #49 {
+INFO  14:34:54,335 - #11 print
+INFO  14:34:54,335 - #45 (
+INFO  14:34:54,336 - #21 ord
+INFO  14:34:54,336 - #45 (
+INFO  14:34:54,338 - #22 65
+INFO  14:34:54,338 - #46 )
+INFO  14:34:54,338 - #46 )
+INFO  14:34:54,339 - #41 ;
+INFO  14:34:54,339 - #11 print
+INFO  14:34:54,339 - #45 (
+INFO  14:34:54,339 - #21 eol
+INFO  14:34:54,339 - #46 )
+INFO  14:34:54,339 - #41 ;
+INFO  14:34:54,339 - #11 print
+INFO  14:34:54,339 - #45 (
+INFO  14:34:54,339 - #21 len
+INFO  14:34:54,339 - #45 (
+INFO  14:34:54,339 - #22 5
+INFO  14:34:54,339 - #46 )
+INFO  14:34:54,339 - #46 )
+INFO  14:34:54,339 - #41 ;
+INFO  14:34:54,339 - #11 print
+INFO  14:34:54,339 - #45 (
+INFO  14:34:54,339 - #21 eol
+INFO  14:34:54,340 - #46 )
+INFO  14:34:54,340 - #41 ;
+INFO  14:34:54,340 - #11 print
+INFO  14:34:54,340 - #45 (
+INFO  14:34:54,340 - #21 chr
+INFO  14:34:54,340 - #45 (
+INFO  14:34:54,340 - #24 1
+INFO  14:34:54,340 - #46 )
+INFO  14:34:54,340 - #46 )
+INFO  14:34:54,341 - #41 ;
+INFO  14:34:54,341 - #50 }
+INFO  14:34:54,341 - #50 }
+INFO  14:34:54,342 - Program(
+  ProgramName(
+   p317
+  ) [ProgramName]
+  GlobalDeclList0(
+  ) [GlobalDeclList0]
+  MethodDeclList1(
+    MethodDeclList0(
+    ) [MethodDeclList0]
+    MethodDecl(
+      MethodRetTypeVoid(
+      ) [MethodRetTypeVoid]
+      MethodName(
+       main
+      ) [MethodName]
+      OptFormPars0(
+      ) [OptFormPars0]
+      VarDeclList0(
+      ) [VarDeclList0]
+      StatementList1(
+        StatementList1(
+          StatementList1(
+            StatementList1(
+              StatementList1(
+                StatementList0(
+                ) [StatementList0]
+                StatementPrint(
+                  Expr1(
+                    SimpleExpr1(
+                      Term1(
+                        FactorDesignator(
+                          Designator(
+                           ord
+                            DesignatorSuffixList0(
+                            ) [DesignatorSuffixList0]
+                          ) [Designator]
+                          OptCall1(
+                            OptActPars1(
+                              ActPars(
+                                ExprList1(
+                                  Expr1(
+                                    SimpleExpr1(
+                                      Term1(
+                                        FactorNumConst(
+                                         65
+                                        ) [FactorNumConst]
+                                      ) [Term1]
+                                    ) [SimpleExpr1]
+                                  ) [Expr1]
+                                ) [ExprList1]
+                              ) [ActPars]
+                            ) [OptActPars1]
+                          ) [OptCall1]
+                        ) [FactorDesignator]
+                      ) [Term1]
+                    ) [SimpleExpr1]
+                  ) [Expr1]
+                  OptNumConst0(
+                  ) [OptNumConst0]
+                ) [StatementPrint]
+              ) [StatementList1]
+              StatementPrint(
+                Expr1(
+                  SimpleExpr1(
+                    Term1(
+                      FactorDesignator(
+                        Designator(
+                         eol
+                          DesignatorSuffixList0(
+                          ) [DesignatorSuffixList0]
+                        ) [Designator]
+                        OptCall0(
+                        ) [OptCall0]
+                      ) [FactorDesignator]
+                    ) [Term1]
+                  ) [SimpleExpr1]
+                ) [Expr1]
+                OptNumConst0(
+                ) [OptNumConst0]
+              ) [StatementPrint]
+            ) [StatementList1]
+            StatementPrint(
+              Expr1(
+                SimpleExpr1(
+                  Term1(
+                    FactorDesignator(
+                      Designator(
+                       len
+                        DesignatorSuffixList0(
+                        ) [DesignatorSuffixList0]
+                      ) [Designator]
+                      OptCall1(
+                        OptActPars1(
+                          ActPars(
+                            ExprList1(
+                              Expr1(
+                                SimpleExpr1(
+                                  Term1(
+                                    FactorNumConst(
+                                     5
+                                    ) [FactorNumConst]
+                                  ) [Term1]
+                                ) [SimpleExpr1]
+                              ) [Expr1]
+                            ) [ExprList1]
+                          ) [ActPars]
+                        ) [OptActPars1]
+                      ) [OptCall1]
+                    ) [FactorDesignator]
+                  ) [Term1]
+                ) [SimpleExpr1]
+              ) [Expr1]
+              OptNumConst0(
+              ) [OptNumConst0]
+            ) [StatementPrint]
+          ) [StatementList1]
+          StatementPrint(
+            Expr1(
+              SimpleExpr1(
+                Term1(
+                  FactorDesignator(
+                    Designator(
+                     eol
+                      DesignatorSuffixList0(
+                      ) [DesignatorSuffixList0]
+                    ) [Designator]
+                    OptCall0(
+                    ) [OptCall0]
+                  ) [FactorDesignator]
+                ) [Term1]
+              ) [SimpleExpr1]
+            ) [Expr1]
+            OptNumConst0(
+            ) [OptNumConst0]
+          ) [StatementPrint]
+        ) [StatementList1]
+        StatementPrint(
+          Expr1(
+            SimpleExpr1(
+              Term1(
+                FactorDesignator(
+                  Designator(
+                   chr
+                    DesignatorSuffixList0(
+                    ) [DesignatorSuffixList0]
+                  ) [Designator]
+                  OptCall1(
+                    OptActPars1(
+                      ActPars(
+                        ExprList1(
+                          Expr1(
+                            SimpleExpr1(
+                              Term1(
+                                FactorBoolConst(
+                                 1
+                                ) [FactorBoolConst]
+                              ) [Term1]
+                            ) [SimpleExpr1]
+                          ) [Expr1]
+                        ) [ExprList1]
+                      ) [ActPars]
+                    ) [OptActPars1]
+                  ) [OptCall1]
+                ) [FactorDesignator]
+              ) [Term1]
+            ) [SimpleExpr1]
+          ) [Expr1]
+          OptNumConst0(
+          ) [OptNumConst0]
+        ) [StatementPrint]
+      ) [StatementList1]
+    ) [MethodDecl]
+  ) [MethodDeclList1]
+) [Program]
+INFO  14:34:54,345 - Pretraga na 6(ord), nadjeno rs.etf.pp1.symboltable.concepts.Obj@5e9f23b4
+ERROR 14:34:54,346 - Greska na liniji 6: ord zahteva argument tipa char
+ERROR 14:34:54,346 - Greska na liniji 6: print podrzava samo int/char/bool
+INFO  14:34:54,346 - Pretraga na 7(eol), nadjeno rs.etf.pp1.symboltable.concepts.Obj@6576fe71
+INFO  14:34:54,346 - Pretraga na 8(len), nadjeno rs.etf.pp1.symboltable.concepts.Obj@2e817b38
+ERROR 14:34:54,346 - Greska na liniji 8: len zahteva argument tipa niz
+ERROR 14:34:54,347 - Greska na liniji 8: print podrzava samo int/char/bool
+INFO  14:34:54,347 - Pretraga na 9(eol), nadjeno rs.etf.pp1.symboltable.concepts.Obj@6576fe71
+INFO  14:34:54,347 - Pretraga na 10(chr), nadjeno rs.etf.pp1.symboltable.concepts.Obj@5197848c
+ERROR 14:34:54,347 - Greska na liniji 10: chr zahteva argument tipa int
+ERROR 14:34:54,347 - Greska na liniji 10: print podrzava samo int/char/bool

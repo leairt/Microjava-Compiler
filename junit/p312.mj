@@ -1,0 +1,12 @@
+// semanticka greska: redeklaracija globalnog i lokalnog imena u istom opsegu
+program p312
+int x;
+char x;
+{
+    void main()
+    int z;
+    bool z;
+    {
+        print(1);
+    }
+}

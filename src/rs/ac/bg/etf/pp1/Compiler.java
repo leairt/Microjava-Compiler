@@ -72,6 +72,7 @@ public class Compiler {
 			parser = new MJParser(lexer);
 			
 	        Symbol s = parser.parse();  // pocetak parsiranja
+	        errors.addAll(lexer.getErrors());
 			errors.addAll(parser.getErrors());
 			
 			if(!errors.isEmpty())
@@ -111,7 +112,7 @@ public class Compiler {
 				objFile.delete();
 
 			Code.dataSize = semanticAnalizer.getnVars();
-			Code.mainPc = codeGenerator.getMainPc();
+			Code.mainPc = codeGenerator.getMainPC();
 			Code.write(new FileOutputStream(objFile));
 			
 			log.info("Generisanje koda završeno (" + objFileName + ")");

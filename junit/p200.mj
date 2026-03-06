@@ -1,4 +1,4 @@
-// using undeclared variable
+// koriscenje neinicijalizovane promenljive
 program p200
 {
 	void main() {

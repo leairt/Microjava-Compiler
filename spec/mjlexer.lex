@@ -2,11 +2,25 @@
 package rs.ac.bg.etf.pp1;
 
 import java_cup.runtime.Symbol;
+import org.apache.log4j.*;
+import rs.ac.bg.etf.pp1.exc.ErrorCode;
+import rs.ac.bg.etf.pp1.exc.CompilerException;
 
 %%
 
 %{
+	Logger log = Logger.getLogger(getClass());
+	
+	public void report_error(ErrorCode errorCode, int line, String data) {
+		errors.add(new CompilerException(errorCode, line, data));        
+	}
+	
+	java.util.List<CompilerException> errors = new java.util.ArrayList<>();
 
+    public java.util.List<CompilerException> getErrors() {
+    	return errors;
+    }
+	
 	// Uključivanje informacije o poziciji tokena
 	private Symbol new_symbol(int type) {
 		return new Symbol(type, yyline+1, yycolumn);
@@ -37,7 +51,8 @@ import java_cup.runtime.Symbol;
 		int line = errorLine;
 		int col = errorColumn;
 		errorBuffer.setLength(0);
-		System.err.println("Leksicka greska (\"" + errorText + "\") u liniji " + line + ", kolona " + col);
+		log.error("Leksicka greska (\"" + errorText + "\") u liniji " + line + ", koloni " + col);
+		report_error(ErrorCode.LEXIC_ERROR, line, errorText);
 	}
 	return new_symbol(sym.EOF);
 %eofval}
@@ -138,7 +153,8 @@ import java_cup.runtime.Symbol;
 	int line = errorLine;
 	int col = errorColumn;
 	errorBuffer.setLength(0);
-	System.err.println("Leksicka greska (\"" + errorText + "\") u liniji " + line + ", kolona " + col);
+	log.error("Leksicka greska (\"" + errorText + "\") u liniji " + line + ", koloni " + col);
+	report_error(ErrorCode.LEXIC_ERROR, line, errorText);
 	yypushback(1);
 	yybegin(YYINITIAL);
 }

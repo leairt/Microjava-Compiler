@@ -1,0 +1,19 @@
+// ispravan program: enum, chr, ord, len i print nad int izrazima
+program p315
+enum Broj { NULA, TRI = 3 }
+char c;
+int a[];
+{
+    void main()
+    {
+        a = new int[3];
+        c = chr(65);
+        print(Broj.NULA);
+        print(eol);
+        print(Broj.TRI);
+        print(eol);
+        print(ord(c));
+        print(eol);
+        print(len(a));
+    }
+}

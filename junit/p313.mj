@@ -1,0 +1,13 @@
+// semanticka greska: neispravan main i duplirano ime metode main
+program p313
+{
+    int main()
+    {
+        return 1;
+    }
+
+    void main(int x)
+    {
+        print(x);
+    }
+}

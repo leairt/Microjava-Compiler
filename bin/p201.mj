@@ -1,5 +1,5 @@
 // nepostojeci tip
-program p007
+program p201
 long x;
 {
 	void main() {

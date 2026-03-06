@@ -2,8 +2,14 @@
 program p007
 const int pi = 3; 
 int x, y[];
+char hello[];
+const bool b = true;
 {
 	void main() {
+	
 		print(666);
+		print(eol);
+		print(b);
+
 	}
 }

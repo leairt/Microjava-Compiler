@@ -14,10 +14,14 @@ parser code {:
    
    
  	// slede redefinisani metodi za prijavu gresaka radi izmene teksta poruke
-     
+        
+   	public void report_error(ErrorCode errorCode, int line, Object info) {
+		errors.add(new CompilerException(errorCode, line));        
+	}
+	
     public void report_fatal_error(String message, Object info) throws java.lang.Exception {
-      done_parsing();
-      report_error(message, info);      
+    	done_parsing();
+    	report_error(ErrorCode.LEXIC_ERROR, -1, info);      
     }
   
     public void syntax_error(Symbol cur_token) {
@@ -34,11 +38,13 @@ parser code {:
 
     public void report_error(String message, Object info) {
     	StringBuilder msg = new StringBuilder(message); 
+    	int lineNumber = -1;
     	if (info instanceof Symbol) {
-    		int lineNumber = ((Symbol)info).left;
+    		lineNumber = ((Symbol)info).left;
             msg.append(" na liniji ").append(lineNumber);
     	}
         log.error(msg.toString());
+    	report_error(ErrorCode.LEXIC_ERROR, lineNumber, info);      
     }
 
 	java.util.List<CompilerException> errors = new java.util.ArrayList<>();
@@ -205,7 +211,7 @@ FormParsList ::= (FormParsList2) FormParsList:F1 COMMA FormPar:F2 {: RESULT=new 
                | (FormParsListError) error COMMA:safe FormPar:F1 {: RESULT=new FormParsListError(F1); RESULT.setLine(F1left); :}
 	           | (FormParsList1) FormPar:F1 {: RESULT=new FormParsList1(F1); RESULT.setLine(F1left); :};
 
-FormPar ::= (FormPar) Type:T1 IDENT:I2 OptArray:O3 {: RESULT=new FormPar(T1, I2, O3); RESULT.setLine(T1left); :};
+FormPar ::= (FormPar) Type:T1 IDENT:name OptArray:O2 {: RESULT=new FormPar(T1, name, O2); RESULT.setLine(T1left); :};
 
 VarDeclList ::= (VarDeclList1) VarDeclList:V1 VarDecl:V2 {: RESULT=new VarDeclList1(V1, V2); RESULT.setLine(V1left); :}
               | (VarDeclList0) {: RESULT=new VarDeclList0(); :} /* epsilon */;
@@ -221,8 +227,8 @@ Statement ::= (StatementDesignator) DesignatorStatement:D1 SEMI {: RESULT=new St
             | (StatementContinue) CONTINUE SEMI {: RESULT=new StatementContinue(); :}
             | (StatementReturn) RETURN OptExpr:O1 SEMI {: RESULT=new StatementReturn(O1); RESULT.setLine(O1left); :}
             | (StatementRead) READ LPAREN Designator:D1 RPAREN SEMI {: RESULT=new StatementRead(D1); RESULT.setLine(D1left); :}
-            | (StatementPrint) PRINT LPAREN Expr:E1 OptNumConst:O2 RPAREN SEMI {: RESULT=new StatementPrint(E1, O2); RESULT.setLine(E1left); :}
-            | (StatementSwitch) SWITCH LPAREN Expr:E1 RPAREN LBRACE CaseList:C2 RBRACE {: RESULT=new StatementSwitch(E1, C2); RESULT.setLine(E1left); :}
+            | (StatementPrint) PRINT LPAREN Expr:expr OptNumConst:O1 RPAREN SEMI {: RESULT=new StatementPrint(expr, O1); RESULT.setLine(exprleft); :}
+            | (StatementSwitch) SWITCH LPAREN Expr:expr RPAREN LBRACE CaseList:C1 RBRACE {: RESULT=new StatementSwitch(expr, C1); RESULT.setLine(exprleft); :}
             | (StatementFor) FOR LPAREN OptDesignatorStatement:O1 SEMI OptCondition:O2 SEMI OptDesignatorStatement:O3 RPAREN Statement:S4 {: RESULT=new StatementFor(O1, O2, O3, S4); RESULT.setLine(O1left); :}
             | (StatementStmtList) LBRACE StatementList:S1 RBRACE {: RESULT=new StatementStmtList(S1); RESULT.setLine(S1left); :};
             
@@ -245,13 +251,13 @@ OptElse ::= (OptElse1) ELSE Statement:S1 {: RESULT=new OptElse1(S1); RESULT.setL
 
 DesignatorStatement ::= (DesignatorStatement) Designator:D1 DesignatorStmtTail:D2 {: RESULT=new DesignatorStatement(D1, D2); RESULT.setLine(D1left); :};
 
-Designator ::= (Designator) IDENT:I1 DesignatorSuffixList:D2 {: RESULT=new Designator(I1, D2); RESULT.setLine(I1left); :};
+Designator ::= (Designator) IDENT:name DesignatorSuffixList:D1 {: RESULT=new Designator(name, D1); RESULT.setLine(nameleft); :};
 
 DesignatorSuffixList ::= (DesignatorSuffixList1) DesignatorSuffixList:D1 DesignatorSuffix:D2 {: RESULT=new DesignatorSuffixList1(D1, D2); RESULT.setLine(D1left); :}
                        | (DesignatorSuffixList0) {: RESULT=new DesignatorSuffixList0(); :} /* epsilon */;
 
-DesignatorSuffix ::= (DesignatorSuffix1) DOT IDENT:I1 {: RESULT=new DesignatorSuffix1(I1); RESULT.setLine(I1left); :}
-                   | (DesignatorSuffix2) DOT LENGTH {: RESULT=new DesignatorSuffix2(); :}
+DesignatorSuffix ::= (DesignatorSuffix1) DOT IDENT:field {: RESULT=new DesignatorSuffix1(field); RESULT.setLine(fieldleft); :}
+                   | (DesignatorSuffix2) DOT LENGTH:length {: RESULT=new DesignatorSuffix2(); :}
                    | (DesignatorSuffix3) LBOX Expr:E1 RBOX {: RESULT=new DesignatorSuffix3(E1); RESULT.setLine(E1left); :};
 
 DesignatorStmtTail ::= (DesignatorStmtTail1) Assignop:A1 Expr:E2 {: RESULT=new DesignatorStmtTail1(A1, E2); RESULT.setLine(A1left); :}

@@ -14,10 +14,14 @@ parser code {:
    
    
  	// slede redefinisani metodi za prijavu gresaka radi izmene teksta poruke
-     
+        
+   	public void report_error(ErrorCode errorCode, int line, Object info) {
+		errors.add(new CompilerException(errorCode, line));        
+	}
+	
     public void report_fatal_error(String message, Object info) throws java.lang.Exception {
-      done_parsing();
-      report_error(message, info);      
+    	done_parsing();
+    	report_error(ErrorCode.LEXIC_ERROR, -1, info);      
     }
   
     public void syntax_error(Symbol cur_token) {
@@ -34,11 +38,13 @@ parser code {:
 
     public void report_error(String message, Object info) {
     	StringBuilder msg = new StringBuilder(message); 
+    	int lineNumber = -1;
     	if (info instanceof Symbol) {
-    		int lineNumber = ((Symbol)info).left;
+    		lineNumber = ((Symbol)info).left;
             msg.append(" na liniji ").append(lineNumber);
     	}
         log.error(msg.toString());
+    	report_error(ErrorCode.LEXIC_ERROR, lineNumber, info);      
     }
 
 	java.util.List<CompilerException> errors = new java.util.ArrayList<>();
@@ -205,7 +211,7 @@ FormParsList ::= (FormParsList2) FormParsList COMMA FormPar
                | (FormParsListError) error COMMA:safe FormPar
 	           | (FormParsList1) FormPar;
 
-FormPar ::= (FormPar) Type IDENT OptArray;
+FormPar ::= (FormPar) Type IDENT:name OptArray;
 
 VarDeclList ::= (VarDeclList1) VarDeclList VarDecl
               | (VarDeclList0) /* epsilon */;
@@ -221,8 +227,8 @@ Statement ::= (StatementDesignator) DesignatorStatement SEMI
             | (StatementContinue) CONTINUE SEMI
             | (StatementReturn) RETURN OptExpr SEMI
             | (StatementRead) READ LPAREN Designator RPAREN SEMI
-            | (StatementPrint) PRINT LPAREN Expr OptNumConst RPAREN SEMI
-            | (StatementSwitch) SWITCH LPAREN Expr RPAREN LBRACE CaseList RBRACE
+            | (StatementPrint) PRINT LPAREN Expr:expr OptNumConst RPAREN SEMI
+            | (StatementSwitch) SWITCH LPAREN Expr:expr RPAREN LBRACE CaseList RBRACE
             | (StatementFor) FOR LPAREN OptDesignatorStatement SEMI OptCondition SEMI OptDesignatorStatement RPAREN Statement
             | (StatementStmtList) LBRACE StatementList RBRACE;
             
@@ -245,13 +251,13 @@ OptElse ::= (OptElse1) ELSE Statement
 
 DesignatorStatement ::= (DesignatorStatement) Designator DesignatorStmtTail;
 
-Designator ::= (Designator) IDENT DesignatorSuffixList;
+Designator ::= (Designator) IDENT:name DesignatorSuffixList;
 
 DesignatorSuffixList ::= (DesignatorSuffixList1) DesignatorSuffixList DesignatorSuffix
                        | (DesignatorSuffixList0) /* epsilon */;
 
-DesignatorSuffix ::= (DesignatorSuffix1) DOT IDENT
-                   | (DesignatorSuffix2) DOT LENGTH
+DesignatorSuffix ::= (DesignatorSuffix1) DOT IDENT:field
+                   | (DesignatorSuffix2) DOT LENGTH:length
                    | (DesignatorSuffix3) LBOX Expr RBOX;
 
 DesignatorStmtTail ::= (DesignatorStmtTail1) Assignop Expr

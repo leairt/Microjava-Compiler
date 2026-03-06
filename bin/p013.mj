@@ -1,5 +1,5 @@
 // upisivanje u lokalnu variablu i branje iz nje + unary minus
-program p012
+program p013
 {
 	void main()
 		int a, b;

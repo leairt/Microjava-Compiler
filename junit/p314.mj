@@ -1,0 +1,11 @@
+// semanticka greska: konstanta pogresnog tipa i print nad nizom
+program p314
+const char C = 1;
+{
+    void main()
+    int a[];
+    {
+        a = new int[3];
+        print(a);
+    }
+}

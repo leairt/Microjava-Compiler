@@ -1,6 +1,6 @@
 // generated with ast extension for cup
 // version 0.8
-// 5/2/2026 18:13:40
+// 6/2/2026 13:0:50
 
 
 package rs.ac.bg.etf.pp1.ast;
@@ -10,13 +10,13 @@ public class FormPar implements SyntaxNode {
     private SyntaxNode parent;
     private int line;
     private Type Type;
-    private String I2;
+    private String name;
     private OptArray OptArray;
 
-    public FormPar (Type Type, String I2, OptArray OptArray) {
+    public FormPar (Type Type, String name, OptArray OptArray) {
         this.Type=Type;
         if(Type!=null) Type.setParent(this);
-        this.I2=I2;
+        this.name=name;
         this.OptArray=OptArray;
         if(OptArray!=null) OptArray.setParent(this);
     }
@@ -29,12 +29,12 @@ public class FormPar implements SyntaxNode {
         this.Type=Type;
     }
 
-    public String getI2() {
-        return I2;
+    public String getName() {
+        return name;
     }
 
-    public void setI2(String I2) {
-        this.I2=I2;
+    public void setName(String name) {
+        this.name=name;
     }
 
     public OptArray getOptArray() {
@@ -93,7 +93,7 @@ public class FormPar implements SyntaxNode {
             buffer.append(tab+"  null");
         buffer.append("\n");
 
-        buffer.append(" "+tab+I2);
+        buffer.append(" "+tab+name);
         buffer.append("\n");
 
         if(OptArray!=null)

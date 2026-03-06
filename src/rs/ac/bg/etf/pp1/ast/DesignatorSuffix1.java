@@ -1,24 +1,24 @@
 // generated with ast extension for cup
 // version 0.8
-// 5/2/2026 18:13:40
+// 6/2/2026 13:0:50
 
 
 package rs.ac.bg.etf.pp1.ast;
 
 public class DesignatorSuffix1 extends DesignatorSuffix {
 
-    private String I1;
+    private String field;
 
-    public DesignatorSuffix1 (String I1) {
-        this.I1=I1;
+    public DesignatorSuffix1 (String field) {
+        this.field=field;
     }
 
-    public String getI1() {
-        return I1;
+    public String getField() {
+        return field;
     }
 
-    public void setI1(String I1) {
-        this.I1=I1;
+    public void setField(String field) {
+        this.field=field;
     }
 
     public void accept(Visitor visitor) {
@@ -41,7 +41,7 @@ public class DesignatorSuffix1 extends DesignatorSuffix {
         buffer.append(tab);
         buffer.append("DesignatorSuffix1(\n");
 
-        buffer.append(" "+tab+I1);
+        buffer.append(" "+tab+field);
         buffer.append("\n");
 
         buffer.append(tab);

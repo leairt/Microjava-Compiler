@@ -1,0 +1,9 @@
+// semanticka greska: nepostojeci tip i koriscenje nedeklarisanog identifikatora
+program p311
+Foo x;
+{
+    void main()
+    {
+        print(y);
+    }
+}
