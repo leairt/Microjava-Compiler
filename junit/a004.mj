@@ -1,0 +1,15 @@
+// semanticka greska: pogresan tip konstante i koriscenje nepostojeceg tipa
+program a004
+const char C = 1;
+Foo f;
+int x;
+char c;
+bool b;
+{
+    void main()
+    {
+        x = c;
+        b = 0;
+        print(1);
+    }
+}

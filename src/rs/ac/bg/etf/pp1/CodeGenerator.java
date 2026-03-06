@@ -15,6 +15,9 @@ import rs.ac.bg.etf.pp1.ast.DesignatorSuffixList;
 import rs.ac.bg.etf.pp1.ast.DesignatorSuffixList1;
 import rs.ac.bg.etf.pp1.ast.DesignatorStatement;
 import rs.ac.bg.etf.pp1.ast.DesignatorStmtTail1;
+import rs.ac.bg.etf.pp1.ast.DesignatorStmtTail2;
+import rs.ac.bg.etf.pp1.ast.DesignatorStmtTail3;
+import rs.ac.bg.etf.pp1.ast.DesignatorStmtTail4;
 import rs.ac.bg.etf.pp1.ast.Expr;
 import rs.ac.bg.etf.pp1.ast.Expr1;
 import rs.ac.bg.etf.pp1.ast.Expr2;
@@ -47,6 +50,7 @@ import rs.ac.bg.etf.pp1.ast.SimpleExpr1;
 import rs.ac.bg.etf.pp1.ast.SimpleExpr2;
 import rs.ac.bg.etf.pp1.ast.SimpleExpr3;
 import rs.ac.bg.etf.pp1.ast.StatementPrint;
+import rs.ac.bg.etf.pp1.ast.StatementRead;
 import rs.ac.bg.etf.pp1.ast.Term;
 import rs.ac.bg.etf.pp1.ast.Term1;
 import rs.ac.bg.etf.pp1.ast.Term2;
@@ -115,18 +119,111 @@ public class CodeGenerator extends VisitorAdaptor {
 	
 	@Override
 	public void visit(DesignatorStatement designatorStatement) {
-		if (!(designatorStatement.getDesignatorStmtTail() instanceof DesignatorStmtTail1)) {
-			return;
-		}
-		
 		Obj target = resolveDesignatorObj(designatorStatement.getDesignator());
 		if (target == Tab.noObj) {
 			return;
 		}
-		
-		// Za sada podrzano direktno skladistenje u promenljivu (dovoljno za p006).
+
+		if (designatorStatement.getDesignatorStmtTail() instanceof DesignatorStmtTail1) {
+			DesignatorStmtTail1 tail = (DesignatorStmtTail1) designatorStatement.getDesignatorStmtTail();
+
+			if (target.getKind() == Obj.Var) {
+				Code.store(target);
+				return;
+			}
+
+			if (target.getKind() == Obj.Elem) {
+				// Ukloni vec izgenerisan index i RHS, pa regenerisi redosled adr/index/val.
+				Code.put(Code.pop);
+				Code.put(Code.pop);
+
+				Obj baseObj = findSymbol(designatorStatement.getDesignator().getName());
+				DesignatorSuffix3 indexSuffix = getLastIndexSuffix(designatorStatement.getDesignator());
+				if (baseObj == Tab.noObj || indexSuffix == null) {
+					return;
+				}
+
+				Code.load(baseObj);
+				indexSuffix.getExpr().traverseBottomUp(this);
+				tail.getExpr().traverseBottomUp(this);
+
+				Struct elemType = baseObj.getType().getElemType();
+				Code.put(elemType == Tab.charType ? Code.bastore : Code.astore);
+				return;
+			}
+		}
+
+		if (designatorStatement.getDesignatorStmtTail() instanceof DesignatorStmtTail2) {
+			emitFunctionCall(designatorStatement.getDesignator());
+			if (target.getKind() == Obj.Meth && target.getType() != Tab.noType) {
+				Code.put(Code.pop);
+			}
+			return;
+		}
+
+		if (designatorStatement.getDesignatorStmtTail() instanceof DesignatorStmtTail3
+				|| designatorStatement.getDesignatorStmtTail() instanceof DesignatorStmtTail4) {
+			int op = designatorStatement.getDesignatorStmtTail() instanceof DesignatorStmtTail3 ? Code.add : Code.sub;
+
+			if (target.getKind() == Obj.Var) {
+				Code.load(target);
+				Code.loadConst(1);
+				Code.put(op);
+				Code.store(target);
+				return;
+			}
+
+			if (target.getKind() == Obj.Elem) {
+				// Ukloni vec izgenerisan index i regenerisi adr/index.
+				Code.put(Code.pop);
+
+				Obj baseObj = findSymbol(designatorStatement.getDesignator().getName());
+				DesignatorSuffix3 indexSuffix = getLastIndexSuffix(designatorStatement.getDesignator());
+				if (baseObj == Tab.noObj || indexSuffix == null) {
+					return;
+				}
+
+				Code.load(baseObj);
+				indexSuffix.getExpr().traverseBottomUp(this);
+				Code.put(Code.dup2);
+
+				Struct elemType = baseObj.getType().getElemType();
+				Code.put(elemType == Tab.charType ? Code.baload : Code.aload);
+				Code.loadConst(1);
+				Code.put(op);
+				Code.put(elemType == Tab.charType ? Code.bastore : Code.astore);
+			}
+		}
+	}
+
+	@Override
+	public void visit(StatementRead statementRead) {
+		Obj target = resolveDesignatorObj(statementRead.getDesignator());
+		if (target == Tab.noObj) {
+			return;
+		}
+
 		if (target.getKind() == Obj.Var) {
+			Code.put(target.getType() == Tab.charType ? Code.bread : Code.read);
 			Code.store(target);
+			return;
+		}
+
+		if (target.getKind() == Obj.Elem) {
+			// Designator je vec izgenerisao index; ukloni ga i regenerisi adr/index.
+			Code.put(Code.pop);
+
+			Obj baseObj = findSymbol(statementRead.getDesignator().getName());
+			DesignatorSuffix3 indexSuffix = getLastIndexSuffix(statementRead.getDesignator());
+			if (baseObj == Tab.noObj || indexSuffix == null) {
+				return;
+			}
+
+			Code.load(baseObj);
+			indexSuffix.getExpr().traverseBottomUp(this);
+			Struct elemType = baseObj.getType().getElemType();
+			Code.put(elemType == Tab.charType ? Code.bread : Code.read);
+			Code.put(elemType == Tab.charType ? Code.bastore : Code.astore);
 		}
 	}
 
@@ -195,12 +292,12 @@ public class CodeGenerator extends VisitorAdaptor {
 		OptRel1 optRel1 = (OptRel1) condFact.getOptRel();
 		int relop = mapRelop(optRel1.getRelop());
 
-		int falseJump = Code.pc;
 		Code.putFalseJump(relop, 0);
+		int falseJump = Code.pc - 2;
 
 		Code.loadConst(1);
-		int endJump = Code.pc;
 		Code.putJump(0);
+		int endJump = Code.pc - 2;
 
 		Code.fixup(falseJump);
 		Code.loadConst(0);
@@ -209,27 +306,22 @@ public class CodeGenerator extends VisitorAdaptor {
 
 	@Override
 	public void visit(Expr2 expr2) {
-		// Stack pre: cond, trueExpr, falseExpr
-		// dup_x2 (60), pop, dup_x1 (59), pop => falseExpr, trueExpr, cond
-		Code.put(60);
+		// Deca su vec izracunala cond/true/false; ocisti ih i regenerisi ternarni izraz bez opkoda 59/60.
 		Code.put(Code.pop);
-		Code.put(59);
+		Code.put(Code.pop);
 		Code.put(Code.pop);
 
+		expr2.getCondFact().traverseBottomUp(this);
 		Code.loadConst(0);
-		int falseBranchJump = Code.pc;
-		Code.putFalseJump(Code.ne, 0); // false kada cond == 0
+		Code.putFalseJump(Code.ne, 0); // skok kada je cond == 0
+		int falseBranchJump = Code.pc - 2;
 
-		// true grana: ukloni falseExpr, ostavi trueExpr
-		Code.put(59); // trueExpr, falseExpr, trueExpr
-		Code.put(Code.pop);
-		Code.put(Code.pop);
-		int endJump = Code.pc;
+		expr2.getExpr().traverseBottomUp(this);
 		Code.putJump(0);
+		int endJump = Code.pc - 2;
 
-		// false grana: ukloni trueExpr, ostavi falseExpr
 		Code.fixup(falseBranchJump);
-		Code.put(Code.pop);
+		expr2.getExpr1().traverseBottomUp(this);
 
 		Code.fixup(endJump);
 	}
@@ -353,13 +445,27 @@ public class CodeGenerator extends VisitorAdaptor {
 			return;
 		}
 
-		// suffix3: indeks je vec na steku, ucitamo niz i zamenimo redosled na adr,index
-		Code.load(baseObj);
-		Code.put(59); // dup_x1
+		// suffix3: ukloni vec izracunat index i regenerisi adr/index.
 		Code.put(Code.pop);
+		DesignatorSuffix3 indexSuffix = getLastIndexSuffix(designator);
+		if (indexSuffix == null) {
+			return;
+		}
+		Code.load(baseObj);
+		indexSuffix.getExpr().traverseBottomUp(this);
 
 		Struct elemType = baseObj.getType().getElemType();
 		Code.put(elemType == Tab.charType ? Code.baload : Code.aload);
+	}
+
+	private DesignatorSuffix3 getLastIndexSuffix(Designator designator) {
+		List<DesignatorSuffix> suffixes = new ArrayList<>();
+		collectSuffixes(designator.getDesignatorSuffixList(), suffixes);
+		if (suffixes.isEmpty()) {
+			return null;
+		}
+		DesignatorSuffix last = suffixes.get(suffixes.size() - 1);
+		return last instanceof DesignatorSuffix3 ? (DesignatorSuffix3) last : null;
 	}
 
 	private void emitFunctionCall(Designator designator) {
@@ -386,6 +492,10 @@ public class CodeGenerator extends VisitorAdaptor {
 	private boolean isCharExpression(Expr expr) {
 		if (expr instanceof Expr1) {
 			return isCharSimpleExpr(((Expr1) expr).getSimpleExpr());
+		}
+		if (expr instanceof Expr2) {
+			Expr2 ternary = (Expr2) expr;
+			return isCharExpression(ternary.getExpr()) && isCharExpression(ternary.getExpr1());
 		}
 		return false;
 	}

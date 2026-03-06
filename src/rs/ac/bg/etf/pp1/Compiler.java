@@ -1,5 +1,6 @@
 package rs.ac.bg.etf.pp1;
 
+import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 import java.io.Closeable;
 import java.io.File;
@@ -11,6 +12,7 @@ import java.io.PrintStream;
 import java.io.Reader;
 import java.lang.reflect.Field;
 import java.lang.reflect.Modifier;
+import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -37,6 +39,7 @@ public class Compiler {
 	private MJParser parser;
 	private List<CompilerException> errors;
 	private String outputString = null;
+	private String inputString = "";
 	 
 	private static Map<String, Object> tabState = null;
 	private static Map<String, Object> codeState = null;
@@ -122,7 +125,7 @@ public class Compiler {
 
 			System.out.println("\n=====================RUNNING PROGRAM===========================");
 
-			try(OutputRecorder outputRecorder = new OutputRecorder()) {
+			try(OutputRecorder outputRecorder = new OutputRecorder(inputString)) {
 				// Run.main(new String[] {objFileName, "-debug"});
 				Run.main(new String[] {objFileName});
 				outputString = outputRecorder.toString();
@@ -148,20 +151,27 @@ public class Compiler {
 	public String[] getOutput() {
 		return outputString.split("\n");
 	}
+
+	public void setInput(String input) {
+		this.inputString = input != null ? input : "";
+	}
 	
 	
 	protected static class OutputRecorder implements Closeable {
+		InputStream originalSysIn;
         PrintStream originalSysOut;	        
         PrintStream originalSysErr;	        
         ByteArrayOutputStream outputBuffer;
         PrintStream customSysOut;
         		
-		public OutputRecorder() {
+		public OutputRecorder(String input) {
+			originalSysIn = System.in;
 	        originalSysOut = System.out;	        
 	        originalSysErr = System.err;
 	        outputBuffer = new ByteArrayOutputStream();
 	        customSysOut = new PrintStream(outputBuffer, true);
-	    
+
+	        System.setIn(new ByteArrayInputStream(input.getBytes(StandardCharsets.UTF_8)));
 	        System.setOut(customSysOut);
 			System.setErr(customSysOut);
 		}
@@ -171,6 +181,7 @@ public class Compiler {
 			outputBuffer.close();
 			
 			// vratimo stare vrednosti
+			System.setIn(originalSysIn);
 			System.setOut(originalSysOut);
 			System.setErr(originalSysErr);
 		}

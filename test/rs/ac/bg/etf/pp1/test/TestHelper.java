@@ -17,6 +17,7 @@ public class TestHelper {
 	private static Logger log = Logger.getLogger(TestHelper.class);
 
 	private Compiler compiler;
+	private String input = "";
 	
 	static {
 		DOMConfigurator.configure(Log4JUtils.instance().findLoggerConfigFile());
@@ -29,12 +30,15 @@ public class TestHelper {
 	public void execute(String testID) {
 		if(compiler != null && compiler.getErrors() != null)
 			compiler.getErrors().clear();
+		String nextInput = input;
+		input = "";
 		
 		File sourceCode = new File("junit/" + testID + ".mj");
 
 		log.info("Compiling source file: " + sourceCode.getAbsolutePath());
 		try(FileInputStream fis = new FileInputStream(sourceCode)) {
 			compiler = new Compiler(fis);
+			compiler.setInput(nextInput);
 			compiler.build();
 			
 			if(compiler.hasErrors()) {				
@@ -50,6 +54,10 @@ public class TestHelper {
 			log.error(e.getMessage(), e);
 			compiler.getErrors().add(new CompilerException(e.getMessage(), e));
 		}				
+	}
+
+	public void setInput(String input) {
+		this.input = input != null ? input : "";
 	}
 
 	public boolean hasErrors() {

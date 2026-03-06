@@ -1,0 +1,33 @@
+// ispravan nivo A: konstante, globalne i lokalne promenljive, dodela i print
+program a001
+const int CI = 5;
+const char CC = 'A';
+const bool CB = true;
+int gx, gy;
+char gc;
+bool gb;
+{
+    void main()
+    int lx, ly;
+    char lc;
+    bool lb;
+    {
+        gx = CI;
+        gy = 2;
+        gc = CC;
+        gb = CB;
+
+        lx = gx + gy * 3;
+        ly = lx - 1;
+        lc = gc;
+        lb = gb;
+
+        print(CI);
+        print(eol);
+        print(gx);
+        print(eol);
+        print(ly);
+        print(eol);
+        print(lc);
+    }
+}

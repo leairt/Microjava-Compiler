@@ -1,0 +1,11 @@
+// semanticka greska: koriscenje nedeklarisanog imena
+program a002
+int x;
+{
+    void main()
+    int y;
+    {
+        x = z;
+        print(y);
+    }
+}

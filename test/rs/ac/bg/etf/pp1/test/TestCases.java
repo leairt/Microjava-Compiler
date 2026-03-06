@@ -8,6 +8,46 @@ import org.junit.Test;
 import rs.ac.bg.etf.pp1.exc.ErrorCode;
 
 public class TestCases {
+	
+	// A NIVO
+	
+	@Test
+	public void a001() {
+	    execute("a001");
+	    assertEquals(false, hasErrors());
+
+	    String[] out = getOutput();
+	    assertEquals("5", out[0]);
+	    assertEquals("5", out[1]);
+	    assertEquals("10", out[2]);
+	    assertEquals("A", out[3]);
+	}
+
+	@Test
+	public void a002() {
+	    execute("a002");
+	    assertEquals(true, hasErrors());
+	}
+
+	@Test
+	public void a003() {
+	    execute("a003");
+	    assertEquals(true, hasErrors());
+	}
+
+	@Test
+	public void a004() {
+	    execute("a004");
+	    assertEquals(true, hasErrors());
+	}
+
+	@Test
+	public void a005() {
+	    execute("a005");
+	    assertEquals(true, hasErrors());
+	}
+	
+	// TESTOVI PO FAZAMA
 
 	@Test
 	public void p000() {
@@ -191,26 +231,20 @@ public class TestCases {
 		assertEquals(true, hasError(ErrorCode.CANNOT_BE_RESOLVED_AS_TYPE));		
 	}
 
-	@Test
-	public void p301() {
-		execute("p301");
-		assertEquals(false, hasErrors());
-		
-		String[] out = getOutput(); 		
-		assertEquals("9", out[0]);
-		assertEquals("12", out[1]);
-	}
 	
 	@Test
 	public void test301() {
-		execute("test301");
-		assertEquals(false, hasErrors());
-		
-		String[] out = getOutput(); 		
-		assertEquals("9", out[0]);
-		assertEquals("12", out[1]);
-		
-		
+	    setInput("4\n7\n");
+	    execute("test301");
+	    assertEquals(false, hasErrors());
+
+	    String[] out = getOutput();
+	    assertEquals("9", out[0]);
+	    assertEquals("6", out[1]);
+	    assertEquals("12", out[2]);
+	    assertEquals("b", out[3]);
+	    assertEquals("c", out[4]);
+	    assertEquals("97334737-", out[5]);
 	}
 	
 	@Test
@@ -301,5 +335,9 @@ public class TestCases {
 	
 	private String[] getOutput() {
 		return mj.getOutput();
-	}	
+	}
+
+	private void setInput(String input) {
+		mj.setInput(input);
+	}
 }
