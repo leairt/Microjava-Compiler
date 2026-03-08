@@ -1,0 +1,7 @@
+program k001
+{
+	void main()
+	{
+		print(y);
+	}
+}

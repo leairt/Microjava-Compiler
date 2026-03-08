@@ -1,6 +1,6 @@
 // generated with ast extension for cup
 // version 0.8
-// 6/2/2026 23:15:42
+// 8/2/2026 10:59:11
 
 
 package rs.ac.bg.etf.pp1.ast;
@@ -9,21 +9,21 @@ public class Case implements SyntaxNode {
 
     private SyntaxNode parent;
     private int line;
-    private Integer N1;
+    private Integer value;
     private StatementList StatementList;
 
-    public Case (Integer N1, StatementList StatementList) {
-        this.N1=N1;
+    public Case (Integer value, StatementList StatementList) {
+        this.value=value;
         this.StatementList=StatementList;
         if(StatementList!=null) StatementList.setParent(this);
     }
 
-    public Integer getN1() {
-        return N1;
+    public Integer getValue() {
+        return value;
     }
 
-    public void setN1(Integer N1) {
-        this.N1=N1;
+    public void setValue(Integer value) {
+        this.value=value;
     }
 
     public StatementList getStatementList() {
@@ -73,7 +73,7 @@ public class Case implements SyntaxNode {
         buffer.append(tab);
         buffer.append("Case(\n");
 
-        buffer.append(" "+tab+N1);
+        buffer.append(" "+tab+value);
         buffer.append("\n");
 
         if(StatementList!=null)

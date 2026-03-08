@@ -1,0 +1,10 @@
+program k034
+{
+	void main()
+		char c;
+		int a[];
+	{
+		c = 'a';
+		a = new int[c];
+	}
+}

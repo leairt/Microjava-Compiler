@@ -1,0 +1,4 @@
+program k003
+{
+	void f() { }
+}

@@ -1,0 +1,9 @@
+program k031
+{
+	void main()
+		bool b;
+	{
+		b = true;
+		print(b * 1);
+	}
+}

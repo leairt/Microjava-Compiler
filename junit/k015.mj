@@ -1,0 +1,9 @@
+program k015
+{
+	void main()
+		bool b;
+	{
+		b = true;
+		b++;
+	}
+}

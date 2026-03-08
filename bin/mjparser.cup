@@ -232,13 +232,13 @@ Statement ::= (StatementDesignator) DesignatorStatement SEMI
             | (StatementFor) FOR LPAREN OptDesignatorStatement SEMI OptCondition SEMI OptDesignatorStatement RPAREN Statement
             | (StatementStmtList) LBRACE StatementList RBRACE;
             
-OptNumConst ::= (OptNumConst1) COMMA NUM_CONST
+OptNumConst ::= (OptNumConst1) COMMA NUM_CONST:width
               | (OptNumConst0) /* epsilon */;
       
 CaseList ::= (CaseList1) CaseList Case
            | (CaseList0) /* epsilon */;
 
-Case ::= (Case) CASE NUM_CONST COLON StatementList;
+Case ::= (Case) CASE NUM_CONST:value COLON StatementList;
 
 OptDesignatorStatement ::= (OptDesignatorStatement1) DesignatorStatement
                          | (OptDesignatorStatement0) /* epsilon */;
@@ -359,4 +359,3 @@ EnumItem ::= (EnumItemWithAssign) IDENT:name IS NUM_CONST:value
            | (EnumItemNoAssign) IDENT:name;
 
 AbstractDecl ::= /* TODO */ ABSTRACT;
-

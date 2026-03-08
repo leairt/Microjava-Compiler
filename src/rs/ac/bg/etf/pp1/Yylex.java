@@ -850,7 +850,7 @@ class Yylex implements java_cup.runtime.Scanner {
 	int line = errorLine;
 	int col = errorColumn;
 	errorBuffer.setLength(0);
-	log.error("Leksicka greska (\"" + errorText + "\") u liniji " + line + ", koloni " + col);
+	log.error("Greška na liniji " + line + ", u koloni " + col + ": " + errorText);
 	report_error(ErrorCode.LEXIC_ERROR, line, errorText);
 	yypushback(1);
 	yybegin(YYINITIAL);
@@ -978,7 +978,7 @@ class Yylex implements java_cup.runtime.Scanner {
 		int line = errorLine;
 		int col = errorColumn;
 		errorBuffer.setLength(0);
-		log.error("Leksicka greska (\"" + errorText + "\") u liniji " + line + ", koloni " + col);
+			log.error("Greška na liniji " + line + ", u koloni " + col + ": " + errorText);
 		report_error(ErrorCode.LEXIC_ERROR, line, errorText);
 	}
 	return new_symbol(sym.EOF);

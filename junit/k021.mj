@@ -1,0 +1,9 @@
+program k021
+int a[];
+{
+	void main()
+	{
+		a = new int[3];
+		print(a);
+	}
+}

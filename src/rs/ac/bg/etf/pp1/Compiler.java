@@ -130,6 +130,11 @@ public class Compiler {
 				Run.main(new String[] {objFileName});
 				outputString = outputRecorder.toString();
 			}
+
+			if (outputString != null && outputString.contains("-- exception at address")) {
+				errors.add(new CompilerException("Runtime error: " + outputString.trim()));
+			}
+
 			// ispišemo i na System.out (zato što smo ga presreli, pa se nije ništa ispisivalo)
 			System.out.println(outputString);
 			System.out.println("\n=====================DONE=====================================\n");

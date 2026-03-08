@@ -1,0 +1,7 @@
+program k018
+{
+	void main()
+	{
+		break;
+	}
+}

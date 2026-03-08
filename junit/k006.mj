@@ -1,0 +1,7 @@
+program k006
+{
+	void main()
+	{
+		print(chr('a'));
+	}
+}

@@ -232,13 +232,13 @@ Statement ::= (StatementDesignator) DesignatorStatement:D1 SEMI {: RESULT=new St
             | (StatementFor) FOR LPAREN OptDesignatorStatement:O1 SEMI OptCondition:O2 SEMI OptDesignatorStatement:O3 RPAREN Statement:S4 {: RESULT=new StatementFor(O1, O2, O3, S4); RESULT.setLine(O1left); :}
             | (StatementStmtList) LBRACE StatementList:S1 RBRACE {: RESULT=new StatementStmtList(S1); RESULT.setLine(S1left); :};
             
-OptNumConst ::= (OptNumConst1) COMMA NUM_CONST:N1 {: RESULT=new OptNumConst1(N1); RESULT.setLine(N1left); :}
+OptNumConst ::= (OptNumConst1) COMMA NUM_CONST:width {: RESULT=new OptNumConst1(width); RESULT.setLine(widthleft); :}
               | (OptNumConst0) {: RESULT=new OptNumConst0(); :} /* epsilon */;
       
 CaseList ::= (CaseList1) CaseList:C1 Case:C2 {: RESULT=new CaseList1(C1, C2); RESULT.setLine(C1left); :}
            | (CaseList0) {: RESULT=new CaseList0(); :} /* epsilon */;
 
-Case ::= (Case) CASE NUM_CONST:N1 COLON StatementList:S2 {: RESULT=new Case(N1, S2); RESULT.setLine(N1left); :};
+Case ::= (Case) CASE NUM_CONST:value COLON StatementList:S1 {: RESULT=new Case(value, S1); RESULT.setLine(valueleft); :};
 
 OptDesignatorStatement ::= (OptDesignatorStatement1) DesignatorStatement:D1 {: RESULT=new OptDesignatorStatement1(D1); RESULT.setLine(D1left); :}
                          | (OptDesignatorStatement0) {: RESULT=new OptDesignatorStatement0(); :} /* epsilon */;
@@ -359,4 +359,3 @@ EnumItem ::= (EnumItemWithAssign) IDENT:name IS NUM_CONST:value {: RESULT=new En
            | (EnumItemNoAssign) IDENT:name {: RESULT=new EnumItemNoAssign(name); RESULT.setLine(nameleft); :};
 
 AbstractDecl ::= /* TODO */ ABSTRACT {: RESULT=new AbstractDeclDerived1(); :};
-

@@ -1,0 +1,7 @@
+program k040
+{
+	void main()
+	{
+		if (1 == 'a') print(1);
+	}
+}

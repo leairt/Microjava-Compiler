@@ -1,0 +1,7 @@
+program k007
+{
+	void main()
+	{
+		print(ord(1));
+	}
+}

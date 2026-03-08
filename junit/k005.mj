@@ -1,0 +1,7 @@
+program k005
+{
+	void main(int a)
+	{
+		print(a);
+	}
+}

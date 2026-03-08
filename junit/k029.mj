@@ -1,0 +1,9 @@
+program k029
+{
+	void main()
+		char c;
+	{
+		c = 'a';
+		print(-c);
+	}
+}

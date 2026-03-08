@@ -1,0 +1,7 @@
+program k039
+{
+	void main()
+	{
+		if (true && 1) print(1);
+	}
+}

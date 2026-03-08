@@ -1,0 +1,7 @@
+program k033
+{
+	void main()
+	{
+		print(true ? 1 : 'a');
+	}
+}

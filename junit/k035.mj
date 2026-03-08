@@ -1,0 +1,11 @@
+program k035
+{
+	void main()
+		int a[];
+		char c;
+	{
+		a = new int[3];
+		c = 'a';
+		print(a[c]);
+	}
+}

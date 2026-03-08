@@ -125,6 +125,7 @@ public class TestCases {
 	public void b010() {
 		execute("b010");
 		assertEquals(true, hasErrors());
+		assertEquals(false, hasError(ErrorCode.INVALID_RETURN_TYPE));
 	}
 	
 	
@@ -415,6 +416,115 @@ public class TestCases {
 	    assertEquals("000000", out[1]);
 	    assertEquals("1111", out[2]);
 	}
+	
+	// K A.4 USLOVI
+	
+	@Test
+	public void k000() {
+		execute("k000");
+		assertEquals(false, hasErrors());
+		String[] out = getOutput();
+		assertEquals("42", out[0]);
+	}
+	
+	@Test
+	public void k001() { execute("k001"); assertEquals(true, hasErrors()); }
+	@Test
+	public void k002() { execute("k002"); assertEquals(true, hasErrors()); }
+	@Test
+	public void k003() { execute("k003"); assertEquals(true, hasErrors()); }
+	@Test
+	public void k004() { execute("k004"); assertEquals(true, hasErrors()); }
+	@Test
+	public void k005() { execute("k005"); assertEquals(true, hasErrors()); }
+	@Test
+	public void k006() { execute("k006"); assertEquals(true, hasErrors()); }
+	@Test
+	public void k007() { execute("k007"); assertEquals(true, hasErrors()); }
+	@Test
+	public void k008() { execute("k008"); assertEquals(true, hasErrors()); }
+	@Test
+	public void k009() { execute("k009"); assertEquals(true, hasErrors()); }
+	@Test
+	public void k010() { execute("k010"); assertEquals(true, hasErrors()); }
+	
+	@Test
+	public void k011() {
+		execute("k011");
+		assertEquals(false, hasErrors());
+		String[] out = getOutput();
+		assertEquals("03", out[0]);
+	}
+	
+	@Test
+	public void k012() { execute("k012"); assertEquals(true, hasErrors()); }
+	@Test
+	public void k013() { execute("k013"); assertEquals(true, hasErrors()); }
+	@Test
+	public void k014() { execute("k014"); assertEquals(true, hasErrors()); }
+	@Test
+	public void k015() { execute("k015"); assertEquals(true, hasErrors()); }
+	@Test
+	public void k016() { execute("k016"); assertEquals(true, hasErrors()); }
+	@Test
+	public void k017() { execute("k017"); assertEquals(true, hasErrors()); }
+	@Test
+	public void k018() { execute("k018"); assertEquals(true, hasErrors()); }
+	@Test
+	public void k019() { execute("k019"); assertEquals(true, hasErrors()); }
+	@Test
+	public void k020() { execute("k020"); assertEquals(true, hasErrors()); }
+	@Test
+	public void k021() { execute("k021"); assertEquals(true, hasErrors()); }
+	@Test
+	public void k022() { execute("k022"); assertEquals(true, hasErrors()); }
+	@Test
+	public void k023() {
+		execute("k023");
+		assertEquals(true, hasErrors());
+		assertEquals(false, hasError(ErrorCode.INVALID_RETURN_TYPE));
+	}
+	@Test
+	public void k024() { execute("k024"); assertEquals(true, hasErrors()); }
+	@Test
+	public void k025() { execute("k025"); assertEquals(true, hasErrors()); }
+	@Test
+	public void k026() { execute("k026"); assertEquals(true, hasErrors()); }
+	@Test
+	public void k027() { execute("k027"); assertEquals(true, hasErrors()); }
+	@Test
+	public void k028() { execute("k028"); assertEquals(true, hasErrors()); }
+	@Test
+	public void k029() { execute("k029"); assertEquals(true, hasErrors()); }
+	@Test
+	public void k030() { execute("k030"); assertEquals(true, hasErrors()); }
+	@Test
+	public void k031() { execute("k031"); assertEquals(true, hasErrors()); }
+	@Test
+	public void k032() { execute("k032"); assertEquals(true, hasErrors()); }
+	@Test
+	public void k033() { execute("k033"); assertEquals(true, hasErrors()); }
+	@Test
+	public void k034() { execute("k034"); assertEquals(true, hasErrors()); }
+	@Test
+	public void k035() { execute("k035"); assertEquals(true, hasErrors()); }
+	@Test
+	public void k036() { execute("k036"); assertEquals(true, hasErrors()); }
+	@Test
+	public void k037() { execute("k037"); assertEquals(true, hasErrors()); }
+	
+	@Test
+	public void k038() {
+		execute("k038");
+		assertEquals(false, hasErrors());
+		String[] out = getOutput();
+		assertEquals("653", out[0]);
+	}
+	
+	@Test
+	public void k039() { execute("k039"); assertEquals(true, hasErrors()); }
+	@Test
+	public void k040() { execute("k040"); assertEquals(true, hasErrors()); }
 
 	/* test helper operations */
 	

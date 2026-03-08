@@ -1,0 +1,10 @@
+program k027
+{
+	void main()
+	{
+		for (; 1; ) {
+			print(1);
+			break;
+		}
+	}
+}

@@ -1,24 +1,24 @@
 // generated with ast extension for cup
 // version 0.8
-// 6/2/2026 23:15:42
+// 8/2/2026 10:59:11
 
 
 package rs.ac.bg.etf.pp1.ast;
 
 public class OptNumConst1 extends OptNumConst {
 
-    private Integer N1;
+    private Integer width;
 
-    public OptNumConst1 (Integer N1) {
-        this.N1=N1;
+    public OptNumConst1 (Integer width) {
+        this.width=width;
     }
 
-    public Integer getN1() {
-        return N1;
+    public Integer getWidth() {
+        return width;
     }
 
-    public void setN1(Integer N1) {
-        this.N1=N1;
+    public void setWidth(Integer width) {
+        this.width=width;
     }
 
     public void accept(Visitor visitor) {
@@ -41,7 +41,7 @@ public class OptNumConst1 extends OptNumConst {
         buffer.append(tab);
         buffer.append("OptNumConst1(\n");
 
-        buffer.append(" "+tab+N1);
+        buffer.append(" "+tab+width);
         buffer.append("\n");
 
         buffer.append(tab);

@@ -1,0 +1,9 @@
+program k011
+enum E { A, B = 3 }
+{
+	void main()
+	{
+		print(E.A);
+		print(E.B);
+	}
+}

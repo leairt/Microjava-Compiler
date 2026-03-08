@@ -7,6 +7,6 @@ program b010
 
 	void main()
 	{
-		print(1);
+		print(bad(1));
 	}
 }

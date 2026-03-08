@@ -1,0 +1,7 @@
+program k019
+{
+	void main()
+	{
+		continue;
+	}
+}
