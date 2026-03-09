@@ -245,7 +245,7 @@ OptDesignatorStatement ::= (OptDesignatorStatement1) DesignatorStatement:D1 {: R
 
 OptCondition ::= (OptCondition1) Condition:C1 {: RESULT=new OptCondition1(C1); RESULT.setLine(C1left); :}
                | (OptCondition0) {: RESULT=new OptCondition0(); :} /* epsilon */;          
-              
+
 OptElse ::= (OptElse1) ELSE Statement:S1 {: RESULT=new OptElse1(S1); RESULT.setLine(S1left); :}
           | (OptElse0) {: RESULT=new OptElse0(); :} /* epsilon */;
 
@@ -315,9 +315,9 @@ Term::= (Term1) Factor:F1 {: RESULT=new Term1(F1); RESULT.setLine(F1left); :}
       | (Term2) Term:T1 Mulop:M2 Factor:F3 {: RESULT=new Term2(T1, M2, F3); RESULT.setLine(T1left); :};
       
 Factor ::= (FactorDesignator) Designator:D1 OptCall:O2 {: RESULT=new FactorDesignator(D1, O2); RESULT.setLine(D1left); :}
-         | (FactorNumConst) NUM_CONST:N1 {: RESULT=new FactorNumConst(N1); RESULT.setLine(N1left); :}
-         | (FactorCharConst) CHAR_CONST:C1 {: RESULT=new FactorCharConst(C1); RESULT.setLine(C1left); :}
-         | (FactorBoolConst) BOOL_CONST:B1 {: RESULT=new FactorBoolConst(B1); RESULT.setLine(B1left); :}
+         | (FactorNumConst) NUM_CONST:numValue {: RESULT=new FactorNumConst(numValue); RESULT.setLine(numValueleft); :}
+         | (FactorCharConst) CHAR_CONST:charValue {: RESULT=new FactorCharConst(charValue); RESULT.setLine(charValueleft); :}
+         | (FactorBoolConst) BOOL_CONST:boolValue {: RESULT=new FactorBoolConst(boolValue); RESULT.setLine(boolValueleft); :}
          | (FactorNewArr) NEW Type:T1 LBOX Expr:E2 RBOX {: RESULT=new FactorNewArr(T1, E2); RESULT.setLine(T1left); :}
          | (FactorExpr) LPAREN Expr:E1 RPAREN {: RESULT=new FactorExpr(E1); RESULT.setLine(E1left); :};
 

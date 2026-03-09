@@ -47,6 +47,32 @@ public class TestCases {
 	    assertEquals(true, hasErrors());
 	}
 	
+	@Test
+	public void a006() {
+	    execute("a006");
+	    assertEquals(false, hasErrors());
+
+	    String[] out = getOutput();
+	    assertEquals("10", out[0]);
+	    assertEquals("3", out[1]);
+	    assertEquals("Z", out[2]);
+	    assertEquals("A", out[3]);
+	    assertEquals("1", out[4]);
+	    assertEquals("0", out[5]);
+	    assertEquals("0", out[6]);
+	    assertEquals("5", out[7]);
+	    assertEquals("4", out[8]);
+	    assertEquals("3", out[9]);
+	    assertEquals("22", out[10]);
+	    assertEquals("33", out[11]);
+	    assertEquals("x", out[12]);
+	    assertEquals("y", out[13]);
+	    assertEquals("13", out[14]);
+	    assertEquals("8", out[15]);
+	    assertEquals("44", out[16]);
+	    assertEquals("7", out[17]);
+	}
+	
 	// B NIVO
 	
 	@Test

@@ -1,0 +1,115 @@
+// test svih podrzanih tipova designatora za emitLoadDesignatorValue
+program a006
+
+enum Broj { NULA, JEDAN = 1, PET = 5 }
+
+int g;
+char gc;
+bool gb;
+
+int arr[];
+char arrc[];
+
+{
+
+	void main()
+		int x;
+		char c;
+		bool b;
+		int i;
+	{
+		// globalne promenljive
+		g = 10;
+		gc = 'Z';
+		gb = true;
+
+		// lokalne promenljive
+		x = 3;
+		c = 'A';
+		b = false;
+
+		// nizovi
+		arr = new int[4];
+		arr[0] = 11;
+		arr[1] = 22;
+		arr[2] = 33;
+		arr[3] = 44;
+
+		arrc = new char[3];
+		arrc[0] = 'x';
+		arrc[1] = 'y';
+		arrc[2] = 'z';
+
+		i = 2;
+
+		// 1) običan identifikator - globalni
+		print(g);      // 10
+		print(eol);
+
+		// 2) običan identifikator - lokalni
+		print(x);      // 3
+		print(eol);
+
+		// 3) običan identifikator - char globalni
+		print(gc);     // Z
+		print(eol);
+
+		// 4) običan identifikator - char lokalni
+		print(c);      // A
+		print(eol);
+
+		// 5) običan identifikator - bool globalni
+		print(gb);     // true / 1 zavisno od runtime ispisa
+		print(eol);
+
+		// 6) običan identifikator - bool lokalni
+		print(b);      // false / 0 zavisno od runtime ispisa
+		print(eol);
+
+		// 7) enum član
+		print(Broj.NULA);   // 0
+		print(eol);
+		print(Broj.PET);    // 5
+		print(eol);
+
+		// 8) length int niza
+		print(arr.length);  // 4
+		print(eol);
+
+		// 9) length char niza
+		print(arrc.length); // 3
+		print(eol);
+
+		// 10) element int niza sa konstantnim indeksom
+		print(arr[1]);      // 22
+		print(eol);
+
+		// 11) element int niza sa promenljivim indeksom
+		print(arr[i]);      // 33
+		print(eol);
+
+		// 12) element char niza sa konstantnim indeksom
+		print(arrc[0]);     // x
+		print(eol);
+
+		// 13) element char niza sa promenljivim indeksom
+		print(arrc[1]);     // y
+		print(eol);
+
+		// 14) designator u izrazu
+		print(g + x);       // 13
+		print(eol);
+
+		// 15) enum + običan identifikator u izrazu
+		print(Broj.PET + x); // 8
+		print(eol);
+
+		// 16) element niza u izrazu
+		print(arr[0] + arr[2]); // 44
+		print(eol);
+
+		// 17) dužina niza u izrazu
+		print(arr.length + arrc.length); // 7
+		print(eol);
+	}
+}

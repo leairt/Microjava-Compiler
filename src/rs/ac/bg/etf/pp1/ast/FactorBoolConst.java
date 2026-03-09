@@ -1,24 +1,24 @@
 // generated with ast extension for cup
 // version 0.8
-// 8/2/2026 10:59:11
+// 8/2/2026 15:28:25
 
 
 package rs.ac.bg.etf.pp1.ast;
 
 public class FactorBoolConst extends Factor {
 
-    private Integer B1;
+    private Integer boolValue;
 
-    public FactorBoolConst (Integer B1) {
-        this.B1=B1;
+    public FactorBoolConst (Integer boolValue) {
+        this.boolValue=boolValue;
     }
 
-    public Integer getB1() {
-        return B1;
+    public Integer getBoolValue() {
+        return boolValue;
     }
 
-    public void setB1(Integer B1) {
-        this.B1=B1;
+    public void setBoolValue(Integer boolValue) {
+        this.boolValue=boolValue;
     }
 
     public void accept(Visitor visitor) {
@@ -41,7 +41,7 @@ public class FactorBoolConst extends Factor {
         buffer.append(tab);
         buffer.append("FactorBoolConst(\n");
 
-        buffer.append(" "+tab+B1);
+        buffer.append(" "+tab+boolValue);
         buffer.append("\n");
 
         buffer.append(tab);

@@ -245,7 +245,7 @@ OptDesignatorStatement ::= (OptDesignatorStatement1) DesignatorStatement
 
 OptCondition ::= (OptCondition1) Condition
                | (OptCondition0) /* epsilon */;          
-              
+
 OptElse ::= (OptElse1) ELSE Statement
           | (OptElse0) /* epsilon */;
 
@@ -315,9 +315,9 @@ Term::= (Term1) Factor
       | (Term2) Term Mulop Factor;
       
 Factor ::= (FactorDesignator) Designator OptCall
-         | (FactorNumConst) NUM_CONST
-         | (FactorCharConst) CHAR_CONST
-         | (FactorBoolConst) BOOL_CONST
+         | (FactorNumConst) NUM_CONST:numValue
+         | (FactorCharConst) CHAR_CONST:charValue
+         | (FactorBoolConst) BOOL_CONST:boolValue
          | (FactorNewArr) NEW Type LBOX Expr RBOX
          | (FactorExpr) LPAREN Expr RPAREN;
 
