@@ -1,0 +1,8 @@
+program k014
+char c;
+{
+	void main()
+	{
+		c = 1;
+	}
+}

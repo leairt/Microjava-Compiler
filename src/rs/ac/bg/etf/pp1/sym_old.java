@@ -68,5 +68,7 @@ public class sym_old {
 	
 	public static final int QMARK = 54;
 	
+	public static final int ERROR = 55;
+	
 	
 }

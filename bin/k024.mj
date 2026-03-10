@@ -1,0 +1,9 @@
+program k024
+{
+	void main()
+		int x;
+	{
+		x = 1;
+		if (x) print(1);
+	}
+}

@@ -1,0 +1,7 @@
+program k008
+{
+	void main()
+	{
+		print(len(1));
+	}
+}

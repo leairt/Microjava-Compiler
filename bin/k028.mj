@@ -1,0 +1,10 @@
+program k028
+int a[], b[];
+{
+	void main()
+	{
+		a = new int[1];
+		b = new int[1];
+		if (a < b) print(1);
+	}
+}

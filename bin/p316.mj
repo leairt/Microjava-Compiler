@@ -1,0 +1,16 @@
+// semanticka greska: enum konstanta bez kvalifikacije i pogresni pozivi funkcije
+program p316
+enum E { A, B }
+{
+    int f(int x, char c)
+    {
+        return x;
+    }
+
+    void main()
+    {
+        print(B);
+        print(f(1));
+        print(f('a', 2));
+    }
+}

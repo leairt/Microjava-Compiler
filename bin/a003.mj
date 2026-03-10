@@ -1,0 +1,12 @@
+// semanticka greska: dupla deklaracija u globalnom i lokalnom opsegu
+program a003
+int x;
+char x;
+{
+    void main()
+    int y;
+    bool y;
+    {
+        print(1);
+    }
+}

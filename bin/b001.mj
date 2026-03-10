@@ -1,0 +1,15 @@
+program b001
+int x;
+{
+	void main()
+		bool a, b;
+	{
+		x = 0;
+		a = true;
+		b = false;
+
+		if (a && b == false) x = 1; else x = 2;
+		if (x == 1 || b) print(111); else print(222);
+		print(eol);
+	}
+}

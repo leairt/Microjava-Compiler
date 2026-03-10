@@ -1,0 +1,19 @@
+program b004
+int g;
+{
+	int add(int a, int b)
+		int c;
+	{
+		c = a + b;
+		return c;
+	}
+
+	void main()
+		int r;
+	{
+		r = add(4, 5);
+		g = add(r, 1);
+		print(g);
+		print(eol);
+	}
+}

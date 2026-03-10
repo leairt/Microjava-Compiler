@@ -1,0 +1,35 @@
+// test logickih operatora && i || kroz ternarni operator
+program p319
+{
+    void main()
+        int a, b, c;
+        bool x, y;
+    {
+        a = 5;
+        b = 3;
+        c = 5;
+        x = true;
+        y = false;
+
+        // osnovni && slucajevi
+        print(a > b && c == a ? 1 : 0);
+        print(a < b && c == a ? 1 : 0);
+        print(x && true ? 1 : 0);
+        print(x && y ? 1 : 0);
+        print(eol);
+
+        // osnovni || slucajevi
+        print(a < b || c == a ? 1 : 0);
+        print(a < b || c != a ? 1 : 0);
+        print(x || y ? 1 : 0);
+        print(y || false ? 1 : 0);
+        print(eol);
+
+        // mesani izrazi i prioritet: && jace od ||
+        print(a > b || a < b && c != a ? 1 : 0);
+        print(a < b || b < a && c == a ? 1 : 0);
+        print(false || true && false ? 1 : 0);
+        print((a < b || b < a) && c == a ? 1 : 0);
+        print(eol);
+    }
+}

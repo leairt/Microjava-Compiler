@@ -1,0 +1,9 @@
+program k036
+{
+	void main()
+		int x;
+	{
+		x = 1;
+		print(x.length);
+	}
+}

@@ -1,0 +1,5 @@
+program k009
+const int c = 'a';
+{
+	void main() { }
+}

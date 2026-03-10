@@ -1,0 +1,14 @@
+program b009
+{
+	int sum(int a, int b)
+	{
+		return a + b;
+	}
+
+	void main()
+		int x;
+	{
+		x = sum(1);
+		print(x);
+	}
+}

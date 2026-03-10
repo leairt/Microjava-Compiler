@@ -1,0 +1,10 @@
+program k038
+int a[];
+{
+	void main()
+	{
+		a = new int[3];
+		print(ord(chr(65)));
+		print(len(a));
+	}
+}

@@ -1,0 +1,9 @@
+program k000
+int x;
+{
+	void main()
+	{
+		x = 42;
+		print(x);
+	}
+}

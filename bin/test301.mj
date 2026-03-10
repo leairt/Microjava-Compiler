@@ -29,12 +29,12 @@ int a;
 		bodovi--;
 		print(bodovi); //9
 		print(eol);
+		
 		niz = new int[3];
 		niz[nula] = 2;
 		niz[jedan] = 3;
 		niz[niz[nula]] = niz[1] * 4;
 		bodovi = niz[2]/niz[0];
-		
 		print(bodovi); //6
 		print(eol);
 		print(niz[2]); //12
@@ -44,7 +44,6 @@ int a;
 		nizch[0] = 'a';
 		nizch[jedan] = 'b';
 		nizch[pet - 3] = 'c';
-		
 		print(nizch[1]); //b
 		print(eol);
 		print(nizch[jedan * 2]); //c
@@ -57,7 +56,6 @@ int a;
 		a=1;
 		read(bodovi);
 		bodovi = -bodovi + (pet * a / 2 - nula) * bodovi - (3 % 2 + 3 * 2 - 7); 
-		
 		print(bodovi); //bodovi
 		
 		read(bodovi);
@@ -66,6 +64,7 @@ int a;
 		print(bt ? bodovi : bodovi + 10);
 		print(false ? bodovi + 20 : bodovi + 30);
 		print(bodovi > 10 ? '+' : '-');
+		
 	}
 }
 

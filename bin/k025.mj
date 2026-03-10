@@ -1,0 +1,11 @@
+program k025
+{
+	void main()
+		char c;
+	{
+		c = 'a';
+		switch (c) {
+			case 1: break;
+		}
+	}
+}

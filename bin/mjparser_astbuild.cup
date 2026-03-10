@@ -117,6 +117,7 @@ terminal LBRACE;
 terminal RBRACE;
 terminal QMARK;
 terminal ERROR;
+terminal WHILE;
 
 nonterminal Program Program;
 nonterminal ProgramName ProgramName;

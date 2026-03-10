@@ -1,0 +1,18 @@
+// ispravan program: konstanta, globalna promenljiva, funkcija i print
+program p310
+const int C = 5;
+int g;
+{
+    int id(int x)
+    {
+        return x;
+    }
+
+    void main()
+    {
+        g = 0;
+        print(C);
+        print(g);
+        print(id(7));
+    }
+}

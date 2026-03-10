@@ -1,0 +1,10 @@
+program a007
+
+const int a = 1;
+const int b = 0;
+
+{
+    void main() {
+    	print(a/b);
+    }
+}

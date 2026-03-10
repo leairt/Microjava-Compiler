@@ -1,0 +1,12 @@
+program b010
+{
+	int bad(int x)
+	{
+		x = x + 1;
+	}
+
+	void main()
+	{
+		print(bad(1));
+	}
+}

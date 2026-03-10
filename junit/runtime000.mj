@@ -1,0 +1,15 @@
+program runtime000
+{
+	int f(int x)
+	{
+		if (x > 0) {
+			return x;
+		}
+	}
+
+	void main()
+	{
+		print(f(0));
+		print(eol);
+	}
+}

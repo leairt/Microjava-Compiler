@@ -73,6 +73,12 @@ public class TestCases {
 	    assertEquals("7", out[17]);
 	}
 	
+	@Test
+	public void a007() {
+	    execute("a007");
+	    assertEquals(true, hasErrors());
+	}
+	
 	// B NIVO
 	
 	@Test
@@ -443,7 +449,7 @@ public class TestCases {
 	    assertEquals("1111", out[2]);
 	}
 	
-	// K A.4 USLOVI
+	// KONTEKSTNI USLOVI
 	
 	@Test
 	public void k000() {
@@ -551,8 +557,22 @@ public class TestCases {
 	public void k039() { execute("k039"); assertEquals(true, hasErrors()); }
 	@Test
 	public void k040() { execute("k040"); assertEquals(true, hasErrors()); }
-
-	/* test helper operations */
+	
+	// RUNTIME
+	
+	@Test
+	public void runtime000() {
+		execute("runtime000");
+		assertEquals(true, hasErrors());
+		assertEquals(true, hasErrorMessageContaining("trap(1)"));
+	}
+	
+	@Test
+	public void runtime001() {
+		execute("runtime001");
+		assertEquals(true, hasErrors());
+		assertEquals(true, hasErrorMessageContaining("trap(1)"));
+	}
 	
 	private TestHelper mj = new TestHelper();
 
@@ -578,6 +598,10 @@ public class TestCases {
 
 	private boolean hasError(ErrorCode errorCode, String data) {
 		return mj.hasError(errorCode, data);
+	}
+
+	private boolean hasErrorMessageContaining(String text) {
+		return mj.hasErrorMessageContaining(text);
 	}
 	
 	private String[] getOutput() {

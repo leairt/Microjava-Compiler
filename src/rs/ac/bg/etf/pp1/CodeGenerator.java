@@ -19,8 +19,8 @@ public class CodeGenerator extends VisitorAdaptor {
 	
 	// stekovi za čuvanje adresa koje treba naknadno patchovati
 	// za break i continue naredbe unutar petlji i switch-a
-	private final Stack<List<Integer>> breakFixups = new Stack<>();
-	private final Stack<List<Integer>> continueFixups = new Stack<>();
+	private final Stack<List<Integer>> breakfixAddrs = new Stack<>();
+	private final Stack<List<Integer>> continuefixAddrs = new Stack<>();
 
 	public int getMainPC() {
 		return mainPC;
@@ -94,9 +94,14 @@ public class CodeGenerator extends VisitorAdaptor {
 		
 		// emituje telo metode (sve statemente)
 		emitStatementList(m.getStatementList());
-
-		Code.put(Code.exit);
-		Code.put(Code.return_);
+		
+		if (currentMethod.getType() == Tab.noType) {
+			Code.put(Code.exit);
+			Code.put(Code.return_);
+		} else {
+			Code.put(Code.trap); // RUNTIME ERROR
+			Code.put(1);
+		}
 		currentMethod = Tab.noObj;
 	}
 	
@@ -137,11 +142,11 @@ public class CodeGenerator extends VisitorAdaptor {
 		// koje treba naknadno patchovati
 		else if (s instanceof StatementBreak) {
 			Code.putJump(0);
-			breakFixups.peek().add(Code.pc - 2);
+			breakfixAddrs.peek().add(Code.pc - 2);
 		} 
 		else if (s instanceof StatementContinue) {
 			Code.putJump(0);
-			continueFixups.peek().add(Code.pc - 2);
+			continuefixAddrs.peek().add(Code.pc - 2);
 		} 
 		else if (s instanceof StatementSwitch)
 			emitSwitch((StatementSwitch) s);
@@ -158,19 +163,19 @@ public class CodeGenerator extends VisitorAdaptor {
 	}
 	
 	private void emitIf(StatementIf s) {
-		List<Integer> falseFixups = new ArrayList<>();
+		List<Integer> falsefixAddrs = new ArrayList<>();
 	
-		emitConditionFalseJumps(s.getCondition(), falseFixups); // emitujemo uslov i uradi false fixups
+		emitConditionFalseJumps(s.getCondition(), falsefixAddrs); // emitujemo uslov i uradi false fixAddrs
 		emitStatement(s.getStatement()); // emitujemo THEN deo
 		
 		if (s.getOptElse() instanceof OptElse1) { // ako ima ELSE deo
 			Code.putJump(0);
 			int endJump = Code.pc - 2;
-			fixAll(falseFixups); // patchujemo false fixups da idu na ELSE deo
+			fixAll(falsefixAddrs); // patchujemo false fixAddrs da idu na ELSE deo
 			emitStatement(((OptElse1) s.getOptElse()).getStatement()); // emitujemo ELSE deo
 			Code.fixup(endJump);
 		} else
-			fixAll(falseFixups);
+			fixAll(falsefixAddrs);
 	}
 
 	private void emitFor(StatementFor s) {
@@ -178,25 +183,25 @@ public class CodeGenerator extends VisitorAdaptor {
 			emitDesignatorStatement(((OptDesignatorStatement1) s.getOptDesignatorStatement()).getDesignatorStatement());
 
 		int condStart = Code.pc; // zapamti adresu početka uslova
-		List<Integer> falseFixups = new ArrayList<>();
-		if (s.getOptCondition() instanceof OptCondition1) // emitujemo uslov for petlje i uradi false fixups
-			emitConditionFalseJumps(((OptCondition1) s.getOptCondition()).getCondition(), falseFixups);
+		List<Integer> falsefixAddrs = new ArrayList<>();
+		if (s.getOptCondition() instanceof OptCondition1) // emitujemo uslov for petlje i uradi false fixAddrs
+			emitConditionFalseJumps(((OptCondition1) s.getOptCondition()).getCondition(), falsefixAddrs);
 		
 		// pripremamo stekove za break i continue naredbe unutar for petlje
-		breakFixups.push(new ArrayList<>());
-		continueFixups.push(new ArrayList<>());
+		breakfixAddrs.push(new ArrayList<>());
+		continuefixAddrs.push(new ArrayList<>());
 
 		emitStatement(s.getStatement()); // emitujemo telo for petlje
 
-		fixAll(continueFixups.peek());
+		fixAll(continuefixAddrs.peek());
 		if (s.getOptDesignatorStatement1() instanceof OptDesignatorStatement1) { // emitujemo update deo for petlje (ako postoji)
 			emitDesignatorStatement(((OptDesignatorStatement1) s.getOptDesignatorStatement1()).getDesignatorStatement());
 		}
 
 		Code.putJump(condStart); // bezuslovni skok nazad na proveru uslova
-		fixAll(falseFixups);
-		fixAll(breakFixups.pop());
-		continueFixups.pop();
+		fixAll(falsefixAddrs);
+		fixAll(breakfixAddrs.pop());
+		continuefixAddrs.pop();
 	}
 
 	private void emitSwitch(StatementSwitch s) {
@@ -206,7 +211,7 @@ public class CodeGenerator extends VisitorAdaptor {
 		collectCases(s.getCaseList(), cases); // sakupljamo sve case-ove
 		
 		// pripremamo stek za break naredbe unutar switch-a
-		breakFixups.push(new ArrayList<>());
+		breakfixAddrs.push(new ArrayList<>());
 
 		List<Integer> caseJumps = new ArrayList<>();
 		for (Case c : cases) {
@@ -228,10 +233,10 @@ public class CodeGenerator extends VisitorAdaptor {
 		}
 		
 		// na kraju switch-a patchujemo noMatchJump da ide na kraj switch-a
-		// i break fixups da idu na kraj switch-a
+		// i break fixAddrs da idu na kraj switch-a
 		int switchEnd = Code.pc;
 		Code.fixup(noMatchJump);
-		fixAll(breakFixups.pop());
+		fixAll(breakfixAddrs.pop());
 		Code.put(Code.pop);
 	}
 	
@@ -329,12 +334,12 @@ public class CodeGenerator extends VisitorAdaptor {
 		}
 
 		Expr2 t = (Expr2) e; // imamo simpleExpr || expr
-		List<Integer> falseFixups = new ArrayList<>();
-		emitCondFactFalseJump(t.getCondFact(), falseFixups);
+		List<Integer> falsefixAddrs = new ArrayList<>();
+		emitCondFactFalseJump(t.getCondFact(), falsefixAddrs);
 		emitExpr(t.getExpr()); // emitujemo desnu stranu || operatora
 		Code.putJump(0);
 		int endJump = Code.pc - 2;
-		fixAll(falseFixups);
+		fixAll(falsefixAddrs);
 		emitExpr(t.getExpr1()); // emitujemo levu stranu || operatora
 		Code.fixup(endJump);
 	}
@@ -416,16 +421,16 @@ public class CodeGenerator extends VisitorAdaptor {
 		}
 	}
 
-	// emitovanje uslova: emituje se uslov i pravi se lista false fixup-ova
+	// emitovanje uslova: emituje se uslov i pravi se lista false fixAddr-ova
 	// koji se patchuju da idu na mesto gde se nastavlja izvršavanje ako je uslov false
-	private void emitConditionFalseJumps(Condition c, List<Integer> falseFixups) {
-		List<Integer> trueFixups = new ArrayList<>();
-		emitConditionJumps(c, trueFixups, falseFixups);
-		fixAll(trueFixups);
+	private void emitConditionFalseJumps(Condition c, List<Integer> falsefixAddrs) {
+		List<Integer> truefixAddrs = new ArrayList<>();
+		emitConditionJumps(c, truefixAddrs, falsefixAddrs);
+		fixAll(truefixAddrs);
 	}
 	
-	// emitovanje uslova unutar || operatora: emituje se uslov i pravi se lista false fixup-ova
-	private void emitCondFactFalseJump(CondFact cf, List<Integer> falseFixups) {
+	// emitovanje uslova unutar || operatora: emituje se uslov i pravi se lista false fixAddr-ova
+	private void emitCondFactFalseJump(CondFact cf, List<Integer> falsefixAddrs) {
 		emitSimpleExpr(cf.getSimpleExpr());
 		if (cf.getOptRel() instanceof OptRel0) {
 			Code.loadConst(0);
@@ -435,39 +440,39 @@ public class CodeGenerator extends VisitorAdaptor {
 			emitSimpleExpr(rel.getSimpleExpr());
 			Code.putFalseJump(mapRelop(rel.getRelop()), 0); // relacija false
 		}
-		falseFixups.add(Code.pc - 2);
+		falsefixAddrs.add(Code.pc - 2);
 	}
 	
-	// emitovanje uslova unutar if i for: emituje se uslov i pravi se lista false fixup-ova i lista true fixup-ova
-	private void emitConditionJumps(Condition c, List<Integer> trueFixups, List<Integer> falseFixups) {
+	// emitovanje uslova unutar if i for: emituje se uslov i pravi se lista false fixAddr-ova i lista true fixAddr-ova
+	private void emitConditionJumps(Condition c, List<Integer> truefixAddrs, List<Integer> falsefixAddrs) {
 		if (c instanceof Condition1) {
-			emitCondTermJumps(((Condition1) c).getCondTerm(), trueFixups, falseFixups);
+			emitCondTermJumps(((Condition1) c).getCondTerm(), truefixAddrs, falsefixAddrs);
 		} else {
 			Condition2 or = (Condition2) c;
 			List<Integer> leftFalse = new ArrayList<>();
-			emitConditionJumps(or.getCondition(), trueFixups, leftFalse);
+			emitConditionJumps(or.getCondition(), truefixAddrs, leftFalse);
 			fixAll(leftFalse); // A || B: samo ako je A false, evaluiraj B
-			emitCondTermJumps(or.getCondTerm(), trueFixups, falseFixups);
+			emitCondTermJumps(or.getCondTerm(), truefixAddrs, falsefixAddrs);
 		}
 	}
 	
 	// emitovanje uslova unutar if i for
-	// emituje se uslov i pravi se lista false fixup-ova i lista true fixup-ova
-	private void emitCondTermJumps(CondTerm t, List<Integer> trueFixups, List<Integer> falseFixups) {
+	// emituje se uslov i pravi se lista false fixAddr-ova i lista true fixAddr-ova
+	private void emitCondTermJumps(CondTerm t, List<Integer> truefixAddrs, List<Integer> falsefixAddrs) {
 		if (t instanceof CondTerm1) {
-			emitCondFactJumps(((CondTerm1) t).getCondFact(), trueFixups, falseFixups);
+			emitCondFactJumps(((CondTerm1) t).getCondFact(), truefixAddrs, falsefixAddrs);
 		} else {
 			CondTerm2 and = (CondTerm2) t;
 			List<Integer> leftTrue = new ArrayList<>();
-			emitCondTermJumps(and.getCondTerm(), leftTrue, falseFixups);
+			emitCondTermJumps(and.getCondTerm(), leftTrue, falsefixAddrs);
 			fixAll(leftTrue); // A && B: samo ako je A true, evaluiraj B
-			emitCondFactJumps(and.getCondFact(), trueFixups, falseFixups);
+			emitCondFactJumps(and.getCondFact(), truefixAddrs, falsefixAddrs);
 		}
 	}
 	
 	// emitovanje uslova unutar if i for
-	// emituje se uslov i pravi se lista false fixup-ova i lista true fixup-ova
-	private void emitCondFactJumps(CondFact cf, List<Integer> trueFixups, List<Integer> falseFixups) {
+	// emituje se uslov i pravi se lista false fixAddr-ova i lista true fixAddr-ova
+	private void emitCondFactJumps(CondFact cf, List<Integer> truefixAddrs, List<Integer> falsefixAddrs) {
 		emitSimpleExpr(cf.getSimpleExpr());
 		if (cf.getOptRel() instanceof OptRel0) {
 			Code.loadConst(0);
@@ -477,9 +482,9 @@ public class CodeGenerator extends VisitorAdaptor {
 			emitSimpleExpr(rel.getSimpleExpr());
 			Code.putFalseJump(mapRelop(rel.getRelop()), 0); // relacija false
 		}
-		falseFixups.add(Code.pc - 2);
+		falsefixAddrs.add(Code.pc - 2);
 		Code.putJump(0); // true
-		trueFixups.add(Code.pc - 2);
+		truefixAddrs.add(Code.pc - 2);
 	}
 	
 	private void emitLoadDesignator(Designator d, Obj obj) {

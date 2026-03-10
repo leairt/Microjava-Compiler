@@ -93,7 +93,6 @@ import rs.ac.bg.etf.pp1.exc.CompilerException;
 "switch"    { return new_symbol(sym.SWITCH, yytext()); }
 "case"      { return new_symbol(sym.CASE, yytext()); }
 
-
 "++" 		{ return new_symbol(sym.INC, yytext()); }
 "+" 		{ return new_symbol(sym.ADD, yytext()); }
 

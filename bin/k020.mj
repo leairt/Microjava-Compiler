@@ -1,0 +1,8 @@
+program k020
+int a[];
+{
+	void main()
+	{
+		read(a);
+	}
+}

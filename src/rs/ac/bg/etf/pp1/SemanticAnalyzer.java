@@ -1014,6 +1014,7 @@ public class SemanticAnalyzer extends VisitorAdaptor {
 		loopDepth = Math.max(0, loopDepth - 1);
 	}
 	
+	
 	@Override
 	public void visit(OptCondition0 optCondition0) { 
 		// nema uslova, tretiramo kao da je uslov uvek true

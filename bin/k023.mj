@@ -1,0 +1,9 @@
+program k023
+{
+	int f()
+		int x;
+	{
+		x = 1;
+	}
+	void main() { print(f()); }
+}

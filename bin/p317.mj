@@ -1,0 +1,12 @@
+// semanticka greska: pogresni argumenti standardnih funkcija ord, len i chr
+program p317
+{
+    void main()
+    {
+        print(ord(65));
+        print(eol);
+        print(len(5));
+        print(eol);
+        print(chr(true));
+    }
+}

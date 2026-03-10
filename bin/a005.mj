@@ -1,0 +1,8 @@
+// semanticka greska: main nije void metoda bez argumenata
+program a005
+{
+    int main()
+    {
+        return 1;
+    }
+}

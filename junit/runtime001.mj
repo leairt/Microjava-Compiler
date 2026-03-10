@@ -1,0 +1,13 @@
+program runtime001
+{
+	int f(int x)
+	{
+		
+	}
+
+	void main()
+	{
+		print(f(0));
+		print(eol);
+	}
+}

@@ -1,0 +1,12 @@
+program k026
+{
+	void main()
+		int x;
+	{
+		x = 1;
+		switch (x) {
+			case 1: print(1); break;
+			case 1: print(2); break;
+		}
+	}
+}

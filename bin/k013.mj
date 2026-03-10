@@ -1,0 +1,6 @@
+program k013
+int T;
+T x;
+{
+	void main() { }
+}

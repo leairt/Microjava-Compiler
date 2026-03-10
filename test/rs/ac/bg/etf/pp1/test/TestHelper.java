@@ -89,6 +89,15 @@ public class TestHelper {
 		return false;
 	}
 
+	public boolean hasErrorMessageContaining(String text) {
+		for (CompilerException error : compiler.getErrors()) {
+			if (error.getMessage() != null && error.getMessage().contains(text)) {
+				return true;
+			}
+		}
+		return false;
+	}
+
 	public boolean hasError(ErrorCode errorCode, int lineNumber, String data) {
 		for(CompilerException error: compiler.getErrors())
 			if(errorCode == error.getErrorCode() 
